@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_insure_fleet_inherit_fleet_vehicle_view_form" model="ir.ui.view">
+            <field name="name">s.insure.fleet.inherit.fleet.vehicle.form</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook[last()]" position="inside">
+                    <page string="Additional" name="additional">
+                        <group>
+                            <group string="Insurance policy">
+                                <field name="insurance_start_date"/>
+                                <field name="insurance_end_date"/>
+                            </group>
+                            <group string="Cargo permit">
+                                <field name="cargo_start_date"/>
+                                <field name="cargo_end_date"/>
+                            </group>
+                        </group>
+
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
