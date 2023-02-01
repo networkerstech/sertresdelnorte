@@ -1,0 +1,68 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_custom_employee
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-01 17:11+0000\n"
+"PO-Revision-Date: 2023-02-01 17:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_custom_employee
+#: model:ir.model,name:s_custom_employee.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__name
+msgid "Employee Name"
+msgstr "Nombre"
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__number_employee
+msgid "Employee Number"
+msgstr "Numero"
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__firstname
+msgid "Firstname"
+msgstr "Nombre"
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__lastname
+msgid "Lastname"
+msgstr "Primer apellido"
+
+#. module: s_custom_employee
+#: model_terms:ir.ui.view,arch_db:s_custom_employee.s_custom_employee_hr_employee_form_inherit
+msgid "Name Employee"
+msgstr "Nombre"
+
+#. module: s_custom_employee
+#. odoo-python
+#: code:addons/s_custom_employee/models/inherit_hr_employee.py:0
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__second_lastname
+msgid "Second lastname"
+msgstr "Segundo apellido"
+
+#. module: s_custom_employee
+#: model_terms:ir.ui.view,arch_db:s_custom_employee.s_custom_employee_hr_employee_form_inherit
+msgid "Second surname"
+msgstr "Segundo apellido"
+
+#. module: s_custom_employee
+#: model_terms:ir.ui.view,arch_db:s_custom_employee.s_custom_employee_hr_employee_form_inherit
+msgid "Surname"
+msgstr "Primer apellido"
