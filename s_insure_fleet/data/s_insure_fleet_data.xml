@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Insurance policy expires soon -->
+        <record id="ir_cron_data_check_insurance_policy_validity" model="ir.cron">
+            <field name="name">Vehicle: check insurance policy validity</field>
+            <field name="model_id" ref="model_fleet_vehicle"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model._cron_check_insurance_policy_validity()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+        </record>
+
+        <!-- Insurance policy expires soon -->
+        <record id="ir_cron_data_check_cargo_permit_validity" model="ir.cron">
+            <field name="name">Vehicle: check cargo permit validity</field>
+            <field name="model_id" ref="model_fleet_vehicle"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model._cron_check_cargo_permit_validity()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+        </record>
+
+    </data>
+</odoo>
+
