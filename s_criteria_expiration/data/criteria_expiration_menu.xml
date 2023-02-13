@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem name="Expiration criteria"
+                  parent="fleet.fleet_configuration"
+                  id="s_criteria_expiration_expiration_criteria"
+                  sequence="30"
+                  groups="base.group_no_one"/>
+
+    </data>
+</odoo>
