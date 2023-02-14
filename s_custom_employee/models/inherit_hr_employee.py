@@ -7,10 +7,11 @@ class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     name = fields.Char(compute="_compute_name", store=True, readonly=False)
-    number_employee = fields.Char(string="Employee Number", required=True, readonly=True, default=lambda self: _('New'))
+    number_employee = fields.Char(string="Employee Number", required=True, readonly=True, default=lambda self: '00-00-00000')
     firstname = fields.Char(string="Firstname")
     lastname = fields.Char(string="Lastname")
     second_lastname = fields.Char(string="Second lastname")
+
     @api.model
     def _get_names_order(self):
         return (
@@ -18,6 +19,7 @@ class HrEmployee(models.Model):
             .sudo()
             .get_param("partner_names_order", "first_last")
         )
+
     @api.model
     def _get_computed_name(self, firstname, lastname, second_lastname):
         order = self._get_names_order()
@@ -36,12 +38,12 @@ class HrEmployee(models.Model):
     def create(self, values):
         sequence = self.env['ir.sequence'].next_by_code('hr.employee.employee.number') or '/'
 
-        first_third = sequence[0:3]
-        second_third = sequence[3:6]
-        third_third = sequence[6:9]
+        first_third = sequence[0:2]
+        second_third = sequence[2:4]
+        third_third = sequence[4:9]
 
         for vals in values:
-            vals['number_employee'] = "%s_%s_%s" % (first_third, second_third, third_third)
+            vals['number_employee'] = "%s-%s-%s" % (first_third, second_third, third_third)
 
         res = super(HrEmployee, self).create(values)
 
