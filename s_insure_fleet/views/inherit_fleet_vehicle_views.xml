@@ -10,17 +10,14 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook[last()]" position="inside">
                     <page string="Additional" name="additional">
-                        <group>
-                            <group string="Insurance policy">
-                                <field name="insurance_start_date"/>
-                                <field name="insurance_end_date"/>
-                            </group>
-                            <group string="Cargo permit">
-                                <field name="cargo_start_date"/>
-                                <field name="cargo_end_date"/>
-                            </group>
-                        </group>
-
+                        <field name="activity_line_id">
+                            <tree string="vehicle.activity" editable="bottom">
+                                <field name="activity_ids" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="vehicle_id" invisible="1"/>
+                            </tree>
+                        </field>
                     </page>
                 </xpath>
 
