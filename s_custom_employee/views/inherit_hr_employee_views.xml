@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_custom_employee_hr_employee_form_inherit" model="ir.ui.view">
+            <field name="name">s.custom.employee.hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                    <attribute name="force_save">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='mobile_phone']" position="before">
+                    <field name="number_employee" placeholder="Name Employee"/>
+                    <field name="firstname" placeholder="Name Employee"/>
+                    <field name="lastname" placeholder="Surname"/>
+                    <field name="second_lastname" placeholder="Second surname"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
