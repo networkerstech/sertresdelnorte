@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_insure_fleet
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-14 04:34+0000\n"
+"PO-Revision-Date: 2023-02-14 04:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_insure_fleet
+#. odoo-python
+#: code:addons/s_insure_fleet/models/vehicle_activity.py:0
+#, python-format
+msgid ""
+"%(activity)s expires on date %(date)s for the vehicle with registration "
+"%(vehicle)s."
+msgstr ""
+"%(activity)s expira en la fecha %(date)s para el vehículo con matrícula "
+"%(vehicle)s."
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_fleet_vehicle__activity_line_id
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__activity_ids
+msgid "Activity"
+msgstr "Actividad"
+
+#. module: s_insure_fleet
+#: model_terms:ir.ui.view,arch_db:s_insure_fleet.s_insure_fleet_inherit_fleet_vehicle_view_form
+msgid "Additional"
+msgstr "Adicionales"
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: s_insure_fleet
+#: model:ir.model,name:s_insure_fleet.model_vehicle_activity
+msgid "Description"
+msgstr "Descripción"
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__end_date
+msgid "End date"
+msgstr "Fecha Fin"
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__id
+msgid "ID"
+msgstr ""
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__start_date
+msgid "Start date"
+msgstr "Fecha Inicio"
+
+#. module: s_insure_fleet
+#: model:ir.model,name:s_insure_fleet.model_fleet_vehicle
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__vehicle_id
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: s_insure_fleet
+#: model:ir.actions.server,name:s_insure_fleet.ir_cron_data_check_activity_validity_ir_actions_server
+#: model:ir.cron,cron_name:s_insure_fleet.ir_cron_data_check_activity_validity
+msgid "Vehicle: check activity validity"
+msgstr "Vehículo: Chequea la vigencia de las actividades"
+
+#. module: s_insure_fleet
+#: model:ir.actions.server,name:s_insure_fleet.ir_cron_data_check_cargo_permit_validity_ir_actions_server
+#: model:ir.cron,cron_name:s_insure_fleet.ir_cron_data_check_cargo_permit_validity
+msgid "Vehicle: check cargo permit validity"
+msgstr "Vehículo: Consultar vigencia permiso de carga"
+
+#. module: s_insure_fleet
+#: model:ir.actions.server,name:s_insure_fleet.ir_cron_data_check_insurance_policy_validity_ir_actions_server
+#: model:ir.cron,cron_name:s_insure_fleet.ir_cron_data_check_insurance_policy_validity
+msgid "Vehicle: check insurance policy validity"
+msgstr "Vehículo: Consultar vigencia póliza de seguro"
+
+#. module: s_insure_fleet
+#: model:ir.model.fields,field_description:s_insure_fleet.field_vehicle_activity__scheduled_activity
+msgid "scheduled activity"
+msgstr "Actividad programada"
+
+#. module: s_insure_fleet
+#: model_terms:ir.ui.view,arch_db:s_insure_fleet.s_insure_fleet_inherit_fleet_vehicle_view_form
+msgid "vehicle.activity"
+msgstr ""
