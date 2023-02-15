@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_criteria_expiration_activity_parameters_form_view" model="ir.ui.view">
+            <field name="name">s.criteria.expiration.vehicle.service.form.view</field>
+            <field name="model">activity.parameters</field>
+            <field name="arch" type="xml">
+                <form string="Vehicle service">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="parameter" placeholder="Parameters"/>
+                                <field name="responsible_id" />
+                                <field name="criteria_days" placeholder="Days"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="s_criteria_expiration_activity_parameters_tree_view" model="ir.ui.view">
+            <field name="name">s.criteria.expiration.vehicle.service_.tree</field>
+            <field name="model">activity.parameters</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                    <field name="parameter" />
+                    <field name="responsible_id"/>
+                    <field name="criteria_days"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id='s_criteria_expiration_activity_parameters_act_window' model='ir.actions.act_window'>
+            <field name="name">Activity Parameters</field>
+            <field name="res_model">activity.parameters</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                   Activity Parameters
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Activity Parameters" id="s_criteria_expiration_activity_parameters_menu"
+                  parent="s_criteria_expiration.s_criteria_expiration_expiration_criteria"
+                  action="s_criteria_expiration_activity_parameters_act_window"/>
+
+    </data>
+</odoo>

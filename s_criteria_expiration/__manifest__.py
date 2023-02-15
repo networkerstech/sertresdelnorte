@@ -17,8 +17,7 @@
         'data/criteria_expiration_menu.xml',
         'security/ir.model.access.csv',
         'views/vehicle_service_views.xml',
-        'views/cargo_permit_views.xml',
-        'views/insurance_policy_views.xml',
+        'views/activity_parameters_views.xml',
     ],
     'installable': True,
     'auto_install': False

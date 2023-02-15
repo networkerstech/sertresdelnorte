@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-31 05:01+0000\n"
-"PO-Revision-Date: 2023-01-31 05:01+0000\n"
+"POT-Creation-Date: 2023-02-13 18:10+0000\n"
+"PO-Revision-Date: 2023-02-13 18:10+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,33 +16,26 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__active
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__active
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__active
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__active
 msgid "Active"
 msgstr "Activo"
 
 #. module: s_criteria_expiration
-#: model:ir.actions.act_window,name:s_criteria_expiration.s_criteria_expiration_cargo_permit_act_window
-#: model:ir.ui.menu,name:s_criteria_expiration.s_criteria_expiration_cargo_permit_menu
-msgid "Cargo Permit"
-msgstr "Permiso de carga"
+#: model:ir.actions.act_window,name:s_criteria_expiration.s_criteria_expiration_activity_parameters_act_window
+#: model:ir.ui.menu,name:s_criteria_expiration.s_criteria_expiration_activity_parameters_menu
+#: model_terms:ir.actions.act_window,help:s_criteria_expiration.s_criteria_expiration_activity_parameters_act_window
+msgid "Activity Parameters"
+msgstr "Parámetro para Actividad"
 
 #. module: s_criteria_expiration
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_cargo_permit_form_view
-msgid "Cargo permit"
-msgstr "Permiso de carga"
-
-#. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__create_uid
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__create_uid
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__create_uid
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__create_date
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__create_date
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__create_date
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__create_date
 msgid "Created on"
 msgstr ""
@@ -58,21 +51,23 @@ msgid "Criteria KMs"
 msgstr "Criterio en KMs"
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__criteria_days
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__criteria_days
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__criteria_days
 msgid "Criteria days"
 msgstr "Criterio en días"
 
 #. module: s_criteria_expiration
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_cargo_permit_form_view
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_insurance_policy_form_view
+#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_activity_parameters_form_view
 #: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_vehicle_service_form_view
 msgid "Days"
 msgstr "Días"
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__display_name
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__display_name
+#: model:ir.model,name:s_criteria_expiration.model_activity_parameters
+msgid "Description"
+msgstr "Descripción"
+
+#. module: s_criteria_expiration
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__display_name
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__display_name
 msgid "Display Name"
 msgstr ""
@@ -83,24 +78,10 @@ msgid "Expiration criteria"
 msgstr "Criterios de expiración"
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__id
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__id
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__id
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__id
 msgid "ID"
 msgstr ""
-
-#. module: s_criteria_expiration
-#: model:ir.actions.act_window,name:s_criteria_expiration.s_criteria_expiration_insurance_policy_act_window
-#: model:ir.ui.menu,name:s_criteria_expiration.s_criteria_expiration_insurance_policy_menu
-#: model_terms:ir.actions.act_window,help:s_criteria_expiration.s_criteria_expiration_cargo_permit_act_window
-#: model_terms:ir.actions.act_window,help:s_criteria_expiration.s_criteria_expiration_insurance_policy_act_window
-msgid "Insurance Policy"
-msgstr "Póliza de seguro"
-
-#. module: s_criteria_expiration
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_insurance_policy_form_view
-msgid "Insurance policy"
-msgstr "Póliza de seguro"
 
 #. module: s_criteria_expiration
 #: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_vehicle_service_form_view
@@ -108,32 +89,43 @@ msgid "KM"
 msgstr ""
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit____last_update
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy____last_update
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters____last_update
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__write_uid
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__write_uid
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__write_uid
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__write_date
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__write_date
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__write_date
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: s_criteria_expiration
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_cargo_permit_tree_view
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_insurance_policy_tree_view
+#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_activity_parameters_tree_view
 #: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_vehicle_service_tree_view
 msgid "ModelTitle"
 msgstr ""
+
+#. module: s_criteria_expiration
+#: model:ir.model.fields,help:s_criteria_expiration.field_activity_parameters__parameter
+msgid "Name of activity"
+msgstr "Nombre de Actividad"
+
+#. module: s_criteria_expiration
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__parameter
+msgid "Parameter"
+msgstr "Parámetro"
+
+#. module: s_criteria_expiration
+#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_activity_parameters_form_view
+msgid "Parameters"
+msgstr "Parámetros"
 
 #. module: s_criteria_expiration
 #: model:ir.model.fields,help:s_criteria_expiration.field_vehicle_service__criteria_km
@@ -141,41 +133,28 @@ msgid "Quantity expressed in KM"
 msgstr "Cantidad expresada en KM"
 
 #. module: s_criteria_expiration
-#: model:ir.model.fields,help:s_criteria_expiration.field_cargo_permit__criteria_days
-#: model:ir.model.fields,help:s_criteria_expiration.field_insurance_policy__criteria_days
+#: model:ir.model.fields,help:s_criteria_expiration.field_activity_parameters__criteria_days
 #: model:ir.model.fields,help:s_criteria_expiration.field_vehicle_service__criteria_days
 msgid "Quantity expressed in days"
 msgstr "Cantidad expresada en días"
 
 #. module: s_criteria_expiration
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_cargo_permit_form_view
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_insurance_policy_form_view
-#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_vehicle_service_form_view
-msgid "Responsible"
-msgstr "Responsable"
-
-#. module: s_criteria_expiration
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_cargo_permit__responsible_id
-#: model:ir.model.fields,field_description:s_criteria_expiration.field_insurance_policy__responsible_id
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_activity_parameters__responsible_id
 #: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__responsible_id
-msgid "User"
+msgid "Responsible"
 msgstr "Usuario"
 
 #. module: s_criteria_expiration
-#: model:ir.model,name:s_criteria_expiration.model_cargo_permit
-msgid "Vehicle cargo permit"
-msgstr "Permiso de carga vehículo"
-
-#. module: s_criteria_expiration
-#: model:ir.model,name:s_criteria_expiration.model_insurance_policy
-msgid "Vehicle insurance policy"
-msgstr "Póliza de seguro vehículo"
+#: model:ir.model.fields,field_description:s_criteria_expiration.field_vehicle_service__services_id
+msgid "Services"
+msgstr "Servicios"
 
 #. module: s_criteria_expiration
 #: model:ir.actions.act_window,name:s_criteria_expiration.s_criteria_expiration_vehicle_service_act_window
 #: model:ir.model,name:s_criteria_expiration.model_vehicle_service
 #: model:ir.ui.menu,name:s_criteria_expiration.s_criteria_expiration_vehicle_service_menu
 #: model_terms:ir.actions.act_window,help:s_criteria_expiration.s_criteria_expiration_vehicle_service_act_window
+#: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_activity_parameters_form_view
 #: model_terms:ir.ui.view,arch_db:s_criteria_expiration.s_criteria_expiration_vehicle_service_form_view
 msgid "Vehicle service"
 msgstr "Servicio vehicular"
