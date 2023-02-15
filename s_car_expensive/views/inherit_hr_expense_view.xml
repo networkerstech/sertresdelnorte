@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="s_inherit_hr_expense_view_form" model="ir.ui.view">
+            <field name="name">s.inherit.hr.expense.view.form</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='analytic_distribution']" position="after">
+                    <field name="vehicle_id"  options="{'no_create':true,'no_open':true}"/>
+                    <field name="odometer" />
+                    <field name="fuel_type" />
+                    <field name="loaded_liters" />
+                    <field name="cost_liter" wigdet=""/>
+                    <field name="total_cost"/>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
