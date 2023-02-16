@@ -1,0 +1,55 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_services_fleet
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-15 18:38+0000\n"
+"PO-Revision-Date: 2023-02-15 18:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_services_fleet
+#: model:ir.model,name:s_services_fleet.model_mail_activity
+msgid "Activity"
+msgstr "Actividad"
+
+#. module: s_services_fleet
+#. odoo-python
+#: code:addons/s_services_fleet/models/inherit_fleet_vehicle.py:0
+#, python-format
+msgid "Automatic creation of service"
+msgstr "Creación automática de servicio"
+
+#. module: s_services_fleet
+#: model:ir.model.fields,field_description:s_services_fleet.field_fleet_vehicle__creation_scheduled_activity
+msgid "Creation Scheduled Activity"
+msgstr "Creación de actividad programada"
+
+#. module: s_services_fleet
+#. odoo-python
+#: code:addons/s_services_fleet/models/inherit_fleet_vehicle.py:0
+#, python-format
+msgid ""
+"The vehicle with license plate %(vehicle)s is responsible for carrying out "
+"the service %(service)s"
+msgstr ""
+"El vehículo con matrícula %(vehicle)s le corresponde realizar "
+"el servicio %(service)s"
+
+#. module: s_services_fleet
+#: model:ir.model,name:s_services_fleet.model_fleet_vehicle
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: s_services_fleet
+#: model:ir.actions.server,name:s_services_fleet.ir_cron_data_check_insurance_policy_validity_ir_actions_server
+#: model:ir.cron,cron_name:s_services_fleet.ir_cron_data_check_insurance_policy_validity
+msgid "Vehicle: check vehicle service validity"
+msgstr "Vehículo: Cuando le corresponde realizar un servicio determinado"
