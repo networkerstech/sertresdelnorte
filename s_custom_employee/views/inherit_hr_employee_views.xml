@@ -13,10 +13,22 @@
                     <attribute name="force_save">True</attribute>
                 </xpath>
                 <xpath expr="//field[@name='mobile_phone']" position="before">
-                    <field name="number_employee" placeholder="Name Employee"/>
+                    <field name="number_employee"/>
                     <field name="firstname" placeholder="Name Employee"/>
                     <field name="lastname" placeholder="Surname"/>
                     <field name="second_lastname" placeholder="Second surname"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="s_custom_employee_hr_employee_tree_inherit" model="ir.ui.view">
+            <field name="name">s.custom.employee.hr.employee.tree</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="number_employee"/>
                 </xpath>
             </field>
         </record>
