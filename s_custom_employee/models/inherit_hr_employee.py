@@ -7,7 +7,7 @@ class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     name = fields.Char(compute="_compute_name", store=True, readonly=False)
-    number_employee = fields.Char(string="Employee Number", readonly=True, required=True, default=lambda self: '01-01-00000')
+    number_employee = fields.Char(string="Employee Number", required=True, readonly=True, default=lambda self: '00-00-00000')
     firstname = fields.Char(string="Firstname")
     lastname = fields.Char(string="Lastname")
     second_lastname = fields.Char(string="Second lastname")
@@ -36,10 +36,14 @@ class HrEmployee(models.Model):
 
     @api.model_create_multi
     def create(self, values):
-        for vals in values:
-            sequence = self.env['ir.sequence'].next_by_code('hr.employee.employee.number') or '/'
+        sequence = self.env['ir.sequence'].next_by_code('hr.employee.employee.number') or '/'
 
-            vals['number_employee'] = "01-01-%s" % sequence
+        first_third = sequence[0:2]
+        second_third = sequence[2:4]
+        third_third = sequence[4:9]
+
+        for vals in values:
+            vals['number_employee'] = "%s-%s-%s" % (first_third, second_third, third_third)
 
         res = super(HrEmployee, self).create(values)
 
