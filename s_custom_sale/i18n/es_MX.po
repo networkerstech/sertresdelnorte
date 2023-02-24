@@ -1,0 +1,66 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_custom_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-24 13:52+0000\n"
+"PO-Revision-Date: 2023-02-24 13:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_custom_sale
+#: model:ir.model,name:s_custom_sale.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: s_custom_sale
+#: model:ir.model.fields,help:s_custom_sale.field_sale_order__requirements_date
+msgid "Delivery Need Date."
+msgstr ""
+
+#. module: s_custom_sale
+#: model:ir.model.fields,field_description:s_custom_sale.field_sale_order__document_type
+msgid "Document Type"
+msgstr "Tipo de documento"
+
+#. module: s_custom_sale
+#: model:ir.model.fields.selection,name:s_custom_sale.selection__account_analytic_account__project_state__finished
+msgid "Finished"
+msgstr "Finalizada"
+
+#. module: s_custom_sale
+#: model:ir.model.fields,field_description:s_custom_sale.field_account_analytic_account__project_state
+msgid "Project State"
+msgstr "Estado de Proyecto"
+
+#. module: s_custom_sale
+#: model:ir.model.fields,field_description:s_custom_sale.field_sale_order__requirements_date
+msgid "Requirements date"
+msgstr ""
+
+#. module: s_custom_sale
+#: model:ir.model.fields.selection,name:s_custom_sale.selection__sale_order__document_type__requisitions
+msgid "Requisitions"
+msgstr ""
+
+#. module: s_custom_sale
+#: model:ir.model.fields.selection,name:s_custom_sale.selection__account_analytic_account__project_state__running
+msgid "Running"
+msgstr "En Ejecución"
+
+#. module: s_custom_sale
+#: model:ir.model.fields.selection,name:s_custom_sale.selection__sale_order__document_type__sale
+msgid "Sale"
+msgstr "Venta"
+
+#. module: s_custom_sale
+#: model:ir.model,name:s_custom_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
