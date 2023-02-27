@@ -21,7 +21,13 @@
                         {'invisible': [('parent.document_type', 'in', ['requisitions'])]}
                     </attribute>
                 </xpath>
-                
+
+
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='analytic_account_id']" position="attributes">
+                    <attribute name="attrs">{"required": [('parent.document_type', 'in', ['requisitions'])]}</attribute>
+                </xpath>
+
+
                 <xpath expr="//field[@name='tax_totals']" position="attributes">
                     <attribute name="attrs">{}</attribute>
                     <attribute name="attrs">
