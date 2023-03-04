@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_criteria_expiration_cargo_permit_form_view" model="ir.ui.view">
+            <field name="name">s.criteria.expiration.cargo.permit.form.view</field>
+            <field name="model">cargo.permit</field>
+            <field name="arch" type="xml">
+                <form string="Cargo permit">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="responsible_id" placeholder="Responsible"/>
+                                <field name="criteria_days" placeholder="Days"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="s_criteria_expiration_cargo_permit_tree_view" model="ir.ui.view">
+            <field name="name">s.criteria.expiration.cargo.permit.tree</field>
+            <field name="model">cargo.permit</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                    <field name="responsible_id"/>
+                    <field name="criteria_days"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id='s_criteria_expiration_cargo_permit_act_window' model='ir.actions.act_window'>
+            <field name="name">Cargo Permit</field>
+            <field name="res_model">cargo.permit</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Insurance Policy
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Cargo Permit" id="s_criteria_expiration_cargo_permit_menu"
+                  parent="s_criteria_expiration.s_criteria_expiration_expiration_criteria"
+                  action="s_criteria_expiration_cargo_permit_act_window"/>
+
+    </data>
+</odoo>
