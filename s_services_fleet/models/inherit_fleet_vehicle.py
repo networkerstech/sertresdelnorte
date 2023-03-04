@@ -54,3 +54,4 @@ class FleetVehicle(models.Model):
                             user_id=employee.id)
 
                     flag = False
+
