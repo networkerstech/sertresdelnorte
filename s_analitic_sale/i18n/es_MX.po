@@ -1,0 +1,31 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_analitic_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-24 06:01+0000\n"
+"PO-Revision-Date: 2023-02-24 06:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_analitic_sale
+#: model_terms:ir.ui.view,arch_db:s_analitic_sale.s_analitic_sale_view_order_form_inherit
+msgid "/&gt;"
+msgstr ""
+
+#. module: s_analitic_sale
+#: model:ir.model.fields,field_description:s_analitic_sale.field_sale_order_line__analytic_account_id
+msgid "Analytic Account"
+msgstr "Cuenta Analítica"
+
+#. module: s_analitic_sale
+#: model:ir.model,name:s_analitic_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de la orden de venta"
