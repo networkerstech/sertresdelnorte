@@ -8,7 +8,7 @@
     'website': "https://www.suitedoo.com",
     'category': 'sale',
     'version': '0.1',
-    'depends': ['base', 'sale_management'],
+    'depends': ['base', 'sale_management', 's_analitic_sale'],
     'data': [
         'views/inherit_sale_order_views.xml',
         'views/inherit_analytic_account_views.xml'
