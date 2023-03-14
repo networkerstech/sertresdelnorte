@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_workshop_service_fleet_vehicle_model_brand_view_form_inherit" model="ir.ui.view">
+            <field name="name">s_workshop_service.fleet.vehicle.model.brand.form</field>
+            <field name="model">fleet.vehicle.model.brand</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_model_brand_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+               <xpath expr="//h1" position="after">
+                    <field name="mileage_for_services" />
+                    <field name="kilometers_allowed" />
+                </xpath>
+            </field>
+        </record>
+
+         <record id="s_workshop_service_fleet_vehicle_model_brand_view_kanban_inherit" model="ir.ui.view">
+            <field name="name">s_workshop_service.fleet.vehicle.model.brand.kanban</field>
+            <field name="model">fleet.vehicle.model.brand</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_model_brand_view_kanban"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='model_count']" position="before">
+                    <field name="mileage_for_services" /> Mileage for services <br/>
+                    <field name="kilometers_allowed" /> Kilometers allowed <br/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+
