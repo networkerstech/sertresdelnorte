@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_car_performance_fleet_vehicle_odometer_tree_inherit" model="ir.ui.view">
+            <field name="name">s_car_performance_fleet.vehicle.odometer.tree</field>
+            <field name="model">fleet.vehicle.odometer</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_odometer_view_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='driver_id']" position="after">
+                        <field name="performance"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>
