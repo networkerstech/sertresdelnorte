@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_custom_sale_account_analytic_account_form_inherit" model="ir.ui.view">
+            <field name="name">s_custom_sale.account.analytic.account.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='plan_id']" position="after">
+                    <field name="project_state"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="s_custom_sale_account_analytic_account_list_inherit" model="ir.ui.view">
+            <field name="name">s_custom_sale.account.analytic.account.list</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='name']" position="after">
+                        <field name="project_state" optional="show"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>
