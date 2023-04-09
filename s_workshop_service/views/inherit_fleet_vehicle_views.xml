@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <record id="s_workshop_service_fleet_vehicle_view_form_inherit" model="ir.ui.view">
+            <field name="name">s_workshop_service.fleet.vehicle.form</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='location']" position="replace">
+                    <field name="service_in"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

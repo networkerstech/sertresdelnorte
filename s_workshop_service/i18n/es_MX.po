@@ -1,0 +1,61 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_workshop_service
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-14 14:47+0000\n"
+"PO-Revision-Date: 2023-03-14 14:47+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_workshop_service
+#: model:ir.model.fields.selection,name:s_workshop_service.selection__fleet_vehicle__service_in__agency
+msgid "Agency"
+msgstr "Agencia"
+
+#. module: s_workshop_service
+#: model:ir.model,name:s_workshop_service.model_fleet_vehicle_model_brand
+msgid "Brand of the vehicle"
+msgstr "Marca del vehículo"
+
+#. module: s_workshop_service
+#: model:ir.model.fields,field_description:s_workshop_service.field_fleet_vehicle_model_brand__kilometers_allowed
+msgid "Kilometers allowed"
+msgstr "Kilometros permitidos"
+
+#. module: s_workshop_service
+#: model_terms:ir.ui.view,arch_db:s_workshop_service.s_workshop_service_fleet_vehicle_model_brand_view_kanban_inherit
+msgid "Kilometers allowed <br/>"
+msgstr "Kilometros permitidos <br/>"
+
+#. module: s_workshop_service
+#: model:ir.model.fields,field_description:s_workshop_service.field_fleet_vehicle_model_brand__mileage_for_services
+msgid "Mileage for services"
+msgstr "Kilometraje por servicios"
+
+#. module: s_workshop_service
+#: model_terms:ir.ui.view,arch_db:s_workshop_service.s_workshop_service_fleet_vehicle_model_brand_view_kanban_inherit
+msgid "Mileage for services <br/>"
+msgstr "Kilometraje por servicios <br/>"
+
+#. module: s_workshop_service
+#: model:ir.model.fields,field_description:s_workshop_service.field_fleet_vehicle__service_in
+msgid "Service in"
+msgstr "Servicio en"
+
+#. module: s_workshop_service
+#: model:ir.model,name:s_workshop_service.model_fleet_vehicle
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: s_workshop_service
+#: model:ir.model.fields.selection,name:s_workshop_service.selection__fleet_vehicle__service_in__workshop
+msgid "Workshop"
+msgstr "Taller"
