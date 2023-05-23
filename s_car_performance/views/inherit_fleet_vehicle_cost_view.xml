@@ -9,7 +9,7 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='amount']" position="after">
-                    <field name="qty_liters_fuel" />
+                    <field name="qty_liters_fuel" attrs=""/>
                 </xpath>
             </field>
         </record>
