@@ -10,7 +10,7 @@
     'website': "https://www.suitedoo.com",
     'category': 'Uncategorized',
     'version': '0.1',
-    'depends': ['s_criteria_expiration'],
+    'depends': ['base', 'fleet'],
     'data': [],
     'installable': True,
     'auto_install': False
