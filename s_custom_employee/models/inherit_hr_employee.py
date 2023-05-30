@@ -7,10 +7,10 @@ class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     name = fields.Char(compute="_compute_name", store=True, readonly=False)
-    number_employee = fields.Char(string="Employee Number", readonly=True, required=True, default=lambda self: '01-01-00000')
-    firstname = fields.Char(string="Firstname")
-    lastname = fields.Char(string="Lastname")
-    second_lastname = fields.Char(string="Second lastname")
+    number_employee = fields.Char(string="Employee Number", readonly=True, required=True, default=lambda self: '01-01-00000',groups="hr.group_hr_user")
+    firstname = fields.Char(string="Firstname",groups="hr.group_hr_user")
+    lastname = fields.Char(string="Lastname",groups="hr.group_hr_user")
+    second_lastname = fields.Char(string="Second lastname",groups="hr.group_hr_user")
 
     @api.model
     def _get_names_order(self):
