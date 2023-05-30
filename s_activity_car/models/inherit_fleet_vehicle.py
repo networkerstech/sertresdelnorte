@@ -5,6 +5,7 @@ class FleetVehicle(models.Model):
     _inherit = 'fleet.vehicle'
 
     def write(self, vals):
+        import pdb; pdb.set_trace()
         old_driver = self.env['res.users'].search([('partner_id', '=', self.driver_id.id)])
         res = super(FleetVehicle, self).write(vals)
         new_driver = self.env['res.users'].search([('partner_id', '=', vals.get("driver_id"))])
