@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models, api, _
+from odoo import fields, models, api
 
 
 class VehicleService(models.Model):
     _inherit = "vehicle.service"
 
-               
-    @api.onchange('responsible_id')
-    def _onchange_responsible(self):
-        '''
-        Cuando se modifica el responsable se actualizan todos los log service relacionados al service_id
-        :param self:
-        '''
-        #TODO: Busncado los log service relacionados al service_id
-        log_services = self.env['fleet.vehicle.log.services'].search([("service_type_id", "=", self.services_id.id),("state", "in", ['new','running'])])
-        #TODO: Se recorre todo los log service se le modifica el responsable
-        for ls in log_services:
-            ls.mail_activity.user_id = self.responsible_id.id
+    def write(self, vals):
+
+        old_resp = self.responsible_id
+        res = super(VehicleService, self).write(vals)
+
+        activity_list = self.env["mail.activity"].search([]).filtered(lambda x: x.user_id == old_resp and x.res_model == 'fleet.vehicle')
+
+        if activity_list:
+            value = ({
+                'user_id': vals['responsible_id']
+            })
+            for a in activity_list:
+                a.write(value)

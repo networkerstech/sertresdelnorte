@@ -11,4 +11,3 @@ class VehicleService(models.Model):
     criteria_days = fields.Integer(string='Criteria Days', help="Quantity expressed in days")
     criteria_km = fields.Integer(string='Criteria KMs', help="Quantity expressed in KM")
     active = fields.Boolean(string='Active', default=True)
-        

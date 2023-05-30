@@ -14,7 +14,7 @@ class VehicleActivity(models.Model):
     activity_ids = fields.Many2one(comodel_name="activity.parameters", string="Activity")
     start_date = fields.Date(string="Start date")
     end_date = fields.Date(string="End date")
-    scheduled_activity = fields.Boolean(string="scheduled activity", default=False)
+    scheduled_activity = fields.Boolean(string="scheduled activity", defaul="False")
 
     def write(self, vals):
         if "end_date" in vals and self.end_date < datetime.strptime(vals.get("end_date"), '%Y-%m-%d').date():
