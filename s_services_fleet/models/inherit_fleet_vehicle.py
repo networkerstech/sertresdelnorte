@@ -30,7 +30,7 @@ class FleetVehicle(models.Model):
             else:
                 #TODO: se toma los dias desde el dia de aquicision y el odometro del ultimo
                 #servicio lo ponemos a 0 
-                last_date_service = v.acquisition_date.date if v.acquisition_date else fields.Date.today()
+                last_date_service = v.acquisition_date if v.acquisition_date else fields.Date.today()
                 last_odometer_service = 0
                 
             #TODO: Buscar los valores del odometro a dia de hoy
