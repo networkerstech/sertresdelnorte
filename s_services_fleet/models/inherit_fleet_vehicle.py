@@ -21,7 +21,6 @@ class FleetVehicle(models.Model):
             
         count = 0
         for v in list_vehicles:
-            import pdb; pdb.set_trace()
             #TODO: Buscar la fecha y el domometro del ultimo Servicio
             last_service = v.log_services.filtered(lambda x: x.state in ("new", "running","done")).sorted('date')
             #TODO Si existe al menos un servicio para el vehiculo
