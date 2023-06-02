@@ -12,46 +12,63 @@ class FleetVehicle(models.Model):
 
     @api.model
     def _cron_check_vehicle_service_validity(self):
-        list_services = self.env['vehicle.service'].search([("active", "=", True)])
-        list_vehicles = self.search([])
-        flag = False
-
-        for s in list_services:
-            outdated_days = fields.Date.today() + relativedelta(days=-s.criteria_days)
-            out_kms = s.criteria_km
-            employee = s.responsible_id
-
-            for v in list_vehicles:
-                if len(v.log_services.filtered(lambda x: x.service_type_id == s.services_id)) > 0:
-                    for service in v.log_services.filtered(lambda x: x.service_type_id == s.services_id):
-                        # si existe un servicio en etapa de nuevo
-                        item = len(v.log_services.filtered(lambda x: x.service_type_id == s.services_id and x.state in ("new", "running")))
-                        # Si ya tiene el servicio en su log y el estado es hecho chequeo la fecha o el odómetro para ver si se cumple
-                        if service and service.state in "done" and item == 0:
-                            if (fields.Date.today() - service.date).days >= s.criteria_days or (v.odometer - service.odometer) >= out_kms:
-                                flag = True
-                else:
-                    if v.odometer >= out_kms:
-                        flag = True
-
-                if flag:
-                    vals = ({
-                        "vehicle_id": v.id,
-                        "description": _("Automatic creation of service"),
-                        "date": fields.Date.today(),
-                        "service_type_id": s.services_id.id,
-                        "purchaser_id": v.driver_id.id,
-                        "odometer": v.odometer
-                    })
-                    self.env["fleet.vehicle.log.services"].create(vals)
-
-                    if employee:
-                        v.activity_schedule(
-                            'mail.mail_activity_data_todo',
-                            note=_('The vehicle with license plate %(vehicle)s is responsible for carrying out the service %(service)s',
-                                   vehicle=v.license_plate,
-                                   service=s.display_name),
-                            user_id=employee.id)
-
-                    flag = False
-
+        '''
+        Se modifica el cron para que recorra todo los vehiculos y busque los log service que se pueden aplicar segun los criterios
+        de km desde el ultimo servicio, los day desde el ultimo sericio, y si tiene contrato los sericios relacioandos al contrato
+        :param self:
+        '''
+        list_vehicles = self.search([])       
+            
+        count = 0
+        for v in list_vehicles:
+            #TODO: Buscar la fecha y el domometro del ultimo Servicio
+            last_service = v.log_services.filtered(lambda x: x.state in ("new", "running","done")).sorted('date')[-1]
+            last_date_service = last_service.date
+            last_odometer_service = last_service.odometer
+            
+            #TODO: Buscar los valores del odometro a dia de hoy
+            odometer_today = v.odometer - last_odometer_service
+            # odometer_today = 10000
+            #TODO: Buscar los dias desde el ultimo Servicio
+            day_from_last_service = (fields.Date.today() - last_date_service).days
+            # day_from_last_service= 179
+            
+            #TODO: Buscamos los tipos de servicios relacionados al contrato vigente del vehiculo, 
+            #si tiene mas de uno tomamos el primero en comenzar
+            contrat_active = v.log_contracts.filtered(lambda x: x.state in ("open")).sorted('start_date')
+            
+            #TODO: Buscamos que servicio por km ,tiempo, donde los km sean mayor que 0 y ademas que el 
+            #tipo de servicio este definido en el contrado relacionado al vehicule
+                #TODO: si tiene definido un tipo de servicio dentro del contrato
+            if contrat_active:
+                #TODO: Si tiene un contrato, buscamos los servicios del primer contrato activo en inicar
+                service_contrat_active = contrat_active[0].service_ids
+                list_services = self.env['vehicle.service'].search(["|",("criteria_days", "<=", day_from_last_service),("criteria_km", "<=", odometer_today),("criteria_km", ">", 0),('services_id', 'in', service_contrat_active.ids)],order='criteria_km DESC')
+                #TODO: Buscando el provedor del contrato
+                vendor_id = contrat_active.insurer_id
+            else:
+                #TODO: Si no tiene un tipo de servicio en el contrato, el creiterio es que cumpla los dias y que sea el mas cercano segun los km desde el ultimo servicio, que es el mayo criteria_km tenga
+                list_services = self.env['vehicle.service'].search(["|",("criteria_days", "<=", day_from_last_service),("criteria_km", "<=", odometer_today),("criteria_km", ">", 0)],order='criteria_km DESC')
+                        
+            #TODO: Preparar al vals para crear el servicio
+            if list_services:
+                #TODO: Buscando el Responsable del servicio(responsible_id)
+                mail_activity = v.activity_schedule('mail.mail_activity_data_todo',note=_('The vehicle with license plate %(vehicle)s is responsible for carrying out the service %(service)s',vehicle=v.license_plate,service=list_services[0].display_name),user_id=list_services[0].responsible_id.id)
+                
+                vals = ({
+                    "vehicle_id": v.id,
+                    "description": _("Automatic creation of service: %s",list_services[0].services_id.name),
+                    "date": fields.Date.today(),
+                    "service_type_id": list_services[0].services_id.id,
+                    "purchaser_id": v.driver_id.id,
+                    "odometer": v.odometer,
+                    "mail_activity": mail_activity.id,
+                    "vendor_id": vendor_id if vendor_id else False
+                    
+                })
+                
+                log_service_new = self.env["fleet.vehicle.log.services"].with_context(cron_check_service=True).create(vals)
+                count +=1
+                
+            
+        print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE %s",count)
