@@ -21,16 +21,27 @@ class FleetVehicle(models.Model):
             
         count = 0
         for v in list_vehicles:
+            import pdb; pdb.set_trace()
             #TODO: Buscar la fecha y el domometro del ultimo Servicio
-            last_service = v.log_services.filtered(lambda x: x.state in ("new", "running","done")).sorted('date')[-1]
-            last_date_service = last_service.date
-            last_odometer_service = last_service.odometer
-            
+            last_service = v.log_services.filtered(lambda x: x.state in ("new", "running","done")).sorted('date')
+            #TODO Si existe al menos un servicio para el vehiculo
+            if len(last_service) > 0:
+                last_date_service = last_service[-1].date
+                last_odometer_service = last_service[-1].odometer    
+            else:
+                #TODO: se toma los dias desde el dia de aquicision y el odometro del ultimo
+                #servicio lo ponemos a 0 
+                last_date_service = v.acquisition_date.date if v.acquisition_date else fields.Date.today()
+                last_odometer_service = 0
+                
             #TODO: Buscar los valores del odometro a dia de hoy
             odometer_today = v.odometer - last_odometer_service
             # odometer_today = 10000
             #TODO: Buscar los dias desde el ultimo Servicio
             day_from_last_service = (fields.Date.today() - last_date_service).days
+            
+                
+               
             # day_from_last_service= 179
             
             #TODO: Buscamos los tipos de servicios relacionados al contrato vigente del vehiculo, 
