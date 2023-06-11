@@ -19,10 +19,10 @@ class FleetVehicleLogServices(models.Model):
             if not record.odometer:
                 raise UserError(_('Emptying the odometer value of a vehicle is not allowed.'))
             if (record.odometer - record.vehicle_id.odometer)< 0:
-                raise UserError(_('The odometer value  is minor than the last vehicule odometer.'))
+                raise UserError(_('The odometer value is minor than the last vehicule odometer.'))
             elif record.qty_liters_fuel > 0 and (record.odometer - record.vehicle_id.odometer)>0:
                 #TODO: Solo se crea odometer si los valores son correctos.
-                performance_car = (record.odometer - record.vehicle_id.odometer / record.qty_liters_fuel)
+                performance_car = (record.odometer - record.vehicle_id.odometer) / record.qty_liters_fuel
                 odometer = self.env['fleet.vehicle.odometer'].create({
                     'value': record.odometer,
                     'date': record.date or fields.Date.context_today(record),
