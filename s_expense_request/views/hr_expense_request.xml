@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_expense_request_view_tree" model="ir.ui.view">
+            <field name="name">hr.expense.request.view.tree</field>
+            <field name="model">hr.expense.request</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name" />
+                    <field name="employee_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_expense_request_view_form" model="ir.ui.view">
+            <field name="name">hr.expense.request.view.form</field>
+            <field name="model">hr.expense.request</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button
+                            name="action_to_approve"
+                            string="To approve"
+                            class="btn btn-primary"
+                            type="object"
+                            attrs="{'invisible': [('state', 'not in', ('draft'))]}" />
+                        <button
+                            name="action_approved"
+                            string="Approve"
+                            class="btn btn-primary"
+                            type="object"
+                            attrs="{'invisible': [('state', 'not in', ('to_approve'))]}"
+                            groups="hr_expense.group_hr_expense_team_approver" />
+                        <button
+                            name="action_cancel"
+                            string="Cancel"
+                            class="btn btn-secondary"
+                            type="object"
+                            attrs="{'invisible': [('state', 'in', ('cancel'))]}" />
+                        <button
+                            name="action_draft"
+                            string="Draft"
+                            class="btn btn-secondary"
+                            type="object"
+                            attrs="{'invisible': [('state', 'in', ('draft'))]}" />
+                        <field
+                            name="state"
+                            widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="employee_id" groups="hr_expense.group_hr_expense_team_approver" />
+                            <field name="amount" />
+                            <field name="description" attrs="{'required': 1}" />
+                        </group>
+                        <notebook>
+                            <page name="line_ids" string="Detail">
+                                <field name="line_ids">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                        <field name="quantity" />
+                                        <field name="price_unit" />
+                                        <field name="amount" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="o_attachment_preview" />
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" />
+                        <field name="activity_ids" />
+                        <field name="message_ids" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="s_hr_expense_request_view_search" model="ir.ui.view">
+            <field name="name">s.hr.expense.request.view.search</field>
+            <field name="model">hr.expense.request</field>
+            <field name="arch" type="xml">
+                <search string="">
+                    <field name="name" />
+                    <field name="employee_id" />
+                    <filter string="My Requests" name="my_requests" domain="[('employee_id.user_id', '=', uid)]" />
+                    <filter string="Request to approve" name="to_approve_requests" domain="[('state', '=', 'to_approve')]" />
+                </search>
+            </field>
+        </record>
+
+        <record id="hr_expense_request_action" model="ir.actions.act_window">
+            <field name="name">My Expense Requests</field>
+            <field name="res_model">hr.expense.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_my_requests': 1}</field>
+        </record>
+
+        <record id="hr_expense_request_to_approve_action" model="ir.actions.act_window">
+            <field name="name">Expense Requests to Approve</field>
+            <field name="res_model">hr.expense.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_to_approve_requests': 1}</field>
+        </record>
+
+        <menuitem
+            id="hr_expense_request_menu"
+            name="My Expense Requests"
+            action="hr_expense_request_action"
+            parent="hr_expense.menu_hr_expense_my_expenses"
+            sequence="1" />
+
+        <menuitem
+            id="hr_expense_request_to_approve_menu"
+            name="Expense Requests to Approve"
+            action="hr_expense_request_to_approve_action"
+            parent="hr_expense.menu_hr_expense_my_expenses"
+            groups="hr_expense.group_hr_expense_team_approver"
+            sequence="0" />
+    </data>
+</odoo>
