@@ -28,6 +28,8 @@ class HrExpenseRequest(models.Model):
         }
     )
     amount = fields.Float('Amount', compute='_set_amount', store=True)
+    checked_amount = fields.Float(
+        compute='_set_checked_state', string='Checked Amount', store=True)
     employee_id = fields.Many2one(
         'hr.employee',
         string='Employee',
@@ -47,6 +49,17 @@ class HrExpenseRequest(models.Model):
         'State',
         default='draft'
     )
+    checked_state = fields.Selection(
+        [
+            ('not_checked', 'Not checked'),
+            ('partial', 'Partial'),
+            ('checked', 'Checked'),
+        ],
+        string='Checked',
+        default='not_checked',
+        compute='_set_checked_state',
+        store=True
+    )
     line_ids = fields.One2many(
         'hr.expense.request.line',
         'request_id',
@@ -55,6 +68,12 @@ class HrExpenseRequest(models.Model):
         states={
             'draft': [('readonly', False)]
         }
+    )
+    expense_sheet_ids = fields.One2many(
+        'hr.expense.sheet',
+        'expense_request_id',
+        'Expense Reports',
+        domain=[('state', 'in', ('approve', 'post', 'done'))]
     )
 
     @api.constrains('line_ids')
@@ -67,6 +86,25 @@ class HrExpenseRequest(models.Model):
     def _set_amount(self):
         for rec in self:
             rec.amount = sum([l.amount for l in rec.line_ids])
+
+    @api.depends('expense_sheet_ids.state')
+    def _set_checked_state(self):
+        for rec in self:
+            if rec.expense_sheet_ids:
+                ck_amount = sum(
+                    [es.total_amount for es in rec.expense_sheet_ids])
+                if rec.checked_amount != ck_amount:
+                    if ck_amount > rec.amount:
+                        rec.checked_amount = rec.amount
+                    else:
+                        rec.checked_amount = ck_amount
+                        
+                    if ck_amount == 0 and rec.checked_state != 'not_checked':
+                        rec.checked_state = 'not_checked'
+                    elif ck_amount < rec.amount and rec.checked_state != 'partial':
+                        rec.checked_state = 'partial'
+                    elif ck_amount >= rec.amount and rec.checked_state != 'checked':
+                        rec.checked_state = 'checked'
 
     def unlink(self):
         for rec in self:
