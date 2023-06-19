@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_hr_equipment_view_form" model="ir.ui.view">
+            <field name="name">s.inherit.hr.equipment.view.form</field>
+            <field name="model">maintenance.equipment</field>
+            <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
+            <field name="arch" type="xml">
+                <field name="assign_date" position="replace">
+                    <field name="assign_date" />
+                    <field name="return_date" />
+                    <field name="state" readonly="1" />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
