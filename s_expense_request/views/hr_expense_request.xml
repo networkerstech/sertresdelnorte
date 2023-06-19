@@ -8,12 +8,15 @@
                 <tree string="">
                     <field name="name" />
                     <field name="employee_id" />
+                    <field name="checked_state" />
+                    <field name="amount" />
+                    <field name="checked_amount" />
                     <field name="state" />
                 </tree>
             </field>
         </record>
 
-        <record id="hr_expense_request_view_form" model="ir.ui.view">
+        <record id="hr_expense_request_view_form_0" model="ir.ui.view">
             <field name="name">hr.expense.request.view.form</field>
             <field name="model">hr.expense.request</field>
             <field name="arch" type="xml">
@@ -46,14 +49,21 @@
                             attrs="{'invisible': [('state', 'in', ('draft'))]}" />
                         <field
                             name="state"
-                            widget="statusbar" />
+                            widget="statusbar"
+                            statusbar_visible="draft,to_approve,approved" />
                     </header>
                     <sheet>
                         <group>
-                            <field name="name" />
-                            <field name="employee_id" groups="hr_expense.group_hr_expense_team_approver" />
-                            <field name="amount" />
-                            <field name="description" attrs="{'required': 1}" />
+                            <group name="left_group">
+                                <field name="name" />
+                                <field name="employee_id" groups="hr_expense.group_hr_expense_team_approver" />
+                                <field name="description" attrs="{'required': 0}" />
+                            </group>
+                            <group name="right_group">
+                                <field name="checked_state" />
+                                <field name="amount" />
+                                <field name="checked_amount" />
+                            </group>
                         </group>
                         <notebook>
                             <page name="line_ids" string="Detail">
@@ -65,6 +75,9 @@
                                         <field name="amount" />
                                     </tree>
                                 </field>
+                            </page>
+                            <page name="expense_sheets" string="Expense Sheets">
+                                <field name="expense_sheet_ids" nolabel="1" readonly="1" />
                             </page>
                         </notebook>
                     </sheet>
@@ -110,6 +123,7 @@
             name="My Expense Requests"
             action="hr_expense_request_action"
             parent="hr_expense.menu_hr_expense_my_expenses"
+            groups="base.group_user"
             sequence="1" />
 
         <menuitem

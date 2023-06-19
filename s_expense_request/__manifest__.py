@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Expense Request",
-
     'summary': """Create request for hr expenses""",
     'description': """Create request for hr expenses""",
     'author': "SUITEDOO",
