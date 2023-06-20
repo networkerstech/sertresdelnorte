@@ -15,5 +15,18 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="s_view_hr_expense_sheet_form_inherit" model="ir.ui.view">
+            <field name="name">s.view.hr.expense.sheet.form.inherit</field>
+            <field name="model">hr.expense.sheet</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form" />
+            <field name="arch" type="xml">
+                <field name="accounting_date" position="after">
+                    <field name="expense_request_id" />
+                    <field name="amount_to_check" attrs="{'invisible': [('expense_request_id', '=', False)]}" />
+                    <field name="un_checked_amount" attrs="{'invisible': [('expense_request_id', '=', False)]}" />
+                </field>
+            </field>
+        </record>
     </data>
 </odoo>

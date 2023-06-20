@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-09 19:08+0000\n"
-"PO-Revision-Date: 2023-06-09 19:08+0000\n"
+"POT-Creation-Date: 2023-06-14 02:14+0000\n"
+"PO-Revision-Date: 2023-06-14 02:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,12 @@ msgid "Amount"
 msgstr "Importe"
 
 #. module: s_expense_request
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_sheet__amount_to_check
+msgid "Amount to Check"
+msgstr "Importe por comprobar"
+
+#. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
 msgid "Approve"
 msgstr "Aprobar"
 
@@ -70,9 +75,20 @@ msgstr "No se puede eliminar un registro aprobado."
 
 #. module: s_expense_request
 #: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__state__cancel
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__checked_state
+#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__checked_state__checked
+msgid "Checked"
+msgstr "Comprobado"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__checked_amount
+msgid "Checked Amount"
+msgstr "Importe comprobado"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__create_uid
@@ -93,7 +109,7 @@ msgstr "Descripción"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request_line__name
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
 msgid "Detail"
 msgstr "Detalle"
 
@@ -105,7 +121,7 @@ msgstr ""
 
 #. module: s_expense_request
 #: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__state__draft
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
 msgid "Draft"
 msgstr "Borrador"
 
@@ -126,8 +142,19 @@ msgid "Expense"
 msgstr "Gasto"
 
 #. module: s_expense_request
+#: model:ir.model,name:s_expense_request.model_hr_expense_sheet
+msgid "Expense Report"
+msgstr "Reporte de gastos"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__expense_sheet_ids
+msgid "Expense Reports"
+msgstr "Reportes de gastos"
+
+#. module: s_expense_request
 #: model:ir.model,name:s_expense_request.model_hr_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense__expense_request_id
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_sheet__expense_request_id
 msgid "Expense Request"
 msgstr "Solicitud de gasto"
 
@@ -136,6 +163,11 @@ msgstr "Solicitud de gasto"
 #: model:ir.ui.menu,name:s_expense_request.hr_expense_request_to_approve_menu
 msgid "Expense Requests to Approve"
 msgstr "Solicitude de gasto por aprobar"
+
+#. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
+msgid "Expense Sheets"
+msgstr "Reportes de gastos"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__message_follower_ids
@@ -269,6 +301,11 @@ msgid "Next Activity Type"
 msgstr ""
 
 #. module: s_expense_request
+#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__checked_state__not_checked
+msgid "Not checked"
+msgstr "No comprobado"
+
+#. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__message_needaction_counter
 msgid "Number of Actions"
 msgstr ""
@@ -289,6 +326,11 @@ msgid "Number of messages with delivery error"
 msgstr ""
 
 #. module: s_expense_request
+#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__checked_state__partial
+msgid "Partial"
+msgstr "Parcial"
+
+#. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request_line__price_unit
 msgid "Price"
 msgstr "Precio"
@@ -297,6 +339,11 @@ msgstr "Precio"
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request_line__quantity
 msgid "Quantity"
 msgstr "Cantidad"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_sheet__un_checked_amount
+msgid "Remaining Amount to Check"
+msgstr "Restante por comprobar"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request_line__request_id
@@ -334,9 +381,9 @@ msgstr ""
 
 #. module: s_expense_request
 #: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__state__to_approve
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
 msgid "To approve"
-msgstr "Para aprobar"
+msgstr "Por aprobar"
 
 #. module: s_expense_request
 #: model:ir.model.fields,help:s_expense_request.field_hr_expense_request__activity_exception_decoration
