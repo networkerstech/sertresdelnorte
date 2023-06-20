@@ -12,59 +12,94 @@
                     <field name="amount" />
                     <field name="checked_amount" />
                     <field name="state" />
+                    <field name="time_state" />
                 </tree>
             </field>
         </record>
 
-        <record id="hr_expense_request_view_form_0" model="ir.ui.view">
+        <record id="hr_expense_request_view_form" model="ir.ui.view">
             <field name="name">hr.expense.request.view.form</field>
             <field name="model">hr.expense.request</field>
             <field name="arch" type="xml">
                 <form string="">
                     <header>
                         <button
-                            name="action_to_approve"
-                            string="To approve"
+                            name="action_check_expense_state"
+                            string="Check Expense"
                             class="btn btn-primary"
                             type="object"
-                            attrs="{'invisible': [('state', 'not in', ('draft'))]}" />
+                            attrs="{'invisible': [('state', 'not in', ['approved'] )]}" />
+                        <button
+                            name="action_request"
+                            string="Request expense"
+                            class="btn btn-primary"
+                            type="object"
+                            attrs="{'invisible': [('state', 'not in', ['draft'] )]}" />
                         <button
                             name="action_approved"
-                            string="Approve"
+                            string="Authorize Expense"
                             class="btn btn-primary"
                             type="object"
-                            attrs="{'invisible': [('state', 'not in', ('to_approve'))]}"
+                            attrs="{'invisible': [('state', 'not in', ['requested'] )]}"
                             groups="hr_expense.group_hr_expense_team_approver" />
                         <button
                             name="action_cancel"
                             string="Cancel"
                             class="btn btn-secondary"
                             type="object"
-                            attrs="{'invisible': [('state', 'in', ('cancel'))]}" />
+                            attrs="{'invisible': [('state', 'in', ['cancel'] )]}" />
                         <button
                             name="action_draft"
                             string="Draft"
                             class="btn btn-secondary"
                             type="object"
-                            attrs="{'invisible': [('state', 'in', ('draft'))]}" />
+                            attrs="{'invisible': [('state', 'in', ['draft'] )]}" />
+                        <button
+                            name="action_draft"
+                            string="Draft"
+                            class="btn btn-secondary"
+                            type="object"
+                            attrs="{'invisible': [('state', 'not in', ('approved',))]}" />
                         <field
                             name="state"
                             widget="statusbar"
-                            statusbar_visible="draft,to_approve,approved" />
+                            statusbar_visible="draft,requested,approved" />
                     </header>
                     <sheet>
+                        <field name="company_id" invisible="True" />
+                        <field name="product_has_cost" invisible="True" />
+
+                        <div class="oe_title">
+                            <label for="name" />
+                            <h1>
+                                <field name="name" placeholder="e.g. Lunch with Customer" />
+                            </h1>
+                        </div>
                         <group>
                             <group name="left_group">
-                                <field name="name" />
-                                <field name="employee_id" groups="hr_expense.group_hr_expense_team_approver" />
-                                <field name="description" attrs="{'required': 0}" />
+                                <field name="product_id" required="True"
+                                    context="{'default_can_be_expensed': 1, 'tree_view_ref': 'hr_expense.product_product_expense_tree_view', 'form_view_ref': 'hr_expense.product_product_expense_form_view'}" />
+                                <field name="amount" string="Total" />
+                                <field name="checked_amount" string="Total Checked" />
+                                <field name="checked_state" string="Checked" />
+                                <field name="employee_id" />
+                                <label id="lo" for="payment_mode"
+                                    attrs="{'invisible': [('product_has_cost', '=', True)]}" />
+                                <div id="payment_mode"
+                                    attrs="{'invisible': [('product_has_cost', '=', True)]}">
+                                    <field name="payment_mode" widget="radio" nolabel="1" />
+                                </div>
                             </group>
                             <group name="right_group">
-                                <field name="checked_state" />
-                                <field name="amount" />
-                                <field name="checked_amount" />
+                                <field name="request_date" />
+                                <field name="date_start" />
+                                <field name="date_end" />
+                                <field name="expense_reason" />
+                                <field name="time_state" readonly="1" force_save="1"/>
+                                <field name="analytic_account_id" />
                             </group>
                         </group>
+                        <field name="description" nolabel="1" colspan="2" placeholder="Notes" />
                         <notebook>
                             <page name="line_ids" string="Detail">
                                 <field name="line_ids">
@@ -98,8 +133,10 @@
                 <search string="">
                     <field name="name" />
                     <field name="employee_id" />
-                    <filter string="My Requests" name="my_requests" domain="[('employee_id.user_id', '=', uid)]" />
-                    <filter string="Request to approve" name="to_approve_requests" domain="[('state', '=', 'to_approve')]" />
+                    <filter string="My Requests" name="my_requests"
+                        domain="[('employee_id.user_id', '=', uid)]" />
+                    <filter string="Request to approve" name="to_approve_requests"
+                        domain="[('state', '=', 'requested')]" />
                 </search>
             </field>
         </record>
