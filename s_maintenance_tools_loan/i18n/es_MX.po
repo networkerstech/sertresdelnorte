@@ -1,0 +1,64 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_maintenance_tools_loan
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-01 04:21+0000\n"
+"PO-Revision-Date: 2023-07-01 04:21+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_maintenance_tools_loan
+#: model:ir.model.fields.selection,name:s_maintenance_tools_loan.selection__maintenance_equipment__state__assigned
+msgid "Assigned"
+msgstr "Asignado"
+
+#. module: s_maintenance_tools_loan
+#: model:ir.model.fields,field_description:s_maintenance_tools_loan.field_maintenance_equipment__assign_date
+msgid "Assignment Date"
+msgstr "Fecha de asignación"
+
+#. module: s_maintenance_tools_loan
+#: model:ir.model.fields.selection,name:s_maintenance_tools_loan.selection__maintenance_equipment__state__borrowed
+msgid "Borrowed"
+msgstr "Prestado"
+
+#. module: s_maintenance_tools_loan
+#: model:ir.model.fields.selection,name:s_maintenance_tools_loan.selection__maintenance_equipment__state__expire
+msgid "Expired"
+msgstr "Vencido"
+
+#. module: s_maintenance_tools_loan
+#: model:ir.model,name:s_maintenance_tools_loan.model_maintenance_equipment
+msgid "Maintenance Equipment"
+msgstr "Equipo de mantenimiento"
+
+#. module: s_maintenance_tools_loan
+#: model:ir.model.fields,field_description:s_maintenance_tools_loan.field_maintenance_equipment__return_date
+msgid "Return Date"
+msgstr "Fecha de entrega"
+
+#. module: s_maintenance_tools_loan
+#: model:ir.model.fields,field_description:s_maintenance_tools_loan.field_maintenance_equipment__state
+msgid "State"
+msgstr "Estado"
+
+#. module: s_maintenance_tools_loan
+#. odoo-python
+#: code:addons/s_maintenance_tools_loan/models/inherit_maintenance_equipment.py:0
+#, python-format
+msgid "The delivery date of the equipment / tool expired"
+msgstr "La fecha de entrega del equipo/herramienta venció"
+
+#. module: s_maintenance_tools_loan
+#: model:ir.actions.server,name:s_maintenance_tools_loan.s_update_tools_loan_state_cron_ir_actions_server
+#: model:ir.cron,cron_name:s_maintenance_tools_loan.s_update_tools_loan_state_cron
+msgid "Update status for borrowed tools"
+msgstr "Actualizar el estado de las herramientas prestadas"
