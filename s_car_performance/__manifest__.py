@@ -7,7 +7,7 @@
     'website': "https://www.suitedoo.com",
     'category': 'sale',
     'version': '0.1',
-    'depends': ['base', 'fleet'],
+    'depends': ['base', 'fleet', 's_car_expensive'],
     'data': [
         'views/inherit_fleet_vehicle_cost_view.xml',
         'views/inherit_fleet_vehicle_views.xml'
