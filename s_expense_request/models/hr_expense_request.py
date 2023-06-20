@@ -176,7 +176,7 @@ class HrExpenseRequest(models.Model):
             expense_req.product_has_cost = expense_req.product_id and (float_compare(
                 expense_req.product_id.standard_price, 0.0, precision_digits=2) != 0)
 
-    @api.depends('expense_sheet_ids.state')
+    @api.depends('expense_sheet_ids')
     def _set_checked_state(self):
         for rec in self:
             if rec.expense_sheet_ids:
