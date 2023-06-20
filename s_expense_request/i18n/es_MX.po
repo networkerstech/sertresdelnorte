@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 02:14+0000\n"
-"PO-Revision-Date: 2023-06-14 02:14+0000\n"
+"POT-Creation-Date: 2023-06-20 00:23+0000\n"
+"PO-Revision-Date: 2023-06-20 00:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -52,9 +52,24 @@ msgid "Amount to Check"
 msgstr "Importe por comprobar"
 
 #. module: s_expense_request
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
-msgid "Approve"
-msgstr "Aprobar"
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__analytic_distribution
+msgid "Analytic"
+msgstr ""
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__analytic_account_id
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr ""
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__analytic_precision
+msgid "Analytic Precision"
+msgstr ""
 
 #. module: s_expense_request
 #: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__state__approved
@@ -67,6 +82,11 @@ msgid "Attachment Count"
 msgstr "Número de archivos adjuntos"
 
 #. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+msgid "Authorize Expense"
+msgstr "Autorizar gasto"
+
+#. module: s_expense_request
 #. odoo-python
 #: code:addons/s_expense_request/models/hr_expense_request.py:0
 #, python-format
@@ -75,13 +95,24 @@ msgstr "No se puede eliminar un registro aprobado."
 
 #. module: s_expense_request
 #: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__state__cancel
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
 msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__product_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+msgid "Check Expense"
+msgstr "Comprobar gasto"
+
+#. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__checked_state
 #: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__checked_state__checked
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
 msgid "Checked"
 msgstr "Comprobado"
 
@@ -89,6 +120,12 @@ msgstr "Comprobado"
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__checked_amount
 msgid "Checked Amount"
 msgstr "Importe comprobado"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__company_id
+#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__payment_mode__company_account
+msgid "Company"
+msgstr "Empresa"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__create_uid
@@ -103,13 +140,28 @@ msgid "Created on"
 msgstr ""
 
 #. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__time_state
+msgid "Current state"
+msgstr "Estado actual"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__date_end
+msgid "Date End"
+msgstr "Fecha fin"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__date_start
+msgid "Date Start"
+msgstr "Fecha inicio"
+
+#. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__description
 msgid "Description"
 msgstr "Descripción"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request_line__name
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
 msgid "Detail"
 msgstr "Detalle"
 
@@ -121,7 +173,7 @@ msgstr ""
 
 #. module: s_expense_request
 #: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__state__draft
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
 msgid "Draft"
 msgstr "Borrador"
 
@@ -137,9 +189,19 @@ msgid "Employee"
 msgstr "Empleado"
 
 #. module: s_expense_request
+#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__payment_mode__own_account
+msgid "Employee (to reimburse)"
+msgstr "Empleado (a reembolsar)"
+
+#. module: s_expense_request
 #: model:ir.model,name:s_expense_request.model_hr_expense
 msgid "Expense"
 msgstr "Gasto"
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__expense_reason
+msgid "Expense Reason"
+msgstr "Motivo del gasto"
 
 #. module: s_expense_request
 #: model:ir.model,name:s_expense_request.model_hr_expense_sheet
@@ -165,9 +227,14 @@ msgid "Expense Requests to Approve"
 msgstr "Solicitude de gasto por aprobar"
 
 #. module: s_expense_request
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
 msgid "Expense Sheets"
 msgstr "Reportes de gastos"
+
+#. module: s_expense_request
+#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__time_state__expire
+msgid "Expired"
+msgstr "Vencido"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__message_follower_ids
@@ -217,9 +284,19 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: s_expense_request
+#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__time_state__in_time
+msgid "In time"
+msgstr "A tiempo"
+
+#. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__message_is_follower
 msgid "Is Follower"
 msgstr ""
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__product_has_cost
+msgid "Is product with non zero cost selected"
+msgstr "Se ha seleccionado un producto con un coste distinto de cero"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request____last_update
@@ -306,6 +383,11 @@ msgid "Not checked"
 msgstr "No comprobado"
 
 #. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__message_needaction_counter
 msgid "Number of Actions"
 msgstr ""
@@ -324,6 +406,11 @@ msgstr ""
 #: model:ir.model.fields,help:s_expense_request.field_hr_expense_request__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr ""
+
+#. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__payment_mode
+msgid "Paid By"
+msgstr "Pagado por"
 
 #. module: s_expense_request
 #: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__checked_state__partial
@@ -351,9 +438,24 @@ msgid "Request"
 msgstr "Solicitud"
 
 #. module: s_expense_request
+#: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__request_date
+msgid "Request Date"
+msgstr "Fecha de solicitud"
+
+#. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+msgid "Request expense"
+msgstr "Solicitar gasto"
+
+#. module: s_expense_request
 #: model_terms:ir.ui.view,arch_db:s_expense_request.s_hr_expense_request_view_search
 msgid "Request to approve"
 msgstr "Solicitudes por aprobar"
+
+#. module: s_expense_request
+#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__state__requested
+msgid "Requested"
+msgstr "Solicitado"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__activity_user_id
@@ -380,15 +482,32 @@ msgid ""
 msgstr ""
 
 #. module: s_expense_request
-#: model:ir.model.fields.selection,name:s_expense_request.selection__hr_expense_request__state__to_approve
-#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form_0
-msgid "To approve"
-msgstr "Por aprobar"
+#. odoo-python
+#: code:addons/s_expense_request/models/hr_expense_request.py:0
+#, python-format
+msgid "The end date must be later than the initial date"
+msgstr "La fecha de finalización debe ser posterior a la fecha inicial"
+
+#. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+msgid "Total"
+msgstr ""
+
+#. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+msgid "Total Checked"
+msgstr "Total comprobado"
 
 #. module: s_expense_request
 #: model:ir.model.fields,help:s_expense_request.field_hr_expense_request__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr ""
+
+#. module: s_expense_request
+#: model:ir.actions.server,name:s_expense_request.s_update_expense_request_time_state_cron_ir_actions_server
+#: model:ir.cron,cron_name:s_expense_request.s_update_expense_request_time_state_cron
+msgid "Update expense request time state"
+msgstr "Actualizar estado de tiempo de solicitud de gastos"
 
 #. module: s_expense_request
 #: model:ir.model.fields,field_description:s_expense_request.field_hr_expense_request__website_message_ids
@@ -406,6 +525,11 @@ msgstr ""
 #, python-format
 msgid "You must provide quantity and price"
 msgstr "Debe proporcionar cantidad y precio"
+
+#. module: s_expense_request
+#: model_terms:ir.ui.view,arch_db:s_expense_request.hr_expense_request_view_form
+msgid "e.g. Lunch with Customer"
+msgstr "Por ejemplo, Comida con cliente"
 
 #. module: s_expense_request
 #: model:ir.model,name:s_expense_request.model_hr_expense_request_line

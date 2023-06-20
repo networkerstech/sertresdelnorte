@@ -6,11 +6,11 @@
             <field name="model">hr.expense</field>
             <field name="inherit_id" ref="hr_expense.hr_expense_view_form" />
             <field name="arch" type="xml">
-                <xpath expr="//label[@for='product_id']" position="before">
+                <xpath expr="//label[@for='name']" position="before">
                     <field name="aux_employee_id" invisible="1" />
                     <label for="expense_request_id" />
                     <div>
-                        <field name="expense_request_id" />
+                        <field name="expense_request_id" class="w-100"/>
                     </div>
                 </xpath>
             </field>
@@ -23,8 +23,10 @@
             <field name="arch" type="xml">
                 <field name="accounting_date" position="after">
                     <field name="expense_request_id" />
-                    <field name="amount_to_check" attrs="{'invisible': [('expense_request_id', '=', False)]}" />
-                    <field name="un_checked_amount" attrs="{'invisible': [('expense_request_id', '=', False)]}" />
+                    <field name="amount_to_check"
+                        attrs="{'invisible': [('expense_request_id', '=', False)]}" />
+                    <field name="un_checked_amount"
+                        attrs="{'invisible': [('expense_request_id', '=', False)]}" />
                 </field>
             </field>
         </record>

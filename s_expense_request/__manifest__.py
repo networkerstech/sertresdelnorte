@@ -7,9 +7,10 @@
     'website': "https://www.suitedoo.com",
     'category': 'Human Resources/Expenses',
     'version': '0.1',
-    'depends': ['hr_expense'],
+    'depends': ['hr_expense','analytic'],
     'data': [
         'security/ir.model.access.csv',
+        'data/ir_cron.xml',
         'views/hr_expense_request.xml',
         'views/inherit_hr_expense.xml',
     ],

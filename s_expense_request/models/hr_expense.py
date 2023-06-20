@@ -27,7 +27,13 @@ class HrExpense(models.Model):
 
     @api.onchange('expense_request_id')
     def _onchange_expense_request_id(self):
-        self.total_amount = self.expense_request_id.amount if self.expense_request_id else 0
+        if self.expense_request_id: 
+            self.name = self.expense_request_id.name
+            self.total_amount = self.expense_request_id.amount
+            self.product_id = self.expense_request_id.product_id
+            self.employee_id = self.expense_request_id.employee_id
+            self.payment_mode = self.expense_request_id.payment_mode
+
 
     @api.depends('employee_id')
     def _compute_aux_employee_id(self):
