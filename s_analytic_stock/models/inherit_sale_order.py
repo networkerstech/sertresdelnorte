@@ -7,7 +7,6 @@ from odoo.osv import expression
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
-    _description = 'Sale Order'
 
     @api.model_create_multi
     def create(self, vals):
