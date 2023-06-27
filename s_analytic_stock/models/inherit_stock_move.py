@@ -36,12 +36,14 @@ class StockMove(models.Model):
                 product_uom_qty = self.product_uom._compute_quantity(
                     self.quantity_done, self.product_id.uom_id)
 
+                cost = self.product_id.standard_price
+
                 vals = {
                     'picking_type': self.picking_id.picking_type_id.code,
                     'unit_amount': self.product_uom_qty,
                     'partner_id': self.partner_id.id if self.partner_id.id else False,
                     'so_line': self.sale_line_id.id if self.sale_line_id else False,
-                    'cost': 1000
+                    'cost': cost
                 }
 
                 if res:
