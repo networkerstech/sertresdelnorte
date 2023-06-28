@@ -8,6 +8,10 @@ from odoo.osv import expression
 class StockMove(models.Model):
     _inherit = 'stock.move'
 
+    @api.model_create_multi
+    def create(self, vals):
+        return super().create(vals)
+
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
         'Analytic Account',
@@ -30,27 +34,42 @@ class StockMove(models.Model):
         que se crea o forzar la creación en caso de que no se haga
         """
         res = super()._prepare_analytic_lines()
-
         if self.analytic_account_id and self.state not in ['cancel', 'draft']:
             if self.picking_id and self.picking_id.picking_type_id and self.picking_id.picking_type_id.code in ['incoming', 'outgoing']:
-                product_uom_qty = self.product_uom._compute_quantity(
-                    self.quantity_done, self.product_id.uom_id)
-
-                cost = self.product_id.standard_price
-
+                cost = self.product_id.standard_price * self.quantity_done
+                # Cuando la entrega pertenece a una venta que generó una compra
+                if self.picking_id.picking_type_id.code == 'outgoing' and self.move_orig_ids:
+                    move_origin = self.move_orig_ids
+                    if move_origin:
+                        purchase_line = move_origin[0].purchase_line_id
+                        if purchase_line:
+                            invoice_lines = purchase_line[0].invoice_lines
+                            if invoice_lines:
+                                cost = invoice_lines[0].price_unit * \
+                                    invoice_lines[0].quantity
+                # Cuando la entrega pertenece a una devolución
+                elif self.picking_id.picking_type_id.code == 'incoming' and self.origin_returned_move_id:
+                    if self.origin_returned_move_id.analytic_account_line_id:
+                        cost = self.origin_returned_move_id.analytic_account_line_id.cost
                 vals = {
                     'picking_type': self.picking_id.picking_type_id.code,
-                    'unit_amount': self.product_uom_qty,
-                    'partner_id': self.partner_id.id if self.partner_id.id else False,
-                    'so_line': self.sale_line_id.id if self.sale_line_id else False,
                     'cost': cost
                 }
-
                 if res:
+                    # Si no existe se actualizan los valores para que se cree
                     res.update(vals)
-                elif self.analytic_account_line_id:
-                    self.analytic_account_line_id.write(vals)
-
+                else:
+                    if self.analytic_account_line_id:
+                        # Si ya existe la línea analítica se actualiza
+                        self.analytic_account_line_id.write(vals)
+                    elif self.picking_id.picking_type_id.code == 'incoming':
+                        # En el caso de las revoluciones devuelve false y no existe la línea analítica
+                        unit_amount = self.product_uom._compute_quantity(
+                            self.product_qty, self.product_id.uom_id)
+                        amount = - unit_amount * self.product_id.standard_price
+                        res = self._generate_analytic_lines_data(
+                            unit_amount, amount)
+                        res.update(vals)
         return res
 
 

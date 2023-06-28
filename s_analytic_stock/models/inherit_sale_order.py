@@ -4,15 +4,6 @@ from odoo import fields, models, api, _
 from odoo.exceptions import UserError
 from odoo.osv import expression
 
-
-class SaleOrder(models.Model):
-    _inherit = 'sale.order'
-
-    @api.model_create_multi
-    def create(self, vals):
-        return super().create(vals)
-
-
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 

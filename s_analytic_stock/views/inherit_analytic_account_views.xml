@@ -13,7 +13,7 @@
                     <!-- visible -->
                     <field name="date" optional="show" />
                     <field name="name" optional="hide"/>
-                    <field name="picking_type" />
+                    <field name="picking_type" string="Shipment/Return"/>
                     <field name="plan_id" />
                     <field name="account_id" />
                     <field name="product_id" />
