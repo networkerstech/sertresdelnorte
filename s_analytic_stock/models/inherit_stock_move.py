@@ -51,9 +51,15 @@ class StockMove(models.Model):
                 elif self.picking_id.picking_type_id.code == 'incoming' and self.origin_returned_move_id:
                     if self.origin_returned_move_id.analytic_account_line_id:
                         cost = self.origin_returned_move_id.analytic_account_line_id.cost
+                unit_amount = self.product_uom._compute_quantity(
+                    self.product_qty, self.product_id.uom_id)
+                amount = unit_amount * self.product_id.standard_price
+
                 vals = {
                     'picking_type': self.picking_id.picking_type_id.code,
-                    'cost': cost
+                    'cost': cost,
+                    'unit_amount': -unit_amount if self.picking_id.picking_type_id.code == 'incoming' else unit_amount,
+                    'amount':  amount if self.picking_id.picking_type_id.code == 'incoming' else -amount
                 }
                 if res:
                     # Si no existe se actualizan los valores para que se cree
@@ -64,9 +70,6 @@ class StockMove(models.Model):
                         self.analytic_account_line_id.write(vals)
                     elif self.picking_id.picking_type_id.code == 'incoming':
                         # En el caso de las revoluciones devuelve false y no existe la línea analítica
-                        unit_amount = self.product_uom._compute_quantity(
-                            self.product_qty, self.product_id.uom_id)
-                        amount = - unit_amount * self.product_id.standard_price
                         res = self._generate_analytic_lines_data(
                             unit_amount, amount)
                         res.update(vals)
