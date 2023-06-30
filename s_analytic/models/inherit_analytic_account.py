@@ -8,16 +8,15 @@ from odoo.osv import expression
 class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
 
-    def init(self):
+    def update_rec_names_search(self):
         """
         Es necesario incluir el id y el plan en los campos que admite el name_search
         """
         res = super().init()
-        new_fields = ['id', 'plan_id.id', 'plan_id.name']
+        new_fields = ['id', 'company_id', 'plan_id.id', 'plan_id.name']
         for nf in new_fields:
             if nf not in self._rec_names_search:
                 self._rec_names_search.append(nf)
-        return res
 
     def name_get(self):
         result = []
@@ -52,12 +51,15 @@ class AccountAnalyticAccount(models.Model):
         """
         Se busca en el nombre y el id de la cuenta y el plan
         """
+        self.update_rec_names_search()
         new_args = None
         if name:
             new_args = self.get_full_search_domain(name)
             if args:
-                new_args = expression.OR(args, new_args)
-        return super().name_search(name, args, operator, limit)
+                new_args = expression.AND([
+                    args, new_args
+                ])
+        return super(AccountAnalyticAccount, self).name_search(name, new_args, operator, limit)
 
     @api.model
     def search_read(self, domain=None, fields=None, offset=0, limit=None, order=None, **read_kwargs):
