@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_res_partner_view_form" model="ir.ui.view">
+            <field name="name">s.inherit.res.partner.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']//field[@name='user_id']"
+                    position="before">
+                    <field name="is_customer" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="s_inherit_res_partner_view_search" model="ir.ui.view">
+            <field name="name">res.partner.view.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='type_company']" position="after">
+                    <filter name="filter_is_customer" string="Customers"
+                        domain="[('is_customer', '=', True)]" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="s_res_partner_customer_action" model="ir.actions.act_window">
+            <field name="name">Customer</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_filter_is_customer': True}</field>
+        </record>
+
+        <menuitem
+            id="s_res_partner_customer_menu"
+            name="Customers"
+            action="s_res_partner_customer_action"
+            parent="hr.menu_config_employee"
+            groups="base.group_user"
+            sequence="23" />
+
+    </data>
+</odoo>

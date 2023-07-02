@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_area,access.hr.area,model_hr_area,base.group_user,1,0,0,0
+access_hr_area_manager,access.hr.area.manager,model_hr_area,hr.group_hr_manager,1,1,1,1
+
+access_hr_speciality,access.hr.speciality,model_hr_speciality,base.group_user,1,0,0,0
+access_hr_speciality_manager,access.hr.speciality.manager,model_hr_speciality,hr.group_hr_manager,1,1,1,1
+
+access_hr_management_area,access.hr.management.area,model_hr_management_area,base.group_user,1,0,0,0
+access_hr_management_area_manager,access.hr.management.area.manager,model_hr_management_area,hr.group_hr_manager,1,1,1,1
+
+access_hr_activity_type,access.hr.activity.type,model_hr_activity_type,base.group_user,1,0,0,0
+access_hr_activity_type_manager,access.activity.type.manager,model_hr_activity_type,hr.group_hr_manager,1,1,1,1

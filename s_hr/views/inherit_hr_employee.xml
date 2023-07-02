@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_hr_employee_view_form" model="ir.ui.view">
+            <field name="name">hr.employee.view.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                <field name="department_id" position="before">
+                    <field name="area_id" />
+                    <field name="speciality_id" />
+                    <field name="management_area_id" />
+                </field>
+                <field name="coach_id" position="after">
+                    <field name="is_regional" />
+                    <field name="city" />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
