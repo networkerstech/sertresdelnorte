@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_view_move_form" model="ir.ui.view">
+            <field name="name">s.inherit.view.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='amount_currency']"
+                    position="after">
+                    <field name="inverse_currency_rate" groups="base.group_multi_currency" optional="hide" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
