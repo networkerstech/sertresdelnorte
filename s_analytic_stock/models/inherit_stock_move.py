@@ -68,8 +68,7 @@ class StockMove(models.Model):
                     if self.analytic_account_line_id:
                         # Si ya existe la línea analítica se actualiza
                         self.analytic_account_line_id.write(vals)
-                    elif self.picking_id.picking_type_id.code == 'incoming':
-                        # En el caso de las revoluciones devuelve false y no existe la línea analítica
+                    else:
                         res = self._generate_analytic_lines_data(
                             unit_amount, amount)
                         res.update(vals)
