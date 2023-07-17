@@ -11,12 +11,12 @@
     'data': [
         'security/ir.model.access.csv',
         'views/inherit_hr_employee.xml',
-        'views/inherit_res_partner.xml',
         'views/inherit_res_country.xml',
         'views/hr_area.xml',
         'views/hr_speciality.xml',
         'views/hr_management_area.xml',
         'views/hr_activity_type.xml',
+        'views/hr_customer.xml',
     ],
     'installable': True,
     'auto_install': False

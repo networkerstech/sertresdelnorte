@@ -10,6 +10,7 @@ class HrEmployee(models.Model):
     speciality_id = fields.Many2one('hr.speciality', string='Speciality')
     management_area_id = fields.Many2one(
         'hr.management.area', string='Management Area')
+    customer_id = fields.Many2one('hr.customer', string='Customer')
 
     is_regional = fields.Boolean('Regional')
     city = fields.Char('City')

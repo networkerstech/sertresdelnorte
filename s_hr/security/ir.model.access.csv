@@ -10,3 +10,6 @@ access_hr_management_area_manager,access.hr.management.area.manager,model_hr_man
 
 access_hr_activity_type,access.hr.activity.type,model_hr_activity_type,base.group_user,1,0,0,0
 access_hr_activity_type_manager,access.activity.type.manager,model_hr_activity_type,hr.group_hr_manager,1,1,1,1
+
+access_hr_customer,access.hr.hr.customer,model_hr_customer,base.group_user,1,0,0,0
+access_hr_customer_manager,access.hr.customer.manager,model_hr_customer,hr.group_hr_manager,1,1,1,1

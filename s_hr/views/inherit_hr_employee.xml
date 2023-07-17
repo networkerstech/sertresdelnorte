@@ -10,6 +10,7 @@
                     <field name="area_id" />
                     <field name="speciality_id" />
                     <field name="management_area_id" />
+                    <field name="customer_id" />
                 </field>
                 <field name="coach_id" position="after">
                     <field name="is_regional" />
