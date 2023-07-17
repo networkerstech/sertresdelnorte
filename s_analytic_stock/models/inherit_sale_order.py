@@ -4,6 +4,7 @@ from odoo import fields, models, api, _
 from odoo.exceptions import UserError
 from odoo.osv import expression
 
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
@@ -14,6 +15,18 @@ class SaleOrderLine(models.Model):
         res = super()._prepare_procurement_values(group_id)
         if self.analytic_account_id:
             res['analytic_account_id'] = self.analytic_account_id.id
+        return res
+
+    def _purchase_service_prepare_line_values(self, purchase_order, quantity=False):
+        """
+        Establecer la cuenta analítica en la compra cuando es 
+        generada desde una venta y esta posee cuenta analítica
+        """
+        res = super().method_name(purchase_order, quantity)
+        if self.analytic_account_id:
+            res.update({
+                'analytic_distribution': {self.analytic_account_id: 100}
+            })
         return res
 
 
