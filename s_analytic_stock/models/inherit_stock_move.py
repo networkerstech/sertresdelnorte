@@ -74,27 +74,3 @@ class StockMove(models.Model):
                             unit_amount, amount)
                         res.update(vals)
         return res
-
-
-class ReturnPicking(models.TransientModel):
-    _inherit = 'stock.return.picking'
-
-    def _prepare_move_default_values(self, return_line, new_picking):
-        """
-        Asociar la misma cuenta analíca de la entrega a las devoluviones para que se 
-        creen las líneas anlíticas para las devoluciones
-        """
-        res = super()._prepare_move_default_values(return_line, new_picking)
-        if return_line.move_id.analytic_account_id:
-            res.update(
-                {'analytic_account_id': return_line.move_id.analytic_account_id.id})
-        return res
-
-    def _create_returns(self):
-        """
-        Crear líneas analíticas para las devoluciones
-        """
-        new_picking_id, pick_type_id = super()._create_returns()
-        for move in self.env['stock.picking'].browse([new_picking_id]).move_ids_without_package:
-            move._account_analytic_entry_move()
-        return new_picking_id, pick_type_id

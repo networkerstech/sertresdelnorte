@@ -17,7 +17,7 @@
                     <field name="plan_id" />
                     <field name="account_id" />
                     <field name="product_id" />
-                    <field name="unit_amount" />
+                    <field name="unit_amount" sum="Total"/>
                     <field name="product_uom_id"/>
                     <field name="cost" sum="Total Cost" />
                     <field name="amount" sum="Total" />
