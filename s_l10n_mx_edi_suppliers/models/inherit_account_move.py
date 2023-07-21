@@ -8,30 +8,24 @@ import odoo
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    l10n_mx_edi_vendor_cfdi_uuid = fields.Char(
-        string='Providers Fiscal Folio',
+    # campo auxiliar para poder usar en la vista dado que el original es compute
+    l10n_mx_edi_cfdi_uuid_supplier = fields.Char(
+        string='Providers Auxiliar Fiscal Folio',
         copy=False,
         default='',
         help='Folio in electronic invoice, is returned by SAT when send to stamp.',
     )
-    l10n_mx_edi_vendor_status_change_date = fields.Date(
+    l10n_mx_edi_status_change_date_supplier = fields.Date(
         'Status change date'
     )
-    l10n_mx_edi_vendor_sat_status = fields.Selection(
-        selection=[
-            ('none', "State not defined"),
-            ('undefined', "Not Synced Yet"),
-            ('not_found', "Not Found"),
-            ('cancelled', "Cancelled"),
-            ('valid', "Valid"),
-        ],
-        string="SAT status",
+    # Campo auxiliar para mostrar en la vista
+    l10n_mx_edi_sat_status_supplier = fields.Selection(
+        related='l10n_mx_edi_sat_status',
         readonly=True,
-        copy=False,
-        required=True,
-        tracking=True,
-        default='undefined',
-        help="Refers to the status of the journal entry inside the SAT system.")
+        help="Refers to the status of the journal entry inside the SAT system."
+    )
+
+    has_cfdi = fields.Boolean(compute='_compute_has_cfdi', string='Has Cfdi')
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -40,10 +34,10 @@ class AccountMove(models.Model):
         hasta tanto no se verifique contra el SAT
         """
         for vals in vals_list:
-            if 'l10n_mx_edi_vendor_cfdi_uuid' in vals and vals.get('l10n_mx_edi_vendor_cfdi_uuid', False):
+            if 'l10n_mx_edi_cfdi_uuid_supplier' in vals and vals.get('l10n_mx_edi_cfdi_uuid_supplier', False):
                 vals.update({
-                    'l10n_mx_edi_vendor_sat_status': 'undefined',
-                    'l10n_mx_edi_vendor_status_change_date': False,
+                    'l10n_mx_edi_sat_status': 'undefined',
+                    'l10n_mx_edi_status_change_date_supplier': False,
                 })
         return super().create(vals)
 
@@ -52,12 +46,39 @@ class AccountMove(models.Model):
         Si se establece el uuid el estado SAT en no definido
         hasta tanto no se verifique contra el SAT
         """
-        if 'l10n_mx_edi_vendor_cfdi_uuid' in vals and vals.get('l10n_mx_edi_vendor_cfdi_uuid', False):
+        if 'l10n_mx_edi_cfdi_uuid_supplier' in vals and vals.get('l10n_mx_edi_cfdi_uuid_supplier', False):
             vals.update({
-                'l10n_mx_edi_vendor_sat_status': 'undefined',
-                'l10n_mx_edi_vendor_status_change_date': False,
+                'l10n_mx_edi_sat_status': 'undefined',
+                'l10n_mx_edi_status_change_date_supplier': False,
             })
         return super().write(vals)
+
+    @api.constrains('l10n_mx_edi_cfdi_uuid_supplier')
+    def _constrains_l10n_mx_edi_cfdi_uuid_supplier(self):
+        """
+        Si es una factura de proveedor y no tiene un cfdi asociado
+        asociar el cfdi manual l10n_mx_edi_cfdi_uuid_supplier
+        """
+        for move in self:
+            if not move._get_l10n_mx_edi_signed_edi_document() and move.move_type == 'in_invoice':
+                move.write({
+                    'l10n_mx_edi_cfdi_uuid': move.l10n_mx_edi_cfdi_uuid_supplier
+                })
+
+    def _compute_cfdi_values(self):
+        res = super()._compute_cfdi_values()
+        for move in self:
+            if not move._get_l10n_mx_edi_signed_edi_document() and move.move_type == 'in_invoice' and move.l10n_mx_edi_cfdi_uuid_supplier:
+                move.l10n_mx_edi_cfdi_supplier_rfc = move.partner_id.vat
+                move.l10n_mx_edi_cfdi_customer_rfc = self.env.company.vat
+                move.l10n_mx_edi_cfdi_amount = move.amount_total
+        return res
+
+    @api.depends('edi_document_ids')
+    def _compute_has_cfdi(self):
+        for move in self:
+            move.has_cfdi = len(
+                move._get_l10n_mx_edi_signed_edi_document()) > 0
 
     def action_update_vendor_sat_status(self):
         self.ensure_one()
@@ -105,10 +126,10 @@ class AccountMove(models.Model):
             else:
                 new_status = 'none'
 
-            old_status = move.l10n_mx_edi_vendor_sat_status
+            old_status = move.l10n_mx_edi_sat_status
             if new_status != old_status:
-                move.l10n_mx_edi_vendor_sat_status = new_status
-                move.l10n_mx_edi_vendor_status_change_date = fields.Date.today()
+                move.l10n_mx_edi_sat_status = new_status
+                move.l10n_mx_edi_status_change_date_supplier = fields.Date.today()
 
                 if old_status == 'undefined' and new_status == 'valid':
                     # Si el estdo aún no se ha verificado y al
@@ -116,7 +137,7 @@ class AccountMove(models.Model):
                     continue
                 elif users_to_notify:
                     description_selection_dict = dict(
-                        self.env['account.move']._fields['l10n_mx_edi_vendor_sat_status']._description_selection(self.with_context(lang=self.env.user.lang).env))
+                        self.env['account.move']._fields['l10n_mx_edi_sat_status']._description_selection(self.with_context(lang=self.env.user.lang).env))
                     for user in users_to_notify:
                         move.activity_schedule(
                             'mail.mail_activity_data_todo',
@@ -136,7 +157,7 @@ class AccountMove(models.Model):
         el rendimiento, buscar alguna forma de optimizarlo
         '''
         to_process = self.env['account.move'].search([
-            ('l10n_mx_edi_vendor_cfdi_uuid', '!=', ''),
+            ('l10n_mx_edi_cfdi_uuid_supplier', '!=', ''),
             ('move_type', '=', 'in_invoice')
         ])
         for move in to_process:

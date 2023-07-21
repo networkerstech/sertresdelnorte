@@ -30,7 +30,7 @@ msgstr ""
 "Actualización automática de estado en el SAT (para facturas de proveedores)"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__cancelled
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__cancelled
 msgid "Cancelled"
 msgstr "Cancelado"
 
@@ -57,9 +57,9 @@ msgid "Fiscal Folio"
 msgstr "Folio fiscal"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_cfdi_uuid
-#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_cfdi_uuid
-#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_cfdi_uuid
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_cfdi_uuid_supplier
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_cfdi_uuid_supplier
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_cfdi_uuid_supplier
 msgid "Folio in electronic invoice, is returned by SAT when send to stamp."
 msgstr ""
 "Folio en factura electrónica, es devuelto por el SAT al enviar a timbre."
@@ -70,46 +70,46 @@ msgid "Journal Entry"
 msgstr "Asiento contable"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__not_found
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__not_found
 msgid "Not Found"
 msgstr "No encontrado"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__undefined
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__undefined
 msgid "Not Synced Yet"
 msgstr "No sincronizado todavía"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_cfdi_uuid
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_cfdi_uuid
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_cfdi_uuid
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_cfdi_uuid_supplier
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_cfdi_uuid_supplier
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_cfdi_uuid_supplier
 msgid "Providers Fiscal Folio"
 msgstr "Folio fiscal"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_sat_status
-#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_sat_status
-#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_sat_status
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_sat_status_supplier
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_sat_status_supplier
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_sat_status_supplier
 msgid "Refers to the status of the journal entry inside the SAT system."
 msgstr ""
 "Se refiere al estado del asiento de diario dentro del sistema del SAT."
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_sat_status
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_sat_status
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_sat_status
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_sat_status_supplier
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_sat_status_supplier
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_sat_status_supplier
 msgid "SAT status"
 msgstr "Estado SAT"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__none
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__none
 msgid "State not defined"
 msgstr "Estado no definido"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_status_change_date
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_status_change_date
-#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_status_change_date
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_status_change_date_supplier
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_status_change_date_supplier
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_status_change_date_supplier
 msgid "Status change date"
 msgstr "Fecha de cambio de estado"
 
@@ -137,7 +137,7 @@ msgstr ""
 "en el SAT"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__valid
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__valid
 msgid "Valid"
 msgstr "Válido"
 
