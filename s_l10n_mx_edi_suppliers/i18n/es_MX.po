@@ -1,0 +1,152 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_l10n_mx_edi_suppliers
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-21 04:38+0000\n"
+"PO-Revision-Date: 2023-07-21 04:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model_terms:ir.ui.view,arch_db:s_l10n_mx_edi_suppliers.s_inherit_view_move_form
+msgid "<i title=\"Check\" role=\"img\" aria-label=\"Check\" class=\"fa fa-refresh\"/> Check"
+msgstr ""
+"<i title=\"Verificar\" role=\"img\" aria-label=\"Verificar\" class=\"fa fa-"
+"refresh\"/> Verificar"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.actions.server,name:s_l10n_mx_edi_suppliers.ir_cron_update_pac_status_vendor_invoice_ir_actions_server
+#: model:ir.cron,cron_name:s_l10n_mx_edi_suppliers.ir_cron_update_pac_status_vendor_invoice
+msgid "Automatic update of state on the SAT (for suppliers invoices)"
+msgstr ""
+"Actualización automática de estado en el SAT (para facturas de proveedores)"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__cancelled
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model,name:s_l10n_mx_edi_suppliers.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model,name:s_l10n_mx_edi_suppliers.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: s_l10n_mx_edi_suppliers
+#. odoo-python
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_account_move.py:0
+#, python-format
+msgid "Failure during update of the SAT status: %(msg)s"
+msgstr "Falla durante la actualización del estado del SAT: %(msg)s"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model_terms:ir.ui.view,arch_db:s_l10n_mx_edi_suppliers.s_inherit_view_move_form
+msgid "Fiscal Folio"
+msgstr "Folio fiscal"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_cfdi_uuid
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_cfdi_uuid
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_cfdi_uuid
+msgid "Folio in electronic invoice, is returned by SAT when send to stamp."
+msgstr ""
+"Folio en factura electrónica, es devuelto por el SAT al enviar a timbre."
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model,name:s_l10n_mx_edi_suppliers.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__not_found
+msgid "Not Found"
+msgstr "No encontrado"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__undefined
+msgid "Not Synced Yet"
+msgstr "No sincronizado todavía"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_cfdi_uuid
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_cfdi_uuid
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_cfdi_uuid
+msgid "Providers Fiscal Folio"
+msgstr "Folio fiscal"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_sat_status
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_sat_status
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_sat_status
+msgid "Refers to the status of the journal entry inside the SAT system."
+msgstr ""
+"Se refiere al estado del asiento de diario dentro del sistema del SAT."
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_sat_status
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_sat_status
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_sat_status
+msgid "SAT status"
+msgstr "Estado SAT"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__none
+msgid "State not defined"
+msgstr "Estado no definido"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_vendor_status_change_date
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_vendor_status_change_date
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_vendor_status_change_date
+msgid "Status change date"
+msgstr "Fecha de cambio de estado"
+
+#. module: s_l10n_mx_edi_suppliers
+#. odoo-python
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_account_move.py:0
+#, python-format
+msgid "Status for this invoice change in SAT from \"%s\" to \"%s\""
+msgstr "El estado de esta factura cambió en SAT de \"%s\" a \"%s\""
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_res_company__vendor_bills_status_notification_user_ids
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_res_config_settings__vendor_bills_status_notification_user_ids
+msgid "Users to notify"
+msgstr "Usuarios a notificar"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_res_company__vendor_bills_status_notification_user_ids
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_res_config_settings__vendor_bills_status_notification_user_ids
+#: model_terms:ir.ui.view,arch_db:s_l10n_mx_edi_suppliers.s_inherit_res_config_settings_view_form
+msgid ""
+"Users to notify when the status of supplier invoices changes in the SAT"
+msgstr ""
+"Usuarios a notificar cuando cambia el estado de las facturas de proveedores "
+"en el SAT"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_vendor_sat_status__valid
+msgid "Valid"
+msgstr "Válido"
+
+#. module: s_l10n_mx_edi_suppliers
+#. odoo-python
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_res_config_settings.py:0
+#, python-format
+msgid ""
+"You must specify at least 2 users to notify when vendors bill state change"
+msgstr ""
+"Debe especificar al menos 2 usuarios para notificar cuando cambie el estado "
+"de las facturas de proveedor en el SAT"

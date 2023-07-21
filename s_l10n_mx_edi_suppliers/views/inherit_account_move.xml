@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_view_move_form" model="ir.ui.view">
+            <field name="name">s.inherit.account.move.view.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_reference']" position="after">
+                    <field name="l10n_mx_edi_vendor_cfdi_uuid"
+                        string="Fiscal Folio"
+                        attrs="{'invisible': [('move_type', '!=', 'in_invoice')] }" />
+
+                    <label for="l10n_mx_edi_vendor_sat_status"
+                        attrs="{'invisible': [('l10n_mx_edi_vendor_cfdi_uuid', 'in', [False, None, ''] )] }" />
+                    <div class="o_row"
+                        attrs="{'invisible': [('l10n_mx_edi_vendor_cfdi_uuid', 'in', [False, None, ''] )] }">
+                        <field name="l10n_mx_edi_vendor_sat_status" />
+
+
+                        <button name="action_update_vendor_sat_status" type="object"
+                            string="" class="oe_link"
+                            attrs="{'invisible': [('l10n_mx_edi_vendor_sat_status', '!=', 'undefined')]}">
+                            <i title="Check" role="img" aria-label="Check"
+                                class="fa fa-refresh" /> Check </button>
+                    </div>
+
+
+                    <field name="l10n_mx_edi_vendor_status_change_date"
+                        readonly="1"
+                        attrs="{'invisible': [('l10n_mx_edi_vendor_cfdi_uuid', 'in', [False, None, ''] )] }" />
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
