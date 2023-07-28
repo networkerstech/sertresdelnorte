@@ -14,6 +14,7 @@
         'data/ir_cron.xml',
         'views/inherit_account_move.xml',
         'views/inherit_res_config_settings.xml',
+        'views/inherit_hr_expense.xml',
     ],
     'installable': True,
     'auto_install': False

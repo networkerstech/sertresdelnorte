@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-21 04:38+0000\n"
-"PO-Revision-Date: 2023-07-21 04:38+0000\n"
+"POT-Creation-Date: 2023-07-28 18:02+0000\n"
+"PO-Revision-Date: 2023-07-28 18:02+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: s_l10n_mx_edi_suppliers
+#: model_terms:ir.ui.view,arch_db:s_l10n_mx_edi_suppliers.s_inherit_hr_expense_view_form
 #: model_terms:ir.ui.view,arch_db:s_l10n_mx_edi_suppliers.s_inherit_view_move_form
 msgid "<i title=\"Check\" role=\"img\" aria-label=\"Check\" class=\"fa fa-refresh\"/> Check"
 msgstr ""
@@ -30,11 +31,6 @@ msgstr ""
 "Actualización automática de estado en el SAT (para facturas de proveedores)"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__cancelled
-msgid "Cancelled"
-msgstr "Cancelado"
-
-#. module: s_l10n_mx_edi_suppliers
 #: model:ir.model,name:s_l10n_mx_edi_suppliers.model_res_company
 msgid "Companies"
 msgstr "Empresas"
@@ -45,14 +41,28 @@ msgid "Config Settings"
 msgstr "Ajustes de configuración"
 
 #. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_cfdi_customer_rfc
+msgid "Customer RFC"
+msgstr "RFC del cliente"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model,name:s_l10n_mx_edi_suppliers.model_hr_expense
+msgid "Expense"
+msgstr "Gasto"
+
+#. module: s_l10n_mx_edi_suppliers
 #. odoo-python
 #: code:addons/s_l10n_mx_edi_suppliers/models/inherit_account_move.py:0
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_account_move.py:0
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_hr_expense.py:0
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_hr_expense.py:0
+#: code:addons/s_l10n_mx_edi_suppliers/models/uuid_verification_tools.py:0
 #, python-format
 msgid "Failure during update of the SAT status: %(msg)s"
 msgstr "Falla durante la actualización del estado del SAT: %(msg)s"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model_terms:ir.ui.view,arch_db:s_l10n_mx_edi_suppliers.s_inherit_view_move_form
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_cfdi_uuid
 msgid "Fiscal Folio"
 msgstr "Folio fiscal"
 
@@ -60,9 +70,51 @@ msgstr "Folio fiscal"
 #: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_cfdi_uuid_supplier
 #: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_cfdi_uuid_supplier
 #: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_cfdi_uuid_supplier
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_cfdi_uuid
 msgid "Folio in electronic invoice, is returned by SAT when send to stamp."
 msgstr ""
 "Folio en factura electrónica, es devuelto por el SAT al enviar a timbre."
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__has_cfdi
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__has_cfdi
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__has_cfdi
+msgid "Has Cfdi"
+msgstr "Posee cfdi"
+
+#. module: s_l10n_mx_edi_suppliers
+#. odoo-python
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_account_move.py:0
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_hr_expense.py:0
+#, python-format
+msgid "Invoice SAT status is: \"%(msg)s\""
+msgstr "El estado de la factura en el SAT es: \"%(msg)s\""
+
+#. module: s_l10n_mx_edi_suppliers
+#: model_terms:ir.ui.view,arch_db:s_l10n_mx_edi_suppliers.s_inherit_hr_expense_view_form
+#: model_terms:ir.ui.view,arch_db:s_l10n_mx_edi_suppliers.s_inherit_view_move_form
+msgid "Invoice UUID"
+msgstr "UUID factura"
+
+#. module: s_l10n_mx_edi_suppliers
+#. odoo-python
+#: code:addons/s_l10n_mx_edi_suppliers/models/uuid_verification_tools.py:0
+#, python-format
+msgid "Invoice UUID already registered"
+msgstr "El UUID de la factura ya ha sido registrado"
+
+#. module: s_l10n_mx_edi_suppliers
+#. odoo-python
+#: code:addons/s_l10n_mx_edi_suppliers/models/uuid_verification_tools.py:0
+#, python-format
+msgid ""
+"Invoice UUID structure is invalid, must contain uppercase letters A through "
+"F and numbers 0 through 9 in the format "
+"\"12A3BCD-4EFA-56B7-C891-23D4E56F7ABC\""
+msgstr ""
+"La estructura del UUID de la factura es inválida, debe contener letras "
+"mayúsculas de la A a la F y números de 0 a 9 en el formato "
+"\"12A3BCD-4EFA-56B7-C891-23D4E56F7ABC\""
 
 #. module: s_l10n_mx_edi_suppliers
 #: model:ir.model,name:s_l10n_mx_edi_suppliers.model_account_move
@@ -70,21 +122,11 @@ msgid "Journal Entry"
 msgstr "Asiento contable"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__not_found
-msgid "Not Found"
-msgstr "No encontrado"
-
-#. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__undefined
-msgid "Not Synced Yet"
-msgstr "No sincronizado todavía"
-
-#. module: s_l10n_mx_edi_suppliers
 #: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_cfdi_uuid_supplier
 #: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_cfdi_uuid_supplier
 #: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_cfdi_uuid_supplier
-msgid "Providers Fiscal Folio"
-msgstr "Folio fiscal"
+msgid "Providers Auxiliar Fiscal Folio"
+msgstr "Folio fiscal auxiliar del proveedor"
 
 #. module: s_l10n_mx_edi_suppliers
 #: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_sat_status_supplier
@@ -102,16 +144,25 @@ msgid "SAT status"
 msgstr "Estado SAT"
 
 #. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__none
-msgid "State not defined"
-msgstr "Estado no definido"
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_sat_status
+msgid "Sat status"
+msgstr "Estado SAT"
 
 #. module: s_l10n_mx_edi_suppliers
 #: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_bank_statement_line__l10n_mx_edi_status_change_date_supplier
 #: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_move__l10n_mx_edi_status_change_date_supplier
 #: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_account_payment__l10n_mx_edi_status_change_date_supplier
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_status_change_date
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_status_change_date_supplier
 msgid "Status change date"
 msgstr "Fecha de cambio de estado"
+
+#. module: s_l10n_mx_edi_suppliers
+#. odoo-python
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_hr_expense.py:0
+#, python-format
+msgid "Status for the invoice change from \"%s\" to \"%s\""
+msgstr "El estado de la factura cambió de \"%s\" a \"%s\""
 
 #. module: s_l10n_mx_edi_suppliers
 #. odoo-python
@@ -119,6 +170,33 @@ msgstr "Fecha de cambio de estado"
 #, python-format
 msgid "Status for this invoice change in SAT from \"%s\" to \"%s\""
 msgstr "El estado de esta factura cambió en SAT de \"%s\" a \"%s\""
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_cfdi_supplier_rfc
+msgid "Supplier RFC"
+msgstr "RFC del proveedor"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_cfdi_customer_rfc
+msgid "The customer tax identification number."
+msgstr "Número de idenfificación fiscal del cliente"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model.fields,help:s_l10n_mx_edi_suppliers.field_hr_expense__l10n_mx_edi_cfdi_supplier_rfc
+msgid "The supplier tax identification number."
+msgstr "Número de idenfificación fiscal del proveedor"
+
+#. module: s_l10n_mx_edi_suppliers
+#: model:ir.model,name:s_l10n_mx_edi_suppliers.model_l10n_mx_edi_uuid_verification_tools
+msgid "UUID verification mixin"
+msgstr ""
+
+#. module: s_l10n_mx_edi_suppliers
+#. odoo-python
+#: code:addons/s_l10n_mx_edi_suppliers/models/inherit_account_move.py:0
+#, python-format
+msgid "Update of the SAT status has no changes: \"%(msg)s\""
+msgstr "Actualización del estado del SAT sin cambios: \"%(msg)s\""
 
 #. module: s_l10n_mx_edi_suppliers
 #: model:ir.model.fields,field_description:s_l10n_mx_edi_suppliers.field_res_company__vendor_bills_status_notification_user_ids
@@ -135,11 +213,6 @@ msgid ""
 msgstr ""
 "Usuarios a notificar cuando cambia el estado de las facturas de proveedores "
 "en el SAT"
-
-#. module: s_l10n_mx_edi_suppliers
-#: model:ir.model.fields.selection,name:s_l10n_mx_edi_suppliers.selection__account_move__l10n_mx_edi_sat_status_supplier__valid
-msgid "Valid"
-msgstr "Válido"
 
 #. module: s_l10n_mx_edi_suppliers
 #. odoo-python

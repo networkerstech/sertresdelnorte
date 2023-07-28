@@ -1,12 +1,12 @@
-from odoo import fields, models, api, _, registry
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 from odoo.tools import float_repr
-import threading
-from odoo.api import Environment
-import odoo
+import re
 
 
 class AccountMove(models.Model):
-    _inherit = "account.move"
+    _name = "account.move"
+    _inherit = ["account.move", "l10n.mx.edi.uuid.verification.tools"]
 
     # campo auxiliar para poder usar en la vista dado que el original es compute
     l10n_mx_edi_cfdi_uuid_supplier = fields.Char(
@@ -56,14 +56,35 @@ class AccountMove(models.Model):
     @api.constrains('l10n_mx_edi_cfdi_uuid_supplier')
     def _constrains_l10n_mx_edi_cfdi_uuid_supplier(self):
         """
-        Si es una factura de proveedor y no tiene un cfdi asociado
-        asociar el cfdi manual l10n_mx_edi_cfdi_uuid_supplier
+        Validaciones asociadas al cfdi de las facturas de proveedor
         """
+
         for move in self:
-            if not move._get_l10n_mx_edi_signed_edi_document() and move.move_type == 'in_invoice':
+            # Si es una factura de proveedor, no tiene un cfdi asociado
+            #  y está establecido el l10n_mx_edi_cfdi_uuid_supplier
+            if move.l10n_mx_edi_cfdi_uuid_supplier and not move._get_l10n_mx_edi_signed_edi_document() and move.move_type == 'in_invoice':
+                self.check_l10n_mx_edi_cfdi_uuid()
+
+                def on_error(ex):
+                    raise ValidationError(
+                        _("Failure during update of the SAT status: %(msg)s") % {
+                            "msg": str(ex)
+                        }
+                    )
+                status = move.get_l10n_mx_edi_uuid_sat_status(on_error)
+                if status != 'Vigente':
+                    raise ValidationError(
+                        _('Invoice SAT status is: "%(msg)s"') % {
+                            "msg": status
+                        }
+                    )
                 move.write({
                     'l10n_mx_edi_cfdi_uuid': move.l10n_mx_edi_cfdi_uuid_supplier
                 })
+
+    def _post(self, soft=True):
+        self._constrains_l10n_mx_edi_cfdi_uuid_supplier()
+        return super()._post(soft)
 
     def _compute_cfdi_values(self):
         res = super()._compute_cfdi_values()
@@ -102,53 +123,47 @@ class AccountMove(models.Model):
         '''
 
         for move in self:
-            supplier_rfc = move.l10n_mx_edi_cfdi_supplier_rfc
-            customer_rfc = move.l10n_mx_edi_cfdi_customer_rfc
-            total = float_repr(move.l10n_mx_edi_cfdi_amount,
-                               precision_digits=move.currency_id.decimal_places)
-            uuid = move.l10n_mx_edi_cfdi_uuid
-
-            try:
-                status = self.env['account.edi.format']._l10n_mx_edi_get_sat_status(
-                    supplier_rfc, customer_rfc, total, uuid)
-            except Exception as e:
+            def on_error(ex):
                 move.message_post(
-                    body=_("Failure during update of the SAT status: %(msg)s", msg=str(e)))
-                continue
+                    body=_("Failure during update of the SAT status: %(msg)s", msg=str(ex)))
 
-            new_status = ''
-            if status == 'Vigente':
-                new_status = 'valid'
-            elif status == 'Cancelado':
-                new_status = 'cancelled'
-            elif status == 'No Encontrado':
-                new_status = 'not_found'
-            else:
-                new_status = 'none'
+            status = move.get_l10n_mx_edi_uuid_sat_status(on_error)
+            if status:
+                new_status = move.get_l10n_mx_edi_status_from_sat_status(
+                    status)
+                old_status = move.l10n_mx_edi_sat_status
+                description_selection_dict = dict(
+                    self.env['account.move']._fields['l10n_mx_edi_sat_status']._description_selection(self.with_context(lang=self.env.user.lang).env))
+                if new_status != old_status:
+                    move.l10n_mx_edi_sat_status = new_status
+                    move.l10n_mx_edi_status_change_date_supplier = fields.Date.today()
 
-            old_status = move.l10n_mx_edi_sat_status
-            if new_status != old_status:
-                move.l10n_mx_edi_sat_status = new_status
-                move.l10n_mx_edi_status_change_date_supplier = fields.Date.today()
+                    if old_status == 'undefined' and new_status == 'valid':
+                        # Si el estdo aún no se ha verificado y al
+                        # hacerlo resulta que este es válido no notificar
+                        continue
+                    elif users_to_notify:
 
-                if old_status == 'undefined' and new_status == 'valid':
-                    # Si el estdo aún no se ha verificado y al
-                    # hacerlo resulta que este es válido no notificar
-                    continue
-                elif users_to_notify:
-                    description_selection_dict = dict(
-                        self.env['account.move']._fields['l10n_mx_edi_sat_status']._description_selection(self.with_context(lang=self.env.user.lang).env))
-                    for user in users_to_notify:
-                        move.activity_schedule(
-                            'mail.mail_activity_data_todo',
-                            fields.Date.today(),
-                            note=_('Status for this invoice change in SAT from "%s" to "%s"') % (
-                                _(description_selection_dict[old_status]),
-                                _(description_selection_dict[new_status])
-                            ),
-                            user_id=user.id)
+                        for user in users_to_notify:
+                            move.activity_schedule(
+                                'mail.mail_activity_data_todo',
+                                fields.Date.today(),
+                                note=_('Status for this invoice change in SAT from "%s" to "%s"') % (
+                                    _(description_selection_dict[old_status]),
+                                    _(description_selection_dict[new_status])
+                                ),
+                                user_id=user.id)
+                elif not users_to_notify:
+                    # Si no se definen los usuarios a notificar no se está haciendo desde el cron
+                    move.message_post(
+                        body=_(
+                            'Update of the SAT status has no changes: "%(msg)s"') % {
+                            "msg": description_selection_dict[new_status]
 
-    @ api.model
+                        }
+                    )
+
+    @api.model
     def _l10n_mx_edi_cron_update_vendor_sat_status(self):
         '''
         Validar que los uuids de las facturas de proveedores con válidos.
@@ -162,3 +177,21 @@ class AccountMove(models.Model):
         ])
         for move in to_process:
             move.l10n_mx_edi_update_vendor_sat_status_notified()
+
+    def get_l10n_mx_edi_cfdi_supplier_rfc(self):
+        return self.l10n_mx_edi_cfdi_supplier_rfc
+
+    def get_l10n_mx_edi_cfdi_customer_rfc(self):
+        return self.l10n_mx_edi_cfdi_customer_rfc
+
+    def get_l10n_mx_edi_cfdi_amount(self):
+        return float_repr(self.l10n_mx_edi_cfdi_amount,
+                          precision_digits=self.currency_id.decimal_places)
+
+    def get_l10n_mx_edi_cfdi_uuid(self):
+        if self.move_type == 'in_invoice' and not self.has_cfdi:
+            return self.l10n_mx_edi_cfdi_uuid_supplier
+        return self.l10n_mx_edi_cfdi_uuid
+
+    def get_l10n_mx_edi_cfdi_unique_uuid_domain(self):
+        return [('move_type', '=', 'in_invoice'), ('id', '!=', self.id), ('l10n_mx_edi_cfdi_uuid_supplier', '=', self.l10n_mx_edi_cfdi_uuid_supplier)]
