@@ -5,7 +5,8 @@ from odoo.exceptions import ValidationError
 from odoo.tools import float_compare
 from datetime import timedelta
 
-INTERVAL_DAYS_CHECK_IN_TIME = 15
+DAYS_AGO_TO_CHECK_REQUESTS = 15
+DAYS_INTERVAL_TO_CHECK_REQUESTS = 365
 
 
 class HrExpenseRequest(models.Model):
@@ -208,9 +209,10 @@ class HrExpenseRequest(models.Model):
         los campos compute o el cron 
         """
         self._set_checked_state()
-        interval_date = fields.Date.today() + timedelta(days=-INTERVAL_DAYS_CHECK_IN_TIME)
-        if self.date_end < interval_date and self.checked_state == 'not_checked' and self.time_state != 'expire':
-            self.time_state = 'expire'
+        interval_date = fields.Date.today() + timedelta(days=-DAYS_AGO_TO_CHECK_REQUESTS)
+        if self.date_end < interval_date:
+            if self.checked_state == 'not_checked' and self.time_state != 'expire':
+                self.time_state = 'expire'
 
     def action_request(self):
         self.state = 'requested'
@@ -228,16 +230,17 @@ class HrExpenseRequest(models.Model):
         self.state = 'draft'
 
     @api.model
-    def update_expense_request_time_state_cron(self, days=INTERVAL_DAYS_CHECK_IN_TIME):
+    def update_expense_request_time_state_cron(self, days=DAYS_AGO_TO_CHECK_REQUESTS):
         today = fields.Date.today()
-        # Chequear solicitudes de los 15 días anteriores a los últimos 15
-        # días para evitar que se chequeen todas las tareas y que
-        # se queden tareas sin verificar
+        # Chequear un año de solicitudes anteriores a los últimos 15 días
+        # para evitar que se chequeen todas las tareas y que se queden
+        # tareas sin verificar, por que se desactivó la tarea programada por ejemplo
         # TODO: mejorar esto
+
         expired_requests = self.search([
-            ('date_end', '<=', today + timedelta(days=-days)),
-            ('date_start', '<=', today +
-             timedelta(days=-(2*days))),
+            ('date_end', '<', today + timedelta(days=-days)),
+            ('date_start', '>', today +
+             timedelta(days=-(DAYS_INTERVAL_TO_CHECK_REQUESTS))),
         ])
         for req in expired_requests:
             if req.checked_state == 'not_checked' and req.time_state != 'expire':
