@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_view_partner_property_form_credit_control" model="ir.ui.view">
+            <field name="name">s.inherit.view.partner.property.form.credit.control</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="purchase.view_partner_property_form" />
+            <field name="arch" type="xml">
+                <xpath
+                    expr="//field[@name='property_purchase_currency_id']"
+                    position="after">
+
+                    <field name="provider_currency_id" invisible="1" />
+                    <field name="provider_credit_control" />
+                    <field
+                        name="provider_credit_max_amount"
+                        string="Maximum Credit"
+                        widget="monetary"
+                        attrs="{'invisible': [('provider_credit_control', '=', False)]}" />
+                    <field
+                        name="provider_amount_to_pay"
+                        string="Credit to Pay"
+                        widget="monetary"
+                        attrs="{'invisible': [('provider_credit_control', '=', False)]}" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
