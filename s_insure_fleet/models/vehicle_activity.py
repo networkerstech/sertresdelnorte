@@ -40,7 +40,7 @@ class VehicleActivity(models.Model):
 
             for rec in expired_activity:
                 if responsible:
-                    lang = self.env['res.partner'].browse(responsible.id).lang
+                    lang = responsible.lang
                     formated_date = format_date(rec.env, rec.end_date, date_format="dd MMMM y", lang_code=lang)
 
                     vehicle = self.env["fleet.vehicle"].search([]).filtered(lambda x: x.id == rec.vehicle_id.id)
