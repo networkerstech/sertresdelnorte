@@ -73,3 +73,14 @@ class StockMove(models.Model):
                             unit_amount, amount)
                         res.update(vals)
         return res
+
+    def _prepare_move_split_vals(self, qty):
+        """
+        Adicionar la cuenta analítica a las entregas parciales si la entrega origen la tiene establecida
+        """
+        vals = super()._prepare_move_split_vals(qty)
+        if self.analytic_account_id:
+            vals.update({
+                'analytic_account_id': self.analytic_account_id.id
+            })
+        return vals
