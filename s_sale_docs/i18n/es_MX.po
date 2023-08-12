@@ -1,0 +1,250 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_sale_docs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-12 04:08+0000\n"
+"PO-Revision-Date: 2023-08-12 04:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_sale_docs
+#. odoo-python
+#: code:addons/s_sale_docs/models/sale_project.py:0
+#, python-format
+msgid "%(name)s (archive %(extension)s)"
+msgstr "%(name)s (archivo %(extension)s)"
+
+#. module: s_sale_docs
+#: model_terms:ir.ui.view,arch_db:s_sale_docs.s_inherit_project_type_view_order_form
+msgid "Attachment"
+msgstr "Adjunto"
+
+#. module: s_sale_docs
+#. odoo-python
+#: code:addons/s_sale_docs/models/inherit_sale_order.py:0
+#, python-format
+msgid "Attachment %s is required"
+msgstr "El adjunto %s es requerido"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__attachment_file
+msgid "Attachment file"
+msgstr "Fichero adjunto"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__attachment_required_str
+msgid "Attachment required string"
+msgstr "Texto adjunto requerido"
+
+#. module: s_sale_docs
+#: model:ir.model,name:s_sale_docs.model_sale_project_attachment_type
+msgid "Attachment type"
+msgstr "Tipo de adjunto"
+
+#. module: s_sale_docs
+#: model:ir.model.constraint,message:s_sale_docs.constraint_sale_project_attachment_config_unique_attachment_type_by_project_type
+msgid "Attachment type can not be repeated by project type"
+msgstr "El tipo de adjunto no se puede repetir por tipo de proyecto"
+
+#. module: s_sale_docs
+#: model:ir.actions.act_window,name:s_sale_docs.s_sale_order_document_type_action
+#: model:ir.ui.menu,name:s_sale_docs.s_sale_order_document_type_menu
+msgid "Attachment types"
+msgstr "Tipos de adjunto"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order__project_attachment_ids
+#: model_terms:ir.ui.view,arch_db:s_sale_docs.s_sale_project_type_view_form0
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#. module: s_sale_docs
+#. odoo-python
+#: code:addons/s_sale_docs/models/inherit_sale_order.py:0
+#, python-format
+msgid "Attachments %s are required"
+msgstr "Los adjuntos %s son requeridos"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type__attachment_config_ids
+msgid "Attachments documents"
+msgstr "Documentos adjuntos"
+
+#. module: s_sale_docs
+#: model:ir.model,name:s_sale_docs.model_sale_project_attachment_config
+msgid "Configuration for Types of Sales Order Attachment"
+msgstr "Configuración para los tipos de adjuntos de las órdenes de venta"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,help:s_sale_docs.field_sale_project_type__attachment_config_ids
+msgid ""
+"Configuration for documents that will be attachet to a sale orders of this "
+"type"
+msgstr ""
+"Configuración para los documentos que serán adjuntados a las órdenes de "
+"venta de este tipo"
+
+#. module: s_sale_docs
+#: model_terms:ir.actions.act_window,help:s_sale_docs.s_sale_order_document_type_action
+msgid "Create new attachment type"
+msgstr "Crear un nuevo tipo de adjunto"
+
+#. module: s_sale_docs
+#: model_terms:ir.actions.act_window,help:s_sale_docs.s_sale_project_type_action
+msgid "Create new project type"
+msgstr "Crear un nuevo tipo de proyecto"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__create_uid
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__create_uid
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__create_uid
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__create_date
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__create_date
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__create_date
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__display_name
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__display_name
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__display_name
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__attachment_file_name
+msgid "Filename"
+msgstr "Nombre de archivo"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__id
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__id
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__id
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type__id
+msgid "ID"
+msgstr ""
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment____last_update
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config____last_update
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type____last_update
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__write_uid
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__write_uid
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__write_uid
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__write_date
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__write_date
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__write_date
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__name
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__document_name
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__name
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_type__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: s_sale_docs
+#: model:ir.ui.menu,name:s_sale_docs.s_sale_project_menu
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: s_sale_docs
+#: model:ir.actions.act_window,name:s_sale_docs.s_sale_project_type_action
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order__project_type_id
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__project_type_id
+#: model_terms:ir.ui.view,arch_db:s_sale_docs.s_sale_order_document_type_view_tree
+#: model_terms:ir.ui.view,arch_db:s_sale_docs.s_sale_project_type_view_tree
+msgid "Project Type"
+msgstr "Tipo de proyecto"
+
+#. module: s_sale_docs
+#: model:ir.ui.menu,name:s_sale_docs.s_sale_project_type_menu
+msgid "Project type"
+msgstr "Tipo de proyecto"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__attachment_required
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__attachment_required
+msgid "Required"
+msgstr "Requerido"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__sale_order_id
+msgid "Sale Order"
+msgstr "Orden de venta"
+
+#. module: s_sale_docs
+#: model:ir.model,name:s_sale_docs.model_sale_order_attachment
+msgid "Sale Order Attachment"
+msgstr "Adjunto de la orden de venta"
+
+#. module: s_sale_docs
+#: model:ir.model,name:s_sale_docs.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_order_attachment__document_type_id
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_config__document_type_id
+msgid "Type"
+msgstr "Tipo "
+
+#. module: s_sale_docs
+#: model:ir.model.fields,field_description:s_sale_docs.field_sale_project_attachment_type__document_type
+msgid "Type (extension)"
+msgstr "Tipo (extensión)"
+
+#. module: s_sale_docs
+#: model:ir.model,name:s_sale_docs.model_sale_project_type
+msgid "Type of Sales Project"
+msgstr "Tipo de proyecto de venta"
+
+#. module: s_sale_docs
+#: model_terms:ir.ui.view,arch_db:s_sale_docs.s_inherit_project_type_view_order_form
+msgid "Update"
+msgstr "Actualizar"
+
+#. module: s_sale_docs
+#: model_terms:ir.ui.view,arch_db:s_sale_docs.s_inherit_project_type_view_order_form
+msgid "Upload"
+msgstr "Subir"
+
+#. module: s_sale_docs
+#. odoo-python
+#: code:addons/s_sale_docs/models/sale_order_attachment.py:0
+#, python-format
+msgid "You must provide file name for attachment."
+msgstr "Debe proporcionar el nombre del fichero para el adjunto"
+
+#. module: s_sale_docs
+#: model_terms:ir.ui.view,arch_db:s_sale_docs.s_sale_order_document_type_view_form
+msgid "xls, pdf, dox, dwg"
+msgstr ""
