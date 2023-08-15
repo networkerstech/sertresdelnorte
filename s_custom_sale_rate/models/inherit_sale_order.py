@@ -27,7 +27,8 @@ class SaleOrder(models.Model):
     manual_rate = fields.Float(
         'Exchange Rate',
         default=0,
-        states=READONLY_FIELD_STATES
+        states=READONLY_FIELD_STATES, 
+        digits='Manual exchange rate for sales'
     )
 
     @api.model_create_multi

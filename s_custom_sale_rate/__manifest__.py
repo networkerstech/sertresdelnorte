@@ -10,6 +10,7 @@
     'depends': ['sale'],
     'data': [
         'security/ir.model.access.csv',
+        'data/decimal_precision.xml',
         'views/inherit_sale_order.xml',
         'views/inherit_account_move.xml',
     ],
