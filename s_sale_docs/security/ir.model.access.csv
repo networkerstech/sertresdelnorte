@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_project_type_all,sale.project.type.all,model_sale_project_type,,1,0,0,0
+access_sale_project_type_manager,sale.project.type.manager,model_sale_project_type,sales_team.group_sale_manager,1,1,1,1
+
+access_sale_project_attachment_type_all,sale.project.attachment.type.all,model_sale_project_attachment_type,,1,0,0,0
+access_sale_project_attachment_type_manager,sale.project.attachment.type.manager,model_sale_project_attachment_type,sales_team.group_sale_manager,1,1,1,1
+
+access_sale_project_attachment_config_all,sale.project.attachment.config.all,model_sale_project_attachment_config,,1,0,0,0
+access_sale_project_attachment_config_manager,sale.project.attachment.config.manager,model_sale_project_attachment_config,sales_team.group_sale_manager,1,1,1,1
+
+access_sale_order_attachment_all,sale.order.attachment.all,model_sale_order_attachment,,1,1,1,1
+
+

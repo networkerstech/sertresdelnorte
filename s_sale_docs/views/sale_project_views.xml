@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- Tipos de documento -->
+    <record id="s_sale_order_document_type_view_tree" model="ir.ui.view">
+      <field name="name">s.sale.project.attachment.type.view.tree</field>
+      <field name="model">sale.project.attachment.type</field>
+      <field name="arch" type="xml">
+        <tree string="Project Type">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="s_sale_order_document_type_view_form" model="ir.ui.view">
+      <field name="name">s.sale.project.attachment.type.view.form</field>
+      <field name="model">sale.project.attachment.type</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <group>
+                <field name="document_name" />
+                <field name="document_type" placeholder="xls, pdf, dox, dwg" />
+              </group>
+              <group>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="s_sale_order_document_type_action" model="ir.actions.act_window">
+      <field name="name">Attachment types</field>
+      <field name="res_model">sale.project.attachment.type</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create new attachment type
+        </p>
+      </field>
+    </record>
+
+    <!-- Tipos de proyecto -->
+    <record id="s_sale_project_type_view_tree" model="ir.ui.view">
+      <field name="name">s.sale.project.type.view.tree</field>
+      <field name="model">sale.project.type</field>
+      <field name="arch" type="xml">
+        <tree string="Project Type">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="s_sale_project_type_view_form0" model="ir.ui.view">
+      <field name="name">s.sale.project.type.view.form</field>
+      <field name="model">sale.project.type</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <group>
+                <field name="name" />
+              </group>
+              <group>
+              </group>
+            </group>
+            <notebook>
+              <page name="attachments" string="Attachments">
+                <field name="attachment_config_ids">
+                  <tree editable="bottom" nolabel="1" colspan="2">
+                    <field name="document_type_id" options="{'no_create':true,'no_open':true}" />
+                    <field name="attachment_required" />
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="s_sale_project_type_action" model="ir.actions.act_window">
+      <field name="name">Project Type</field>
+      <field name="res_model">sale.project.type</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create new project type
+        </p>
+      </field>
+    </record>
+
+    <menuitem
+      id="s_sale_project_menu"
+      name="Project"
+      parent="sale.menu_sale_config"
+      sequence="20" />
+
+    <menuitem
+      id="s_sale_order_document_type_menu"
+      name="Attachment types"
+      action="s_sale_docs.s_sale_order_document_type_action"
+      parent="s_sale_docs.s_sale_project_menu"
+      sequence="1" />
+
+    <menuitem
+      id="s_sale_project_type_menu"
+      name="Project type"
+      action="s_sale_docs.s_sale_project_type_action"
+      parent="s_sale_docs.s_sale_project_menu"
+      sequence="2" />
+
+  </data>
+</odoo>
