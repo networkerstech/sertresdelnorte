@@ -7,7 +7,6 @@ from odoo.exceptions import UserError
 class MaintenanceEquipment(models.Model):
     _inherit = 'maintenance.equipment'
 
-    assign_date = fields.Date('Assignment Date')
     return_date = fields.Date('Return Date')
     state = fields.Selection([
         ('assigned', 'Assigned'),
@@ -50,6 +49,7 @@ class MaintenanceEquipment(models.Model):
                 'state': 'expire'
             })
             for te in to_expire:
+                # Notificación en la tarea
                 self.env['mail.activity'].create({
                     'res_model_id': self.env.ref('maintenance.model_maintenance_equipment').id,
                     'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
@@ -58,6 +58,14 @@ class MaintenanceEquipment(models.Model):
                     'date_deadline': today,
                     'user_id': te.create_uid.id,
                 })
+                # Notificación por correo electrónico
+                loan_expiration_template = self.env.ref(
+                    's_maintenance_tools_loan.s_mail_template_maintenance_tools_loan_expiration')
+                email_values = {
+                    'email_to': te.technician_user_id.email_formatted
+                }
+                loan_expiration_template.send_mail(
+                    te.id, force_send=True, email_values=email_values)
 
     @api.model_create_multi
     def create(self, vals):
@@ -108,3 +116,12 @@ class MaintenanceEquipment(models.Model):
             return 'assigned'
 
         return False
+
+    def _get_record_url(self):
+        self.ensure_one()
+        return '%(base_url)s/web#id=%(id)s&model=%(model)s&view_type=form&cids=%(company_id)s' % {
+            'base_url': self.env['ir.config_parameter'].sudo().get_param('web.base.url'),
+            'id': self.id,
+            'model': self._name,
+            'company_id': self.env.company.id
+        }

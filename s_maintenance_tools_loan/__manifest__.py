@@ -10,6 +10,7 @@
     'depends': ['base', 'fleet'],
     'data': [
         'data/ir_cron.xml',
+        'data/mail_template.xml',
         'views/inherit_maintenance_equipment_views.xml',
     ],
     'installable': True,
