@@ -1,0 +1,592 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_sign_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-06 17:14+0000\n"
+"PO-Revision-Date: 2023-10-06 17:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "%s: Signature request sent to %s."
+msgstr "%s: Solicitud(es) de firma(s) enviada a %s."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_signature_request.py:0
+#, python-format
+msgid "%s_Signed"
+msgstr "%s_Firmado"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "<Unknown>"
+msgstr "<Desconocido>"
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_form
+msgid ""
+"<b>@PartnerName:</b>\n"
+"                                                <span>\n"
+"                                                    Record name value. Example: Mitchell Phillips\n"
+"                                                </span>"
+msgstr ""
+"<b>@PartnerName:</b>\n"
+"                                                <span>\n"
+"                                                    Nombre del registro. Ejemplo: Mitchell Phillips\n"
+"                                                </span>"
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_form
+msgid "<b>@RecordName:</b> Report record object name value."
+msgstr "<b>@RecordName:</b> Nombre del objeto de registro de informe."
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_form
+msgid "<b>@ReportName:</b> Current Report/Document name."
+msgstr "<b>@ReportName:</b> Informe Actual/Nombre del documento."
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_form
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('active', '=', False)]}\">\n"
+"                            Archive\n"
+"                        </span>\n"
+"                        <span class=\"o_stat_text\" attrs=\"{'invisible': [('active', '=', True)]}\">\n"
+"                            Restore\n"
+"                        </span>"
+msgstr ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('active', '=', False)]}\">\n"
+"                            Archivar\n"
+"                        </span>\n"
+"                        <span class=\"o_stat_text\" attrs=\"{'invisible': [('active', '=', True)]}\">\n"
+"                            Restaurar\n"
+"                        </span>"
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_form
+msgid ""
+"<span>\n"
+"                                            The parameters will be replaced before sending the\n"
+"                                            message\n"
+"                                        </span>"
+msgstr ""
+"<span>\n"
+"                                            Los parámetros serán remplazados antes del envío del \n"
+"                                            mensaje\n"
+"                                        </span>"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "@ReportName was sent"
+msgstr "@ReportName fue enviado"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_needaction
+msgid "Action Needed"
+msgstr "Acción requerida"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__action_server_id
+msgid "Action Report"
+msgstr "Acción del informe"
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_form
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_attachment_count
+msgid "Attachment Count"
+msgstr "Cantidad de adjuntos"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_item__item_config_id
+msgid "Config Item"
+msgstr "Elemento de configuración"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Creating or updating template for signature request ..."
+msgstr "Creada o actualizada la plantilla para la solicitud de firmas ..."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Creating or updating the signature itself with selected parameters"
+msgstr "Creada o actualizada la firma con los parámetros seleccionados"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Creating or writing report attachment ..."
+msgstr "Creado o actualizado el documento adjunto del informe ..."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Creating report attachment ..."
+msgstr "Creado documento adjunto del informe ..."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Creating signature request ..."
+msgstr "Creada la solicitud de  firmas ..."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_request__res_id
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__res_id
+msgid "Current object ID"
+msgstr "ID del objeto actual"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: s_sign_custom
+#: model:ir.model.fields.selection,name:s_sign_custom.selection__sign_template__template_type__document
+msgid "Document"
+msgstr "Documento"
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_search
+msgid "Dynamic Configurations"
+msgstr "Configuración dinámica"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__use_config
+msgid "Dynamic configuration"
+msgstr "Configuración dinámica"
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_kanban
+msgid "Edit Configuration"
+msgstr "Editar configuración"
+
+#. module: s_sign_custom
+#: model:ir.model,name:s_sign_custom.model_sign_item
+msgid "Fields to be sign on Document"
+msgstr "Campos a firmar en el documento"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Contactos)"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__has_message
+msgid "Has Message"
+msgstr "Tiene mensaje"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__id
+msgid "ID"
+msgstr ""
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, los mensajes nuevos requieren su atención."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__message_has_error
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Invalid Report Item"
+msgstr "Elemento del Informe Inválido"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjunto principal"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_body
+msgid "Message"
+msgstr "Mensaje"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensaje"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_form
+msgid "Messaging"
+msgstr "Mensajería"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__model_name
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__model_name
+msgid "Model"
+msgstr "Modelo"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren una acción."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: s_sign_custom
+#: model_terms:ir.ui.view,arch_db:s_sign_custom.s_inherit_sign_template_view_form
+msgid "Parameters"
+msgstr "Parametros"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Please @PartnerName go to the link to sign the document."
+msgstr ""
+"Por favor @PartnerName vaya a la ruta proporcionada para firmar el "
+"documento."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__report_id
+#: model:ir.model.fields.selection,name:s_sign_custom.selection__sign_template__template_type__report
+msgid "Report"
+msgstr "Informe"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__model_id
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__model_id
+msgid "Report Model"
+msgstr "Modelo del Informe"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__request_count
+msgid "Request Count"
+msgstr "Cantidad de solicitudes"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__role_id
+msgid "Role"
+msgstr "Rol"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de entrega de SMS"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Search current sign template for existing attachment ..."
+msgstr "Buscando la plantilla de la firma actual para el archivo adjunto ..."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template_role_config__field_id
+msgid "Select the \"ID\" field to tell the registry contact to sign the document."
+msgstr ""
+"Seleccione el campo \"ID\" para indicar que el contacto del registro debe "
+"firmar el documento."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__role_config_ids
+msgid ""
+"Select the field that refers to the contact who will sign the report.\n"
+" Select the \"ID\" field to indicate that the person who will sign the document is the record contact.."
+msgstr ""
+"Seleccione el campo que hace referencia al contacto que va a firmar el informe.\n"
+"Seleccione el campo \"ID\" para indicar que quien firmará el documento es el contacto del registro."
+
+#. module: s_sign_custom
+#: model:ir.model,name:s_sign_custom.model_ir_actions_server
+msgid "Server Action"
+msgstr "Acción de servidor"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Sign"
+msgstr "Firmar"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__sign_template_id
+msgid "Sign Template"
+msgstr "Plantilla de firma"
+
+#. module: s_sign_custom
+#: model:ir.model,name:s_sign_custom.model_sign_template_role_config
+msgid "Sign Template Role Config "
+msgstr "Configuración de roles de plantilla de firma"
+
+#. module: s_sign_custom
+#: model:ir.model,name:s_sign_custom.model_sign_request
+msgid "Signature Request"
+msgstr "Solicitud de firma"
+
+#. module: s_sign_custom
+#: model:ir.model,name:s_sign_custom.model_sign_template
+msgid "Signature Template"
+msgstr "Plantilla de firma"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Signature request sent"
+msgstr "Solicitud de firma enviada"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Signature request sent to: %s"
+msgstr "Solicitud de firma enviada a: %s"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template_role_config__field_id
+msgid "Signer"
+msgstr "Firmante"
+
+#. module: s_sign_custom
+#: model:ir.model.constraint,message:s_sign_custom.constraint_sign_template_role_config_role_partner_uniq
+msgid "Signer role configuration must be unique by template"
+msgstr "La configuración del rol del firmante debe ser única por plantilla"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__role_config_ids
+msgid "Signers"
+msgstr "Firmantes"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Starting sign request build ..."
+msgstr "Iniciando construcción de solicitud de firmas ..."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__message_subject
+msgid "Subject"
+msgstr "Asunto"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Successfully report attachment created ..."
+msgstr "Completado archivo adjunto del informe creado ..."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Successfully report attachment wrote ..."
+msgstr "Completado archivo adjunto del informe modificado ..."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Successfully sign request build, sent it and waiting for signatures."
+msgstr ""
+"Completado construcción de solicitud de firmas, enviándolo y esperando por "
+"firmas."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Successfully signature created ..."
+msgstr "Completado creación de firmas ..."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Successfully signature updated ..."
+msgstr "Completado actualización de firmas ..."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Successfully template created ..."
+msgstr "Completado creación de plantilla ..."
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid "Successfully template updated ..."
+msgstr "Completado actualización de plantilla ..."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__template_id
+msgid "Template Configuration"
+msgstr "Plantilla de configuración"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__template_type
+msgid "Template Type"
+msgstr "Tipo de plantilla"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid ""
+"The sign configuration is disabled. Contact to Administrator or enable USE "
+"DYNAMIC CONFIGURATION in the Sign Template"
+msgstr ""
+"La configuración de firmas esta desactivada. Contacté al administrador o "
+"active la opción CONFIGURACION DINAMICA en la plantilla de firma"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid ""
+"The sign configuration not exist. Contact to Administrator or create one for"
+" this report"
+msgstr ""
+"La configuración de la firma no existe. Póngase en contacto con el "
+"administrador o cree uno para este informe"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_request__res_id
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__res_id
+msgid "This field is used to update object attachment"
+msgstr "Este archivo se utiliza para actualizar el archivo adjunto"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid ""
+"This report is already configured for this model (%s)! Please choose another"
+" one."
+msgstr ""
+"¡Ya existe un informe configurado para el modelo (%s)! Por favor seleccione "
+"otro."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__use_messaging
+msgid "Use Messaging"
+msgstr "Utilizar mensajería"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_item__item_config_id
+msgid ""
+"Used by s_sign_custom registry module. Fix object repetition and cloning bug"
+msgstr ""
+"Utilizado por el módulo de registro s_sign_custom. Corregir error de "
+"repetición y clonación de objetos."
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__template_id
+msgid ""
+"Used by w_sing_custom registry module. Fix object repetition and cloning bug"
+msgstr ""
+
+#. module: s_sign_custom
+#: model:ir.model.fields,field_description:s_sign_custom.field_sign_template__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: s_sign_custom
+#: model:ir.model.fields,help:s_sign_custom.field_sign_template__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación del sitio web"
+
+#. module: s_sign_custom
+#. odoo-python
+#: code:addons/s_sign_custom/models/inherited_sign_template.py:0
+#, python-format
+msgid ""
+"You must configure the signer for role \"%(role)s\" of document "
+"\"%(template)s\""
+msgstr ""
+"Debes configurar el firmante para el rol \"%(role)s\" del documento "
+"\"%(template)s\""

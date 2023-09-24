@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_sign_template_view_form" model="ir.ui.view">
+            <field name="name">w.inherit.sign.template.form</field>
+            <field name="model">sign.template</field>
+            <field name="inherit_id" ref="sign.sign_template_view_form" />
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button name="toggle_active"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-archive">
+                        <span class="o_stat_text"
+                            attrs="{'invisible': [('active', '=', False)]}">
+                            Archive
+                        </span>
+                        <span class="o_stat_text"
+                            attrs="{'invisible': [('active', '=', True)]}">
+                            Restore
+                        </span>
+                    </button>
+                </div>
+                <div name="button_box" position="after">
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}" />
+                </div>
+
+                <xpath expr="//sheet/group[1]" position="after">
+                    <group id="config_group" attrs="{'invisible': [('request_count', '>', 0)]}">
+                        <group>
+                            <field name="model_name" invisible="1" />
+                            <field name="request_count" invisible="1" />
+                            <field name="use_config" />
+                            <field name="template_type" widget="radio"
+                                options="{'horizontal': true}"
+                                attrs="{'invisible': [('use_config', '!=', True)], 'required': [('use_config', '=', True)]}" />
+                            <field name="model_id"
+                                options="{'no_create': 1, 'no_create_edit': 1}"
+                                attrs="{'invisible': [('use_config', '=', False)], 'required': [('use_config', '=', True)]}" />
+                            <field name="report_id" domain="[('model', '=', model_name)]"
+                                attrs="{'required': [('use_config', '=', True),('template_type', '=', 'report')], 'invisible': ['|', ('use_config', '=', False),('template_type', '!=', 'report')]}"
+                                options="{'no_create': 1, 'no_create_edit': 1}" />
+                            <field name="action_server_id" readonly="1"
+                                attrs="{'invisible': [('use_config', '=', False)]}" />
+                        </group>
+                        <group>
+                            <label for="role_config_ids"
+                                attrs="{'invisible': [('use_config', '=', False)]}" />
+                            <field name="role_config_ids"
+                                colspan="2"
+                                attrs="{'invisible': [('use_config', '=', False)], 'required': [('use_config', '=', True), ('model_name', 'not in', ['res.partner', 'res.users', 'hr.employee'])]}"
+                                nolabel="1">
+                                <tree editable="bottom" create="false" delete="false">
+                                    <field name="model_id" invisible="1" />
+                                    <field name="model_name" invisible="1" />
+
+                                    <field name="sequence" widget="handle" />
+                                    <field name="role_id"
+                                        readonly="1"
+                                        options="{'no_open': 1, 'no_create': 1, 'no_create_edit': 1}" />
+                                    <field name="field_id"
+                                        domain="[
+                                            '&amp;',
+                                                '&amp;',
+                                                    ('model_id', '=', model_id),
+                                                    ('name', 'not in', ['create_uid', 'write_uid']),
+                                                '|',
+                                                    '&amp;',
+                                                        ('name', '=', 'id'),
+                                                        ('model', 'in', ['res.partner', 'res.users', 'hr.employee']),
+                                                    '&amp;',
+                                                        ('ttype', '=', 'many2one'),
+                                                        ('relation', 'in', ['res.partner', 'res.users', 'hr.employee'])
+                                        ]"
+                                        options="{'no_create': 1, 'no_create_edit': 1}" />
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                </xpath>
+
+                <notebook position="inside">
+                    <page id="messaging" string="Messaging"
+                        attrs="{'invisible': [('use_config', '=', False)]}">
+                        <group>
+                            <group>
+                                <field name="use_messaging" widget="boolean_toggle" />
+                                <field name="message_subject"
+                                    attrs="{'invisible': [('use_messaging', '=', False)]}" />
+                                <field name="message_body"
+                                    attrs="{'invisible': [('use_messaging', '=', False)]}" />
+                            </group>
+                            <group string="Parameters"
+                                attrs="{'invisible': [('use_messaging', '=', False)]}">
+                                <div colspan="2">
+                                    <p>
+                                        <span>
+                                            The parameters will be replaced before sending the
+                                            message
+                                        </span>
+                                        <ul>
+                                            <li>
+                                                <b>@PartnerName:</b>
+                                                <span>
+                                                    Record name value. Example: Mitchell Phillips
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <b>@RecordName:</b> Report record object name value. </li>
+                                            <li>
+                                                <b>@ReportName:</b> Current Report/Document name. </li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+
+                </notebook>
+
+                <!--Setting
+                Footer-->
+                <xpath expr="//sheet" position="after">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="s_inherit_sign_template_view_search" model="ir.ui.view">
+            <field name="name">w.inherit.sign.template.search</field>
+            <field name="model">sign.template</field>
+            <field name="inherit_id" ref="sign.sign_template_view_search" />
+            <field name="arch" type="xml">
+                <filter name="my_templates" position="before">
+                    <filter name="dynamic" string="Dynamic Configurations"
+                        domain="[('use_config', '=', True)]" />
+                    <separator />
+                </filter>
+            </field>
+        </record>
+
+        <record id="s_inherit_sign_template_view_kanban" model="ir.ui.view">
+            <field name="name">w.inherit.sign.template.kanban</field>
+            <field name="model">sign.template</field>
+            <field name="inherit_id" ref="sign.sign_template_view_kanban" />
+            <field name="arch" type="xml">
+                <field name="active" position="after">
+                    <field name="use_config" />
+                </field>
+                <a name="open_requests" position="attributes">
+                    <attribute name="t-if">!record.use_config.raw_value</attribute>
+                </a>
+                <xpath expr="//button[1]" position="attributes">
+                    <attribute name="t-if">!record.use_config.raw_value</attribute>
+                </xpath>
+                <xpath expr="//button[2]" position="attributes">
+                    <attribute name="t-if">!record.use_config.raw_value</attribute>
+                </xpath>
+                <xpath expr="//button[3]" position="attributes">
+                    <attribute name="t-if">!record.use_config.raw_value</attribute>
+                </xpath>
+                <xpath expr="//button[3]" position="after">
+                    <t t-if="record.use_config.raw_value" groups="base.group_no_one">
+                        <button name="edit" type="edit" class="btn btn-primary btn-sm mt8"
+                            icon="fa-clock-o">
+                            Edit Configuration
+                        </button>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
