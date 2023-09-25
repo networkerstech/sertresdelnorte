@@ -6,7 +6,7 @@
     'author': "SUITEDOO",
     'website': "https://www.suitedoo.com",
     'category': 'Accounting/Accounting',
-    'version': '0.1',
+    'version': '1.0',
     'depends': ['stock_account', 'purchase', 'sale', 'analytic'],
     'data': [
         'views/inherit_stock_picking_views.xml',

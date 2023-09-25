@@ -47,7 +47,7 @@
             <field name="name">Send Materials</field>
             <field name="res_model">account.analytic.line</field>
             <field name="view_mode">tree,kanban,form,graph,pivot</field>
-            <field name="domain">[('picking_type', '!=', False)]</field>
+            <field name="domain">[('picking_type', 'in', ['incoming', 'outgoing']), ('picking_done', '=', 1)]</field>
             <field name="view_id" ref="s_analytic_stock.s_account_analytic_line_move_tree_view" />
         </record>
 

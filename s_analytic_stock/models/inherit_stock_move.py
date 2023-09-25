@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models, api, _
-from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
 from odoo.osv import expression
 
 
@@ -20,7 +20,7 @@ class StockMove(models.Model):
 
     def _get_analytic_account(self):
         """
-        Si el moviemiento es una entrega o devolución y la cuenta analítica está 
+        Si el moviemiento es una entrega o devolución y la cuenta analítica está
         establecida mediante el atributo self.analytic_account_id retornarla
         """
         if self.analytic_account_id and self.picking_id and self.picking_id.picking_type_id and self.picking_id.picking_type_id.code in ['incoming', 'outgoing']:
@@ -59,7 +59,8 @@ class StockMove(models.Model):
                     'picking_type': self.picking_id.picking_type_id.code,
                     'cost': cost,
                     'unit_amount': -unit_amount if self.picking_id.picking_type_id.code == 'incoming' else unit_amount,
-                    'amount':  amount if self.picking_id.picking_type_id.code == 'incoming' else -amount
+                    'amount':  amount if self.picking_id.picking_type_id.code == 'incoming' else -amount,
+                    'partner_id':  self.picking_id.partner_id.id,
                 }
                 if res:
                     # Si no existe se actualizan los valores para que se cree
@@ -84,3 +85,54 @@ class StockMove(models.Model):
                 'analytic_account_id': self.analytic_account_id.id
             })
         return vals
+
+    def _action_done(self, cancel_backorder=False):
+        """Si tiene asociada una línde de cuenta analítica de envío o
+        devolución de materiales marcarlos como hecho.
+
+        Si el movimiento es una devolución y tiene cuenta analítica,
+        verificar que la cantidad devuelta no sea mayor que las cantidades
+        enviadas para ese cliente menos las cantidades que ya han sido
+        devueltas
+            cant_a_devolver <= (cant_enviada - cant_ya_devuelta)
+
+        Tanto en las compras como en las devoluciones el picking_type_id.code
+        es 'incoming' por que se usa el tipo de movimiento de devolución asociado
+        a las compras (return_picking_type_id) puesto que las devoluciones no lo
+        poseen porque no es necesario para estas.
+        """
+        for move in self:
+            if move.picking_type_id.code == 'incoming' and not move.picking_type_id.return_picking_type_id and move.analytic_account_id and move.partner_id:
+                sent_qty = sum([out_line.unit_amount for out_line in self.env['account.analytic.line'].search([
+                    ('picking_type', '=', 'outgoing'),
+                    ('picking_done', '=', True),
+                    ('account_id', '=', move.analytic_account_id.id),
+                    ('product_id', '=', move.product_id.id),
+                    ('partner_id', '=', move.partner_id.id)
+                ])])
+                already_returned_qty = sum([abs(in_line.unit_amount) for in_line in self.env['account.analytic.line'].search([
+                    ('id', '!=', move.id),
+                    ('picking_type', '=', 'incoming'),
+                    ('picking_done', '=', True),
+                    ('account_id', '=', move.analytic_account_id.id),
+                    ('product_id', '=', move.product_id.id),
+                    ('partner_id', '=', move.partner_id.id)
+                ])])
+                if move.quantity_done > (sent_qty - already_returned_qty):
+                    raise ValidationError(
+                        _("You are trying to return a quantity of product greater than that sent:\n - Customer: %(customer)s\n - Analityc account: %(aaccount)s\n - Product: %(product)s\n - Returned quantity: %(returned_qty)s") % {
+                            'customer': move.partner_id.name,
+                            'aaccount': move.analytic_account_id.name,
+                            'product': move.product_id.name,
+                            'returned_qty': move.quantity_done,
+                        })
+
+        res = super()._action_done(cancel_backorder)
+
+        for move in self:
+            if move.analytic_account_line_id and move.analytic_account_line_id.picking_type:
+                if not move.analytic_account_line_id.partner_id:
+                    move.analytic_account_line_id.partner_id = move.partner_id
+                if not move.analytic_account_line_id.picking_done:
+                    move.analytic_account_line_id.picking_done = True
+        return res
