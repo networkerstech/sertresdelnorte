@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_register_attendance_breadcrumbs"
+        name="Portal layout : attendancea menu entries"
+        inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'register_attendance'"
+                class="breadcrumb-item active">
+                <span>Register attendance</span>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_attendances"
+        name="Attendances"
+        customize_show="True"
+        inherit_id="portal.portal_my_home"
+        priority="20">
+
+        <xpath expr="//div[hasclass('o_portal_docs')]"
+            position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Attendance</t>
+                <t t-set="url" t-value="'/attendance/register'" />
+                <t t-set="placeholder_count" t-value="'attendance_count'" />
+            </t>
+        </xpath>
+    </template>
+
+    <template id="attendance_portal_card">
+        <!-- <div
+            class="o_hr_attendance_clock bg-black-50 p-3 py-md-2 m-0 mt-md-5 me-md-5 h2 text-white
+        font-monospace" /> -->
+        <div
+            class="o_home_menu_background d-flex flex-column align-items-center justify-content-center h-100 text-center pt-5 pb-5">
+            <span
+                class="position-absolute top-0 start-0 end-0 bottom-0 bg-black-25"
+            />
+
+            <div
+                t-attf-class="flex-grow-1 flex-md-grow-0 card pb-3 px-0">
+                <div class="card-body d-flex flex-column" style="padding: 0 !important;">
+                    <t t-out="0" />
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="attendance_portal_user_badge">
+        <div
+            class="o_home_menu_background d-flex align-items-end justify-content-center flex-grow-1 pt-5 pt-md-4 bg-odoo"
+            style="margin: -1px !important">
+            <img class="img rounded-circle mb-n5"
+                style="margin-bottom: -3rem !important;"
+                t-attf-src="data:image;base64,#{employee.avatar_128}"
+                t-att-title="userName" height="80" t-att-alt="userName" />
+        </div>
+    </template>
+
+    <template id="attendance_portal_check_buttons">
+        <div class="flex-grow-1 ps-5 pe-5 ms-5 me-5 o_attendance_main">
+            <button
+                t-attf-class="o_attendance_sign_in o_attendance_sign_in_btn btn btn-success #{to_check_in_class} align-self-center px-5 py-3 mt-4 mb-2">
+                <span class="align-middle fs-2 me-3 text-white">Check IN</span>
+                <i t-attf-class="fa fa-4x fa-sign-in align-middle" />
+            </button>
+
+            <button
+                t-attf-class="o_attendance_sign_out o_attendance_sign_out_btn btn btn-warning #{to_check_out_class} align-self-center px-5 py-3 mt-4 mb-2">
+                <i t-attf-class="fa fa-4x fa-sign-out align-middle" />
+                <span class="align-middle fs-2 ms-3">Check OUT</span>
+
+            </button>
+        </div>
+    </template>
+
+    <template id="portal_attendance_register">
+        <t t-call="portal.portal_layout">
+            <div class="o_portal_attendance_register"
+                style="position: relative !important;"
+                t-attf-data-uid="#{uid}"
+                t-attf-data-hours_today="#{employee.hours_today}"
+            >
+                <t t-call="s_hr_attendance_portal.attendance_portal_card">
+                    <t t-if="employee">
+                        <t t-set="checked_in" t-value="employee.attendance_state=='checked_in'" />
+                        <t t-set="to_check_in_class" t-value="''" />
+                        <t t-set="to_check_out_class" t-value="'d-none'" />
+                        <t t-if="checked_in">
+                            <t t-set="to_check_in_class" t-value="'d-none'" />
+                            <t t-set="to_check_out_class" t-value="''" />
+                        </t>
+                        <t t-call="s_hr_attendance_portal.attendance_portal_user_badge">
+                            <t t-set="userId" t-value="employee.id" />
+                            <t t-set="userName" t-value="employee.name" />
+                        </t>
+                        <div class="flex-grow-1 o_attendance_main ps-5 pe-5 ms-5 me-5">
+                            <h2 class="mt-5">
+                                <t t-esc="employee.name" />
+                            </h2>
+                            <h5 class="mt-0 mb-0">
+                                <span
+                                    t-attf-class="o_attendance_sign_in o_attendance_sign_in_msg #{to_check_in_class}">
+                                    Welcome!
+                                </span>
+                                <span
+                                    t-attf-class="o_attendance_sign_out o_attendance_sign_out_msg #{to_check_out_class}">
+                                    Want to check out?
+                                </span>
+                            </h5>
+                            <h5
+                                t-attf-class="o_attendance_sign_out o_attendance_sign_out_worked_hours mt-0 mb-0 text-muted #{to_check_out_class}">
+                                <span> Today's work hours:</span>
+                                <span class="o_hours_number" t-field="employee.hours_today"
+                                    t-options="{'widget': 'float_time'}" />
+                            </h5>
+                        </div>
+                        <t t-call="s_hr_attendance_portal.attendance_portal_check_buttons" />
+                        <div
+                            class="flex-grow-1 oe_attendance_sign_in_msg ps-5 pe-5 ms-5 me-5 d-none">
+                            <h3 class="mt-5 mb0">Welcome <t t-esc="employee.name" />!</h3>
+                            <h2 class="o_hr_attendance_message_message mt4 mb24" />
+                            <div class="alert alert-info fs-5 mx-3" role="status">
+                                <span>Checked in at</span>
+                                <b class="o_attendance_sign_in_time"></b>
+                            </div>
+                            <div class="text-center">
+                                <button
+                                    class="o_attendance_sign_in_dismiss_btn btn btn-primary">
+                                    <span>OK</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            class="flex-grow-1 o_attendance_sign_out_msg ps-5 pe-5 ms-5 me-5 d-none">
+                            <h3 class="mt-5 mb0">Goodbye <t t-esc="employee.name" />!</h3>
+                            <h2 class="o_hr_attendance_message_message mt4 mb24" />
+                            <div class="alert alert-info fs-5 mx-3" role="status">
+                                <span>Checked out at:</span>
+                                <b class="o_attendance_sign_out_time">00:00:00</b>
+                            </div>
+                            <div class="text-center">
+                                <button
+                                    class="o_attendance_sign_out_dismiss_btn btn btn-primary">
+                                    <span>Goodbye</span>
+                                </button>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="alert alert-warning flex-grow-1 mt-3 ms-3 me-3">
+                            <b>Warning:</b>
+                            <p> Your user should be linked to an employee to use attendance.<br />
+                                Please contact your administrator. </p>
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </t>
+    </template>
+
+</odoo>

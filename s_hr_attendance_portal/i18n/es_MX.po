@@ -1,0 +1,121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_hr_attendance_portal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-15 13:29+0000\n"
+"PO-Revision-Date: 2023-09-15 13:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid "<b>Warning:</b>"
+msgstr "<b>Advertencia:</b>"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.attendance_portal_check_buttons
+msgid "<span class=\"align-middle fs-2 me-3 text-white\">Check IN</span>"
+msgstr ""
+"<span class=\"align-middle fs-2 me-3 text-white\">Registrar entrada</span>"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.attendance_portal_check_buttons
+msgid "<span class=\"align-middle fs-2 ms-3\">Check OUT</span>"
+msgstr "<span class=\"align-middle fs-2 ms-3\">Registrar salida</span>"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid "<span> Today's work hours:</span>"
+msgstr "<span> Horas laborables de hoy:</span>"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid ""
+"<span>Checked in at</span>\n"
+"                                <b class=\"o_attendance_sign_in_time\"/>"
+msgstr ""
+"<span>Entrada registrada a las</span>\n"
+"                                <b class=\"o_attendance_sign_in_time\"/>"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid ""
+"<span>Checked out at:</span>\n"
+"                                <b class=\"o_attendance_sign_out_time\">00:00:00</b>"
+msgstr ""
+"<span>Salida registrada a las:</span>\n"
+"                                <b class=\"o_attendance_sign_out_time\">00:00:00</b>"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid "<span>Goodbye</span>"
+msgstr "<span>Adiós</span>"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid "<span>OK</span>"
+msgstr ""
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_register_attendance_breadcrumbs
+msgid "<span>Register attendance</span>"
+msgstr "<span>Registrar asistencia</span>"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_my_home_attendances
+msgid "Attendance"
+msgstr "Asistencia"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid "Goodbye"
+msgstr "Adiós"
+
+#. module: s_hr_attendance_portal
+#: model:ir.model,name:s_hr_attendance_portal.model_portal_wizard_user
+msgid "Portal User Config"
+msgstr "Configuración del portal del usuario"
+
+#. module: s_hr_attendance_portal
+#: model:ir.model,name:s_hr_attendance_portal.model_res_users
+msgid "User"
+msgstr "Usuario"
+
+#. module: s_hr_attendance_portal
+#. odoo-python
+#: code:addons/s_hr_attendance_portal/models/inherit_res_users.py:0
+#, python-format
+msgid "User has no employee."
+msgstr "El usuario no posee empleado."
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid "Want to check out?"
+msgstr "¿Desea registrar su salida?"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid "Welcome!"
+msgstr "Bienvenido!"
+
+#. module: s_hr_attendance_portal
+#: model_terms:ir.ui.view,arch_db:s_hr_attendance_portal.portal_attendance_register
+msgid ""
+"Your user should be linked to an employee to use attendance.<br/>\n"
+"                                Please contact your administrator."
+msgstr ""
+"Su usuario debe estar asociado a un empleado para usar\n"
+"                            las asistencias.<br/> Por favor contacte con el administrador."
