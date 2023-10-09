@@ -46,7 +46,9 @@
                         onclick="$(this).closest('.oe_kanban_global_click').click()">
                         Update
                       </a>
-                      <field name="attachment_required_str" />
+                      <span style="color: brown; font-weight: bold;">
+                        <field name="attachment_required_str" />
+                      </span>
                       <field name="document_type_id" />
                       <br />
                       <field name="attachment_file_name"

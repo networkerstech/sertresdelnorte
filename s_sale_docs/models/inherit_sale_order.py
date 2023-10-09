@@ -53,5 +53,5 @@ class SaleOrder(models.Model):
                 else:
                     error_msg = _(
                         "Attachment %s is required") % empty_required_attachments[0].document_type_id.name
-            raise ValidationError(error_msg)
+                raise ValidationError(error_msg)
         return super().action_confirm()
