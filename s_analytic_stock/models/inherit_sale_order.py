@@ -4,6 +4,10 @@ from odoo import fields, models, api, _
 from odoo.exceptions import UserError
 from odoo.osv import expression
 
+# class SaleOrder(models.Model):
+#     _inherit = 'sale.order'
+
+#     def create_invoice()
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
@@ -19,15 +23,26 @@ class SaleOrderLine(models.Model):
 
     def _purchase_service_prepare_line_values(self, purchase_order, quantity=False):
         """
-        Establecer la cuenta analítica en la compra cuando es 
+        Establecer la cuenta analítica en la compra cuando es
         generada desde una venta y esta posee cuenta analítica
         """
-        res = super().method_name(purchase_order, quantity)
+        res = super()._purchase_service_prepare_line_values(purchase_order, quantity)
         if self.analytic_account_id:
             res.update({
-                'analytic_distribution': {self.analytic_account_id: 100}
+                'analytic_distribution': {self.analytic_account_id.id: 100}
             })
         return res
+
+    def _prepare_invoice_line(self, **optional_values):
+        """Adicionar la cuenta analítica a la línea de la factura
+        """
+        res = super()._prepare_invoice_line(**optional_values)
+        if self.analytic_account_id:
+            res.update({
+                'analytic_distribution': {self.analytic_account_id.id: 100}
+            })
+        return res
+
 
 
 class SaleOrder(models.Model):
