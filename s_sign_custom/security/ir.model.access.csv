@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sign_template_role_configall,sign_template_role_config_all,model_sign_template_role_config,,1,0,0,0
+access_sign_template_role_config_user,sign_template_role_config_user,model_sign_template_role_config,sign.group_sign_user,1,1,1,1
