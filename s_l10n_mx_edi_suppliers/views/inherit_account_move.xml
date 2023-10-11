@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_view_move_form" model="ir.ui.view">
+            <field name="name">s.inherit.account.move.view.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='ref']" position="after">
+                    <field name="has_cfdi" invisible="1" />
+                    <field name="l10n_mx_edi_cfdi_uuid_supplier"
+                        string="Invoice UUID"
+                        attrs="{'invisible': ['|', ('move_type', '!=', 'in_invoice'), ('has_cfdi', '=', True) ] }" />
+                </xpath>
+
+                <xpath expr="//field[@name='payment_reference']" position="after">
+                    <label for="l10n_mx_edi_sat_status_supplier"
+                        attrs="{'invisible': ['|', ('l10n_mx_edi_cfdi_uuid_supplier', 'in', [False, None, ''] ), ('has_cfdi', '=', True)] }" />
+                    <div class="o_row"
+                        attrs="{'invisible': ['|', ('l10n_mx_edi_cfdi_uuid_supplier', 'in', [False, None, ''] ),('has_cfdi', '=', True)] }">
+                        <field name="l10n_mx_edi_sat_status_supplier" />
+                        <button name="action_update_vendor_sat_status" type="object"
+                            string="" class="oe_link"
+                            attrs="{'invisible': ['|', ('l10n_mx_edi_cfdi_uuid_supplier', 'in', [False, None, ''] ),('has_cfdi', '=', True)] }">
+                            <i title="Check" role="img" aria-label="Check"
+                                class="fa fa-refresh" /> Check </button>
+                    </div>
+                    <field name="l10n_mx_edi_status_change_date_supplier"
+                        readonly="1"
+                        attrs="{'invisible': [('l10n_mx_edi_cfdi_uuid_supplier', 'in', [False, None, ''] )] }" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
