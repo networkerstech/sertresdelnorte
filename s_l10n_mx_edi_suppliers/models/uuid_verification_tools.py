@@ -22,7 +22,7 @@ class UIIDVerificationMixin(models.AbstractModel):
             if rec_uuid:
                 # El uuid solo debe contener números del 0-9 y letas mayúsculas
                 # de la A-F en el formato "12A3BCD-4EFA-56B7-C891-23D4E56F7ABC"
-                regex = r"^[ABCDEF0-9]{7}[-]{1}([ABCDEF0-9]{4}[-]{1}){3}[ABCDEF0-9]{12}$"
+                regex = r"^[ABCDEF0-9]{8}[-]{1}([ABCDEF0-9]{4}[-]{1}){3}[ABCDEF0-9]{12}$"
                 if not re.match(regex, rec_uuid):
                     raise ValidationError(
                         _('Invoice UUID structure is invalid, must contain uppercase letters A through F and numbers 0 through 9 in the format "12A3BCD-4EFA-56B7-C891-23D4E56F7ABC"')
