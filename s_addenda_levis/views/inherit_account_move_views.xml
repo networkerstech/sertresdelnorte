@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_move_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_user_id']" position="after">
+                    <field name="partner_use_addenda_marelli" invisible="1"/>
+                </xpath>
+                <xpath expr="//page[@name='other_info']" position="before">
+                    <page id="marelli" name="marelli" string="Addenda Marelli" attrs="{'invisible': [('partner_use_addenda_marelli', '=', False)]}">
+                        <group name="main_group">
+                            <field name="mirelli_po_number"/>
+                            <field name="mirelli_line_number"/>
+                            <field name="mirelli_item_number"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
