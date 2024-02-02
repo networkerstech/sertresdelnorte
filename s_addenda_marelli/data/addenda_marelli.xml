@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="addenda_marelli" name="Addenda Marelli">
+        <cfdi:Addenda xmlns:cfdi="http://www.sat.gob.mx/cfd/4">
+            <fa:Datos xmlns:fa="finanzas">
+                <fa:AddendaComercial>
+                    <fa:Finanzas t-att-PO="record.mirelli_po_number" t-att-Linea="record.mirelli_line_number" t-att-Part="record.mirelli_item_number" t-att-Moneda="record.currency_id.name"/>
+                </fa:AddendaComercial>
+            </fa:Datos>
+        </cfdi:Addenda>
+    </template>
+    <record id="addenda_marelli" model="ir.ui.view">
+        <field name="l10n_mx_edi_addenda_flag">True</field>
+    </record>
+</odoo>
