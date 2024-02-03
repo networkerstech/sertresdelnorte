@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="addenda_levis" name="Addenda Levi's">
-        <t t-if="record.move_type == 'in_invoice'">
-            <Addenda>
+        <t t-if="record.move_type == 'out_invoice'">
+            <cfdi:Addenda xmlns:cfdi="http://www.sat.gob.mx/cfd/4">
                 <LV8Reference>
                     <Tipo>
                         <FacturasLV>
-                            <PaymentReference>12345</PaymentReference>
-                            <PurchaseOrder>TS-333-293</PurchaseOrder>
-                            <ActualDeliveryDate>2020-10-27T18:00:00</ActualDeliveryDate>
-                            <PersonReference>levi@levi.com</PersonReference>
-                            <InvoicePurchaseOrderID LineID="1"></InvoicePurchaseOrderID>
-                            <InvoicePurchaseOrderID LineID="2"></InvoicePurchaseOrderID>
-                            <InvoicePurchaseOrderID LineID="3"></InvoicePurchaseOrderID>
+                            <PaymentReference><t t-esc="record.payment_reference"/></PaymentReference>
+                            <PurchaseOrder><t t-esc="record._get_sale_order_levi()"/></PurchaseOrder>
+                            <ActualDeliveryDate><t t-esc="record._get_efective_date_levi()"/></ActualDeliveryDate>
+                            <PersonReference><t t-esc="record.partner_id.email"/></PersonReference>
+                            <t t-set="line_counts" t-value="1"/>
+                            <t t-foreach="record._get_sale_order_line_levi()" t-as="line">
+                                <InvoicePurchaseOrderID  t-att-LineID="line.id"><t t-esc="line.product_id.name"/></InvoicePurchaseOrderID>
+                                <t t-set="line_counts" t-value="line_counts+1"/>
+                            </t>
                         </FacturasLV>
                     </Tipo>
                 </LV8Reference>
-            </Addenda>
+            </cfdi:Addenda>
         </t>
-        <t t-if="record.move_type == 'in_refund'">
-            <Addenda>
+        <t t-if="record.move_type == 'out_refund'">
+            <cfdi:Addenda xmlns:cfdi="http://www.sat.gob.mx/cfd/4">
                 <LVReference>
                     <Tipo>
                         <FacturasLV>
-                            <PurchaseOrder>TS-333-293</PurchaseOrder>
-                            <InvoiceID>CFDIORA0001</InvoiceID>
-                            <ActualDeliveryDate>2020-10-27T18:00:00</ActualDeliveryDate>
-                            <PersonReference>levi@levi.com</PersonReference>
-                            <CreditNoteInvoiceID LineID="1"></CreditNoteInvoiceID>
-                            <CreditNoteInvoiceID LineID="2"></CreditNoteInvoiceID>
-                            <CreditNoteInvoiceID LineID="3"></CreditNoteInvoiceID>
-                            <CreditNotePurchaseOrderID LineID="1"></CreditNotePurchaseOrderID>
-                            <CreditNotePurchaseOrderID LineID="2"></CreditNotePurchaseOrderID>
-                            <CreditNotePurchaseOrderID LineID="3"></CreditNotePurchaseOrderID>
+                            <PurchaseOrder><t t-esc="record._get_sale_order_levi()"/></PurchaseOrder>
+                            <InvoiceID><t t-esc="record.reversed_entry_id.name"/></InvoiceID>
+                            <ActualDeliveryDate><t t-esc="record._get_efective_date_levi()"/></ActualDeliveryDate>
+                            <PersonReference><t t-esc="record.partner_id.email"/></PersonReference>
+                            <t t-set="line_inv_counts" t-value="1"/>
+                            <t t-foreach="record.reversed_entry_id.invoice_line_ids" t-as="line">
+                                <CreditNoteInvoiceID t-att-LineID="line_inv_counts"><t t-esc="line.product_id.name"/></CreditNoteInvoiceID>
+                                <t t-set="line_inv_counts" t-value="line_inv_counts+1"/>
+                            </t>
+                            <t t-foreach="record._get_sale_order_line_levi()" t-as="line">
+                                <CreditNotePurchaseOrderID t-att-LineID="line.id"><t t-esc="line.product_id.name"/></CreditNotePurchaseOrderID>
+                            </t>
                         </FacturasLV>
                     </Tipo>
                 </LVReference>
-            </Addenda>
+            </cfdi:Addenda>
         </t>
     </template>
     <record id="addenda_levis" model="ir.ui.view">
