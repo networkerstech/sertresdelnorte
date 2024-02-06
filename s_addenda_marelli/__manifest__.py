@@ -24,6 +24,5 @@
     # always loaded
     'data': [
         'data/addenda_marelli.xml',
-        'views/inherit_account_move_views.xml',
     ],
 }
