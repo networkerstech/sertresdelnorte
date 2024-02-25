@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-29 20:22+0000\n"
-"PO-Revision-Date: 2024-01-29 15:22-0500\n"
+"POT-Creation-Date: 2024-02-25 18:11+0000\n"
+"PO-Revision-Date: 2024-02-25 13:12-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_MX\n"
@@ -18,7 +18,10 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 #. module: s_addenda_marelli
-#: model_terms:ir.ui.view,arch_db:s_addenda_marelli.account_move_form_inherit
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_bank_statement_line__addenda_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move__addenda_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_payment__addenda_marelli
+#: model_terms:ir.ui.view,arch_db:s_addenda_marelli.view_account_invoice_form_addenda_pepsico_fields
 msgid "Addenda Marelli"
 msgstr ""
 
@@ -28,36 +31,60 @@ msgid "Contact"
 msgstr "Contacto"
 
 #. module: s_addenda_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_bank_statement_line__currency_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move__currency_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_payment__currency_marelli
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: s_addenda_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_bank_statement_line__currency_marelli_aux
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move__currency_marelli_aux
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_payment__currency_marelli_aux
+msgid "Currency Marelli"
+msgstr "Moneda"
+
+#. module: s_addenda_marelli
 #: model:ir.model,name:s_addenda_marelli.model_account_move
 msgid "Journal Entry"
 msgstr "Asiento contable"
 
 #. module: s_addenda_marelli
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_bank_statement_line__mirelli_item_number
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move__mirelli_item_number
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_payment__mirelli_item_number
-msgid "Number of Item"
-msgstr "Número de item/part"
+#: model:ir.model,name:s_addenda_marelli.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
 
 #. module: s_addenda_marelli
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_bank_statement_line__mirelli_po_number
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move__mirelli_po_number
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_payment__mirelli_po_number
-msgid "Number of PO"
-msgstr "Número de PO"
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move_line__linea_marelli
+msgid "Linea Marelli"
+msgstr "Linea (Marelli)"
 
 #. module: s_addenda_marelli
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_bank_statement_line__mirelli_line_number
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move__mirelli_line_number
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_payment__mirelli_line_number
-msgid "Number of line"
-msgstr "Número de Línea"
+#: model:ir.model.fields,help:s_addenda_marelli.field_account_bank_statement_line__order_marelli
+#: model:ir.model.fields,help:s_addenda_marelli.field_account_move__order_marelli
+#: model:ir.model.fields,help:s_addenda_marelli.field_account_payment__order_marelli
+msgid "Marelli purchase order id"
+msgstr "Marelli PO"
 
 #. module: s_addenda_marelli
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_bank_statement_line__partner_use_addenda_marelli
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move__partner_use_addenda_marelli
-#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_payment__partner_use_addenda_marelli
-msgid "Use Addenda Marelli"
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_bank_statement_line__order_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move__order_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_payment__order_marelli
+msgid "PO"
+msgstr ""
+
+#. module: s_addenda_marelli
+#: model:ir.model.fields,field_description:s_addenda_marelli.field_account_move_line__part_marelli
+msgid "Part Marelli"
+msgstr "Part (Marelli)"
+
+#. module: s_addenda_marelli
+#: model:ir.model.fields,help:s_addenda_marelli.field_account_bank_statement_line__addenda_marelli
+#: model:ir.model.fields,help:s_addenda_marelli.field_account_move__addenda_marelli
+#: model:ir.model.fields,help:s_addenda_marelli.field_account_payment__addenda_marelli
+msgid ""
+"Technical field that helps us to identify if the partner uses the Addenda "
+"Marelli."
 msgstr ""
 
 #. module: s_addenda_marelli
