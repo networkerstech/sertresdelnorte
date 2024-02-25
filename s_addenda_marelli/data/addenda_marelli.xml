@@ -4,8 +4,8 @@
         <cfdi:Addenda xmlns:cfdi="http://www.sat.gob.mx/cfd/4">
             <fa:Datos xmlns:fa="finanzas">
                 <fa:AddendaComercial>
-                    <t t-foreach="record._get_sale_order_line_mirelli()" t-as="line">
-                        <fa:Finanzas t-att-PO="record._get_sale_order_mirelli()" t-att-Linea="line.id" t-att-Part="line.product_id.id" t-att-Moneda="record.currency_id.name"/>
+                    <t t-foreach="record.invoice_line_ids" t-as="line">
+                        <fa:Finanzas t-att-PO="record.order_marelli" t-att-Linea="line.linea_marelli" t-att-Part="line.part_marelli" t-att-Moneda="record.currency_marelli"/>
                     </t>
                 </fa:AddendaComercial>
             </fa:Datos>
