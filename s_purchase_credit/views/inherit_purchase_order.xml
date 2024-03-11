@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="s_inherit_purchase_order_credit_control_view_form" model="ir.ui.view">
+            <field name="name">s.inherit.purchase.order.credit.control.view.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <group name="name">
+                        <field name="provider_credit_limit_exceeded" invisible="1" />
+                    </group>
+                    <div
+                        class="notification alert alert-warning"
+                        role="alert"
+                        attrs="{'invisible': [('provider_credit_limit_exceeded', '=', False)]}">
+                        <field
+                            name="provider_credit_limit_exceeded_msg"
+                            attrs="{'invisible': [('provider_credit_limit_exceeded', '=', False)]}" />
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
