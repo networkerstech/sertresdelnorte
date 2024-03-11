@@ -1,0 +1,92 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_purchase_credit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-03 22:27+0000\n"
+"PO-Revision-Date: 2023-08-03 22:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_purchase_credit
+#. odoo-python
+#: code:addons/s_purchase_credit/models/inherit_purchase_order.py:0
+#, python-format
+msgid ""
+"%(provider)s reached its credit limit of %(credit_limit).2f. The available "
+"amount is %(available_amount).2f. If you wish to continue the order, it will"
+" be considered as a cash purchase."
+msgstr ""
+"%(provider)s alcanzó su límite de crédito de %(credit_limit).2f. El importe "
+"disponible es %(available_amount).2f. Si desea continuar, el pedido será "
+"considerado como una compra de contado."
+
+#. module: s_purchase_credit
+#: model:ir.model,name:s_purchase_credit.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: s_purchase_credit
+#: model:ir.model.fields,field_description:s_purchase_credit.field_res_partner__provider_amount_to_pay
+#: model:ir.model.fields,field_description:s_purchase_credit.field_res_users__provider_amount_to_pay
+msgid "Credit Amount To Pay"
+msgstr "Importe de crédito a pagar"
+
+#. module: s_purchase_credit
+#: model:ir.model.fields,field_description:s_purchase_credit.field_res_partner__provider_credit_control
+#: model:ir.model.fields,field_description:s_purchase_credit.field_res_users__provider_credit_control
+msgid "Credit Control"
+msgstr "Control de crédito"
+
+#. module: s_purchase_credit
+#: model_terms:ir.ui.view,arch_db:s_purchase_credit.s_inherit_view_partner_property_form_credit_control
+msgid "Credit to Pay"
+msgstr "Crédito por pagar"
+
+#. module: s_purchase_credit
+#: model_terms:ir.ui.view,arch_db:s_purchase_credit.s_inherit_view_partner_property_form_credit_control
+msgid "Maximum Credit"
+msgstr "Crédito máximo"
+
+#. module: s_purchase_credit
+#: model:ir.model.fields,field_description:s_purchase_credit.field_res_partner__provider_credit_max_amount
+#: model:ir.model.fields,field_description:s_purchase_credit.field_res_users__provider_credit_max_amount
+msgid "Maximum Credit Amount Allowed"
+msgstr "Monto máximo de crédito permitido"
+
+#. module: s_purchase_credit
+#: model:ir.model.fields,field_description:s_purchase_credit.field_purchase_order__provider_credit_limit_exceeded_msg
+msgid "Message for Provider Credit Limit Exceeded"
+msgstr "Mensaje de límite de crédito del proveedor excedido"
+
+#. module: s_purchase_credit
+#: model:ir.model.fields,field_description:s_purchase_credit.field_purchase_order__provider_credit_limit_exceeded
+msgid "Provider Credit Limit Exceeded"
+msgstr "Límite de crédito del proveedor excedido"
+
+#. module: s_purchase_credit
+#: model:ir.model.fields,field_description:s_purchase_credit.field_res_partner__provider_currency_id
+#: model:ir.model.fields,field_description:s_purchase_credit.field_res_users__provider_currency_id
+msgid "Provider Currency"
+msgstr "Divisa del proveedor"
+
+#. module: s_purchase_credit
+#: model:ir.model,name:s_purchase_credit.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: s_purchase_credit
+#. odoo-python
+#: code:addons/s_purchase_credit/models/inherit_res_partner.py:0
+#, python-format
+msgid "You must provide maximum credit amount when credit control is enabled"
+msgstr ""
+"Debe proporcionar el monto máximo de crédito cuando el control de crédito "
+"está habilitado"
