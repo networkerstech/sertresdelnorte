@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_account_analytic_line_move_tree_view" model="ir.ui.view">
+            <field name="name">s.account.analytic.line.tree.view</field>
+            <field name="model">account.analytic.line</field>
+            <field name="arch" type="xml">
+                <tree string="Send Materials" decoration-danger="picking_type == 'incoming'">
+                    <field name="company_id" invisible="1" />
+                    <field name="currency_id" invisible="1" />
+                    <field name="product_uom_category_id" invisible="1" />
+                    <!-- visible -->
+                    <field name="date" optional="show" />
+                    <field name="name" optional="hide"/>
+                    <field name="picking_type" string="Shipment/Return"/>
+                    <field name="plan_id" />
+                    <field name="account_id" />
+                    <field name="product_id" />
+                    <field name="unit_amount" sum="Total"/>
+                    <field name="product_uom_id"/>
+                    <field name="cost" sum="Total Cost" />
+                    <field name="amount" sum="Total" />
+                    <!-- optional -->
+                    <field name="partner_id" optional="hide" />
+                    <field name="company_id" groups="base.group_multi_company" optional="show" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="s_inherit_account_analytic_line_view_form" model="ir.ui.view">
+            <field name="name">s.inherit.account.analytic.line.view.form</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+            <field name="arch" type="xml">
+                <field name="amount" position="before">
+                    <field name="cost" />
+                </field>
+                <field name="date" position="after">
+                    <field name="picking_type"
+                        attrs="{'invisible': [('picking_type', '=', False)], 'readonly': 1}" />
+                </field>
+            </field>
+        </record>
+
+        <record id="s_view_analytic_line_product_move_action" model="ir.actions.act_window">
+            <field name="name">Send Materials</field>
+            <field name="res_model">account.analytic.line</field>
+            <field name="view_mode">tree,kanban,form,graph,pivot</field>
+            <field name="domain">[('picking_type', 'in', ['incoming', 'outgoing']), ('picking_done', '=', 1)]</field>
+            <field name="view_id" ref="s_analytic_stock.s_account_analytic_line_move_tree_view" />
+        </record>
+
+        <menuitem
+            id="s_view_analytic_line_product_move_menu"
+            name="Send Materials"
+            action="s_view_analytic_line_product_move_action"
+            parent="account.menu_finance_entries_management"
+            sequence="50" />
+    </data>
+</odoo>
