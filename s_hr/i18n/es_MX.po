@@ -1,0 +1,181 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-17 06:31+0000\n"
+"PO-Revision-Date: 2023-07-17 06:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_hr
+#: model:ir.model,name:s_hr.model_hr_activity_type
+msgid "Activity type"
+msgstr "Tipo de actividad"
+
+#. module: s_hr
+#: model:ir.actions.act_window,name:s_hr.s_hr_activity_type_action
+#: model:ir.ui.menu,name:s_hr.hr_area_menu
+msgid "Activity types"
+msgstr "Tipos de actividad"
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_employee__area_id
+msgid "Area"
+msgstr "Área"
+
+#. module: s_hr
+#: model:ir.actions.act_window,name:s_hr.s_hr_area_action_0
+#: model:ir.ui.menu,name:s_hr.hr_area_menuitem
+msgid "Areas"
+msgstr "Áreas"
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_employee__city
+msgid "City"
+msgstr "Ciudad"
+
+#. module: s_hr
+#: model:ir.model,name:s_hr.model_res_country_state
+msgid "Country state"
+msgstr "Estado"
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_activity_type__create_uid
+#: model:ir.model.fields,field_description:s_hr.field_hr_area__create_uid
+#: model:ir.model.fields,field_description:s_hr.field_hr_customer__create_uid
+#: model:ir.model.fields,field_description:s_hr.field_hr_management_area__create_uid
+#: model:ir.model.fields,field_description:s_hr.field_hr_speciality__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_activity_type__create_date
+#: model:ir.model.fields,field_description:s_hr.field_hr_area__create_date
+#: model:ir.model.fields,field_description:s_hr.field_hr_customer__create_date
+#: model:ir.model.fields,field_description:s_hr.field_hr_management_area__create_date
+#: model:ir.model.fields,field_description:s_hr.field_hr_speciality__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: s_hr
+#: model:ir.actions.act_window,name:s_hr.s_hr_customer_action
+#: model:ir.model,name:s_hr.model_hr_customer
+#: model:ir.model.fields,field_description:s_hr.field_hr_employee__customer_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: s_hr
+#: model:ir.ui.menu,name:s_hr.s_hr_customer_menu
+msgid "Customers"
+msgstr "Clientes"
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_activity_type__display_name
+#: model:ir.model.fields,field_description:s_hr.field_hr_area__display_name
+#: model:ir.model.fields,field_description:s_hr.field_hr_customer__display_name
+#: model:ir.model.fields,field_description:s_hr.field_hr_management_area__display_name
+#: model:ir.model.fields,field_description:s_hr.field_hr_speciality__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: s_hr
+#: model:ir.model,name:s_hr.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: s_hr
+#: model:ir.model,name:s_hr.model_hr_speciality
+msgid "Employee Speciality"
+msgstr "Especialidad del empleado"
+
+#. module: s_hr
+#: model:ir.actions.act_window,name:s_hr.s_res_country_state_federal_entity_action
+#: model:ir.ui.menu,name:s_hr.s_res_country_state_federal_entity_menu
+msgid "Federal Entities"
+msgstr "Entidades federativas"
+
+#. module: s_hr
+#: model:ir.model,name:s_hr.model_hr_area
+msgid "Humar Resources Area"
+msgstr "Área de recursos humanos"
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_activity_type__id
+#: model:ir.model.fields,field_description:s_hr.field_hr_area__id
+#: model:ir.model.fields,field_description:s_hr.field_hr_customer__id
+#: model:ir.model.fields,field_description:s_hr.field_hr_management_area__id
+#: model:ir.model.fields,field_description:s_hr.field_hr_speciality__id
+msgid "ID"
+msgstr ""
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_activity_type____last_update
+#: model:ir.model.fields,field_description:s_hr.field_hr_area____last_update
+#: model:ir.model.fields,field_description:s_hr.field_hr_customer____last_update
+#: model:ir.model.fields,field_description:s_hr.field_hr_management_area____last_update
+#: model:ir.model.fields,field_description:s_hr.field_hr_speciality____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_activity_type__write_uid
+#: model:ir.model.fields,field_description:s_hr.field_hr_area__write_uid
+#: model:ir.model.fields,field_description:s_hr.field_hr_customer__write_uid
+#: model:ir.model.fields,field_description:s_hr.field_hr_management_area__write_uid
+#: model:ir.model.fields,field_description:s_hr.field_hr_speciality__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_activity_type__write_date
+#: model:ir.model.fields,field_description:s_hr.field_hr_area__write_date
+#: model:ir.model.fields,field_description:s_hr.field_hr_customer__write_date
+#: model:ir.model.fields,field_description:s_hr.field_hr_management_area__write_date
+#: model:ir.model.fields,field_description:s_hr.field_hr_speciality__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: s_hr
+#: model:ir.model,name:s_hr.model_hr_management_area
+#: model:ir.model.fields,field_description:s_hr.field_hr_employee__management_area_id
+msgid "Management Area"
+msgstr "Dirección"
+
+#. module: s_hr
+#: model:ir.actions.act_window,name:s_hr.s_hr_management_area_action
+#: model:ir.ui.menu,name:s_hr.hr_management_area_menu
+msgid "Management Areas"
+msgstr "Direcciones"
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_activity_type__name
+#: model:ir.model.fields,field_description:s_hr.field_hr_area__name
+#: model:ir.model.fields,field_description:s_hr.field_hr_customer__name
+#: model:ir.model.fields,field_description:s_hr.field_hr_management_area__name
+#: model:ir.model.fields,field_description:s_hr.field_hr_speciality__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_employee__is_regional
+msgid "Regional"
+msgstr ""
+
+#. module: s_hr
+#: model:ir.actions.act_window,name:s_hr.s_hr_speciality_action
+#: model:ir.ui.menu,name:s_hr.hr_speciality_menu
+msgid "Specialities"
+msgstr "Especialidades"
+
+#. module: s_hr
+#: model:ir.model.fields,field_description:s_hr.field_hr_employee__speciality_id
+msgid "Speciality"
+msgstr "Especialiad"
