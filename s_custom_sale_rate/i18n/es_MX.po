@@ -1,0 +1,161 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_custom_sale_rate
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-14 20:02+0000\n"
+"PO-Revision-Date: 2023-07-14 20:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_custom_sale_rate
+#: model:ir.model.fields,help:s_custom_sale_rate.field_sale_order__foreign_currency
+msgid ""
+"Auxiliary field to handle the visualization of the elements of the view"
+msgstr ""
+"Campo auxiliar para manejar la visualización de los elementos de la vista"
+
+#. module: s_custom_sale_rate
+#: model:ir.model.fields,help:s_custom_sale_rate.field_account_bank_statement_line__sale_order_ids
+#: model:ir.model.fields,help:s_custom_sale_rate.field_account_move__sale_order_ids
+#: model:ir.model.fields,help:s_custom_sale_rate.field_account_payment__sale_order_ids
+msgid "Auxiliary field to link the sales orders with their payment"
+msgstr "Campo auxiliar para vincular las órdenes de venta con su pago"
+
+#. module: s_custom_sale_rate
+#. odoo-python
+#: code:addons/s_custom_sale_rate/models/inherit_account_move.py:0
+#, python-format
+msgid ""
+"Can not invoice multiple sales orders with manual exchange rate and "
+"automatic exchange rate together."
+msgstr ""
+"No se pueden facturar varios pedidos de venta con tipo de cambio manual y "
+"tipo de cambio automático juntos."
+
+#. module: s_custom_sale_rate
+#. odoo-python
+#: code:addons/s_custom_sale_rate/models/inherit_account_move.py:0
+#, python-format
+msgid "Can not invoice orders with different manual currency."
+msgstr "No se pueden facturar pedidos con moneda manual diferente."
+
+#. module: s_custom_sale_rate
+#. odoo-python
+#: code:addons/s_custom_sale_rate/models/inherit_account_move.py:0
+#, python-format
+msgid "Can not invoice orders with different manual exchange rate."
+msgstr "No se pueden facturar pedidos con diferente tipo de cambio manual."
+
+#. module: s_custom_sale_rate
+#. odoo-python
+#: code:addons/s_custom_sale_rate/models/inherit_account_move.py:0
+#, python-format
+msgid ""
+"Can not invoice orders with manual exchange rate in a different currency."
+msgstr ""
+"No se pueden facturar pedidos con tipo de cambio manual en una moneda "
+"diferente."
+
+#. module: s_custom_sale_rate
+#. odoo-python
+#: code:addons/s_custom_sale_rate/models/inherit_account_payment.py:0
+#, python-format
+msgid ""
+"Can not pay invoices with manual exchange rate and automatic exchange rate "
+"together."
+msgstr ""
+"No se pueden pagar facturas con tipo de cambio manual y tipo de cambio "
+"automático juntos."
+
+#. module: s_custom_sale_rate
+#. odoo-python
+#: code:addons/s_custom_sale_rate/models/inherit_account_payment.py:0
+#, python-format
+msgid "Can not pay manual rate invoices with different exchange rate."
+msgstr ""
+"No se pueden pagar facturas de tarifa manual con diferente tipo de cambio."
+
+#. module: s_custom_sale_rate
+#: model:ir.model,name:s_custom_sale_rate.model_res_currency
+#: model_terms:ir.ui.view,arch_db:s_custom_sale_rate.s_inherit_sale_order_view_form
+msgid "Currency"
+msgstr "Divisa"
+
+#. module: s_custom_sale_rate
+#: model:ir.model.fields,field_description:s_custom_sale_rate.field_account_move_line__inverse_currency_rate
+#: model:ir.model.fields,field_description:s_custom_sale_rate.field_sale_order__manual_rate
+msgid "Exchange Rate"
+msgstr "Tasa de cambio"
+
+#. module: s_custom_sale_rate
+#: model:ir.model.fields,field_description:s_custom_sale_rate.field_sale_order__foreign_currency
+msgid "Foreign Currency"
+msgstr "Moneda extranjera"
+
+#. module: s_custom_sale_rate
+#: model:ir.model,name:s_custom_sale_rate.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: s_custom_sale_rate
+#: model:ir.model,name:s_custom_sale_rate.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: s_custom_sale_rate
+#: model:ir.model.fields,field_description:s_custom_sale_rate.field_sale_order__manual_currency_id
+msgid "Manual Currency"
+msgstr "Divisa manual"
+
+#. module: s_custom_sale_rate
+#: model:ir.model,name:s_custom_sale_rate.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: s_custom_sale_rate
+#. odoo-python
+#: code:addons/s_custom_sale_rate/models/inherit_account_payment.py:0
+#, python-format
+msgid ""
+"Payments for orders with a manual exchange rate cannot be made in a "
+"different currency."
+msgstr ""
+"Los pagos de pedidos con tipo de cambio manual no se pueden realizar en una "
+"moneda diferente."
+
+#. module: s_custom_sale_rate
+#: model:ir.model,name:s_custom_sale_rate.model_account_payment_register
+msgid "Register Payment"
+msgstr "Registrar pago"
+
+#. module: s_custom_sale_rate
+#: model:ir.model.fields,field_description:s_custom_sale_rate.field_account_bank_statement_line__sale_order_ids
+#: model:ir.model.fields,field_description:s_custom_sale_rate.field_account_move__sale_order_ids
+#: model:ir.model.fields,field_description:s_custom_sale_rate.field_account_payment__sale_order_ids
+msgid "Sale Order"
+msgstr "Orden de venta"
+
+#. module: s_custom_sale_rate
+#: model:ir.model,name:s_custom_sale_rate.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: s_custom_sale_rate
+#: model:ir.model.fields,field_description:s_custom_sale_rate.field_sale_order__use_manual_rate
+msgid "Set Exchange Rate"
+msgstr "Fijar tipo de cambio"
+
+#. module: s_custom_sale_rate
+#. odoo-python
+#: code:addons/s_custom_sale_rate/models/inherit_sale_order.py:0
+#, python-format
+msgid "You must specify exchange rate."
+msgstr "Debe especificar el tipo de cambio."
