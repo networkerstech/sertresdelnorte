@@ -2,11 +2,11 @@
 <odoo>
     <data noupdate="1">
 
-        <record forcecreate="True" id="seq_employee_number" model="ir.sequence">
+        <record forcecreate="True" id="hr_employee_employee_sequence_number" model="ir.sequence">
             <field name="name">Employee number</field>
-            <field name="code">hr.employee.employee.number</field>
+            <field name="code">hr.employee.employee.sequence.number</field>
             <field name="prefix"></field>
-            <field name="padding">5</field>
+            <field name="padding">9</field>
             <field name="company_id" eval="False"/>
         </record>
 

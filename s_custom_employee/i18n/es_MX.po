@@ -6,14 +6,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-01 17:11+0000\n"
-"PO-Revision-Date: 2023-02-01 17:11+0000\n"
+"POT-Creation-Date: 2023-07-31 19:07+0000\n"
+"PO-Revision-Date: 2023-07-31 19:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: s_custom_employee
+#: model_terms:ir.ui.view,arch_db:s_custom_employee.employee_resequence_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: s_custom_employee
+#: model_terms:ir.ui.view,arch_db:s_custom_employee.employee_resequence_view
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_employee_resequence_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_employee_resequence_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_employee_resequence_wizard__display_name
+msgid "Display Name"
+msgstr ""
 
 #. module: s_custom_employee
 #: model:ir.model,name:s_custom_employee.model_hr_employee
@@ -23,7 +48,7 @@ msgstr "Empleado"
 #. module: s_custom_employee
 #: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__name
 msgid "Employee Name"
-msgstr "Nombre"
+msgstr "Nombre del empleado"
 
 #. module: s_custom_employee
 #: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__number_employee
@@ -36,6 +61,26 @@ msgid "Firstname"
 msgstr "Nombre"
 
 #. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_employee_resequence_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_employee_resequence_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_employee_resequence_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: s_custom_employee
+#: model:ir.model.fields,field_description:s_custom_employee.field_employee_resequence_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: s_custom_employee
 #: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__lastname
 msgid "Lastname"
 msgstr "Primer apellido"
@@ -46,11 +91,29 @@ msgid "Name Employee"
 msgstr "Nombre"
 
 #. module: s_custom_employee
-#. odoo-python
-#: code:addons/s_custom_employee/models/inherit_hr_employee.py:0
-#, python-format
-msgid "New"
-msgstr "Nuevo"
+#: model_terms:ir.ui.view,arch_db:s_custom_employee.employee_resequence_view
+msgid "Re sequence employee numbers"
+msgstr "Re numerar empleados"
+
+#. module: s_custom_employee
+#: model:ir.ui.menu,name:s_custom_employee.employee_resequence_menu
+msgid "Re sequence employees"
+msgstr "Re numerar empleados"
+
+#. module: s_custom_employee
+#: model_terms:ir.ui.view,arch_db:s_custom_employee.employee_resequence_view
+msgid "Re-Sequence"
+msgstr "Re numerar"
+
+#. module: s_custom_employee
+#: model:ir.model,name:s_custom_employee.model_employee_resequence_wizard
+msgid "Remake the sequence of employees."
+msgstr "Rehacer la secuencia de los empleados"
+
+#. module: s_custom_employee
+#: model:ir.actions.act_window,name:s_custom_employee.employee_resequence_action
+msgid "Resequence Employee Numbers"
+msgstr "Renumerar empleados"
 
 #. module: s_custom_employee
 #: model:ir.model.fields,field_description:s_custom_employee.field_hr_employee__second_lastname

@@ -14,9 +14,9 @@
                 </xpath>
                 <xpath expr="//field[@name='mobile_phone']" position="before">
                     <field name="number_employee"/>
-                    <field name="firstname" placeholder="Name Employee"/>
                     <field name="lastname" placeholder="Surname"/>
                     <field name="second_lastname" placeholder="Second surname"/>
+                    <field name="firstname" placeholder="Name Employee"/>
                 </xpath>
             </field>
         </record>
