@@ -16,7 +16,7 @@ class EmployeeReSequenceWizard(models.TransientModel):
             'number_next': 1,
         })
 
-        employees = self.env['hr.employee'].search([])
+        employees = self.env['hr.employee'].search([], order='id')
         for employee in employees:
             employee.number_employee = sequence._next()
 
