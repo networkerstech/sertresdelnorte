@@ -14,7 +14,7 @@ class HrEmployee(models.Model):
         string="Employee Number",
         readonly=True,
         required=True,
-        default=lambda self: "000-000-000",
+        default=lambda self: "01-01-00000",
         groups="hr.group_hr_user",
     )
     firstname = fields.Char(string="Firstname", groups="hr.group_hr_user")
@@ -35,21 +35,23 @@ class HrEmployee(models.Model):
         for rec in self:
             order = rec.company_id.employee_names_order or "first_first"
             if order == "first_first":
-                rec.name = " ".join(filter(lambda x: x, [rec.firstname, rec.lastname, rec.second_lastname]))
+                rec.name = " ".join(
+                    filter(
+                        lambda x: x, [rec.firstname, rec.lastname, rec.second_lastname]
+                    )
+                )
             else:
-                rec.name = " ".join(filter(lambda x: x,[rec.lastname, rec.second_lastname, rec.firstname]))
+                rec.name = " ".join(
+                    filter(
+                        lambda x: x, [rec.lastname, rec.second_lastname, rec.firstname]
+                    )
+                )
             rec.order_name = order
 
     @api.model_create_multi
     def create(self, values):
         for vals in values:
-            sequence = (
-                self.env["ir.sequence"].next_by_code(
-                    "hr.employee.employee.sequence.number"
-                )
-                or "/"
-            )
-            vals["number_employee"] = self._format_sequence(sequence)
+            vals["number_employee"] = self._format_sequence()
 
         res = super(HrEmployee, self).create(values)
 
@@ -63,12 +65,26 @@ class HrEmployee(models.Model):
             vals["number_employee"] = self._format_sequence(vals["number_employee"])
         return super().write(vals)
 
-    def _format_sequence(self, sequence):
-        first = sequence[0:3]
-        second = sequence[3:6]
-        thirth = sequence[6:]
+    def _format_sequence(self):
 
-        return "%s-%s-%s" % (first, second, thirth)
+        # Fomato de 9 de dígitos
+        # sequence = (
+        #         self.env["ir.sequence"].next_by_code(
+        #             "hr.employee.employee.sequence.number"
+        #         )
+        #         or "/"
+        #     )
+        # first = sequence[0:3]
+        # second = sequence[3:6]
+        # thirth = sequence[6:]
+
+        # return "%s-%s-%s" % (first, second, thirth)
+
+        # Formato de 5 dígitos
+        sequence = (
+            self.env["ir.sequence"].next_by_code("hr.employee.employee.number") or "/"
+        )
+        return "01-01-%s" % sequence
 
     # CRON
     def _recompute_employee_names_cron(self):
