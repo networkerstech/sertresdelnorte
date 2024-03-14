@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="employee_resequence_view" model="ir.ui.view">
+            <field name="name">Re-sequence Employee number</field>
+            <field name="model">employee.resequence.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Re-Sequence">
+                    <h3>
+                        Re sequence employee numbers
+                    </h3>
+                    <footer>
+                        <button string="Confirm" name="resequence" type="object" default_focus="1"
+                            class="btn-primary" data-hotkey="q" />
+                        <button string="Cancel" class="btn-secondary" special="cancel"
+                            data-hotkey="z" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="employee_resequence_action" model="ir.actions.act_window">
+            <field name="name">Resequence Employee Numbers</field>
+            <field name="res_model">employee.resequence.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="employee_resequence_view" />
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="s_custom_employee.model_employee_resequence_wizard" />
+        </record>
+
+        <menuitem
+            id="employee_resequence_menu"
+            name="Re sequence employees"
+            parent="hr.menu_hr_employee_payroll"
+            sequence="11"
+            action="s_custom_employee.employee_resequence_action"
+            groups="base.group_no_one"
+        />
+    </data>
+</odoo>
