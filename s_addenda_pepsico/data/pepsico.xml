@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--This is the addenda-->
+    <template id="pepsico" name="Addenda PEPSICO">
+        <cfdi:Addenda xmlns:cfdi="http://www.sat.gob.mx/cfd/4">
+            <RequestCFD tipo="AddendaPCO" version="2.0" t-att-idPedido="record.order_pepsico_id" t-att-idSolicitudPago="record.request_pay_id">
+                <Documento t-att-folioUUID="folio_fiscal" t-att-tipoDoc="(record.move_type == 'out_invoice' and 1) or (record.move_type == 'out_refund' and 2)"/>
+                <Proveedor t-att-idProveedor="record.company_id.supplier_id"/>
+                <Recepciones>
+                    <t t-foreach="record.invoice_line_ids.filtered(lambda inv: inv.display_type == 'product')" t-as="line">
+                        <Recepcion t-att-idRecepcion="line.reception_id">
+                            <Concepto t-att-importe="round(line.price_unit * line.quantity, 6)" t-att-valorUnitario="line.price_unit" t-att-cantidad="line.quantity" t-att-descripcion="line.name" t-att-unidad="line.product_uom_id.name"/>
+                        </Recepcion>
+                    </t>
+                </Recepciones>
+            </RequestCFD>
+        </cfdi:Addenda>
+    </template>
+
+    <record id="pepsico" model="ir.ui.view">
+        <field name="l10n_mx_edi_addenda_flag">True</field>
+    </record>
+
+</odoo>
