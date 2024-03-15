@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_account_invoice_form_addenda_pepsico_fields">
+        <field name="name">view.account.invoice.form.addenda_pepsico</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="after">
+                <field name="linea_marelli"/>
+                <field name="part_marelli"/>
+            </xpath>
+            <xpath expr="//page[@name='other_info']" position="after">
+                <field name="addenda_marelli" invisible="1"/>
+                <page name="addenda_marelli" attrs="{'invisible': ['|', ('addenda_marelli', '=', False), ('move_type', 'not in', ('out_invoice', 'out_refund'))]}" string="Addenda Marelli">
+                    <group>
+                        <group>
+                            <field name="order_marelli" attrs="{'column_invisible': [('addenda_marelli', '=', False)]}"/>
+                            <field name="currency_marelli_aux" invisible="1"/>
+                            <field name="currency_marelli" attrs="{'column_invisible': [('addenda_marelli', '=', False)]}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
