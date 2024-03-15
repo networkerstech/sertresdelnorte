@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="addenda_levis" name="Addenda Levi's">
+        <t t-if="record.move_type == 'out_invoice'">
+            <cfdi:Addenda xmlns:cfdi="http://www.sat.gob.mx/cfd/4">
+                <LV8Reference>
+                    <Tipo>
+                        <FacturasLV>
+                            <PaymentReference><t t-esc="record.payment_reference"/></PaymentReference>
+                            <PurchaseOrder><t t-esc="record._get_sale_order_levi()"/></PurchaseOrder>
+                            <ActualDeliveryDate><t t-esc="record._get_efective_date_levi()"/></ActualDeliveryDate>
+                            <PersonReference><t t-esc="record.partner_id.email"/></PersonReference>
+                            <t t-set="line_counts" t-value="1"/>
+                            <t t-foreach="record._get_sale_order_line_levi()" t-as="line">
+                                <InvoicePurchaseOrderID  t-att-LineID="line.id"><t t-esc="line.product_id.name"/></InvoicePurchaseOrderID>
+                                <t t-set="line_counts" t-value="line_counts+1"/>
+                            </t>
+                        </FacturasLV>
+                    </Tipo>
+                </LV8Reference>
+            </cfdi:Addenda>
+        </t>
+        <t t-if="record.move_type == 'out_refund'">
+            <cfdi:Addenda xmlns:cfdi="http://www.sat.gob.mx/cfd/4">
+                <LVReference>
+                    <Tipo>
+                        <FacturasLV>
+                            <PurchaseOrder><t t-esc="record._get_sale_order_levi()"/></PurchaseOrder>
+                            <InvoiceID><t t-esc="record.reversed_entry_id.name"/></InvoiceID>
+                            <ActualDeliveryDate><t t-esc="record._get_efective_date_levi()"/></ActualDeliveryDate>
+                            <PersonReference><t t-esc="record.partner_id.email"/></PersonReference>
+                            <t t-set="line_inv_counts" t-value="1"/>
+                            <t t-foreach="record.reversed_entry_id.invoice_line_ids" t-as="line">
+                                <CreditNoteInvoiceID t-att-LineID="line_inv_counts"><t t-esc="line.product_id.name"/></CreditNoteInvoiceID>
+                                <t t-set="line_inv_counts" t-value="line_inv_counts+1"/>
+                            </t>
+                            <t t-foreach="record._get_sale_order_line_levi()" t-as="line">
+                                <CreditNotePurchaseOrderID t-att-LineID="line.id"><t t-esc="line.product_id.name"/></CreditNotePurchaseOrderID>
+                            </t>
+                        </FacturasLV>
+                    </Tipo>
+                </LVReference>
+            </cfdi:Addenda>
+        </t>
+    </template>
+    <record id="addenda_levis" model="ir.ui.view">
+        <field name="l10n_mx_edi_addenda_flag">True</field>
+    </record>
+</odoo>
