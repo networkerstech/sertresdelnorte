@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="s_inherit_account_analytic_plan_view_tree" model="ir.ui.view">
+            <field name="name">s.inherit.account.analytic.plan.view.tree</field>
+            <field name="model">account.analytic.plan</field>
+            <field name="inherit_id" ref="analytic.account_analytic_plan_tree_view" />
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="id" string="Identification"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="s_inherit_account_analytic_plan_view_form" model="ir.ui.view">
+            <field name="name">s.inherit.account.analytic.plan.view.form</field>
+            <field name="model">account.analytic.plan</field>
+            <field name="inherit_id" ref="analytic.account_analytic_plan_form_view" />
+            <field name="arch" type="xml">
+                <field name="parent_id" position="before">
+                    <field name="id" string="Identification" />
+                    <field name="accounts_sequence_id" readonly="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="s_inherit_account_analytic_account_view_tree" model="ir.ui.view">
+            <field name="name">s.inherit.account.analytic.account.view.tree</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_list" />
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="order_number" string="Identification"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="s_inherit_account_analytic_account_view_form" model="ir.ui.view">
+            <field name="name">s.inherit.account.analytic.account.view.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="before">
+                    <field name="order_number" string="Identification" readonly="1"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
