@@ -5,18 +5,13 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="after">
-                <field name="reception_id"/>
-            </xpath>
-            <xpath expr="//field[@name='line_ids']/tree/field[@name='account_id']" position="before">
-                <field name="reception_id" invisible="1"/>
-            </xpath>
             <xpath expr="//page[@name='other_info']" position="after">
                 <field name="addenda_pepsico" invisible="1"/>
                 <page name="addenda_pepsico" attrs="{'invisible': ['|', ('addenda_pepsico', '=', False), ('move_type', 'not in', ('out_invoice', 'out_refund'))]}" string="Addenda Pepsico">
                     <group>
                         <group>
                             <field name="order_pepsico_id"/>
+                            <field name="reception_id"/>
                             <field name="request_pay_id"/>
                         </group>
                     </group>
