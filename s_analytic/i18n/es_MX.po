@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-17 14:25+0000\n"
-"PO-Revision-Date: 2023-06-17 14:25+0000\n"
+"POT-Creation-Date: 2024-03-23 01:21+0000\n"
+"PO-Revision-Date: 2024-03-23 01:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: s_analytic
+#: model:ir.model.fields,field_description:s_analytic.field_account_analytic_plan__accounts_sequence_id
+msgid "Accounts Sequence"
+msgstr "Secuencia de las cuentas"
+
+#. module: s_analytic
+#. odoo-python
+#: code:addons/s_analytic/models/inherit_analytic_account.py:0
+#, python-format
+msgid "Analitic Plan Sequence - %d"
+msgstr "Secuencia de plan analítico - %d"
+
+#. module: s_analytic
 #: model:ir.model,name:s_analytic.model_account_analytic_account
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
 
 #. module: s_analytic
+#: model:ir.model,name:s_analytic.model_account_analytic_plan
+msgid "Analytic Plans"
+msgstr "Planes analíticos"
+
+#. module: s_analytic
+#: model:ir.model.fields,field_description:s_analytic.field_account_analytic_account__order_number
 #: model_terms:ir.ui.view,arch_db:s_analytic.s_inherit_account_analytic_account_view_form
 #: model_terms:ir.ui.view,arch_db:s_analytic.s_inherit_account_analytic_account_view_tree
 #: model_terms:ir.ui.view,arch_db:s_analytic.s_inherit_account_analytic_plan_view_form

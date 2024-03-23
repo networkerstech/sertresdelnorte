@@ -20,6 +20,7 @@
             <field name="arch" type="xml">
                 <field name="parent_id" position="before">
                     <field name="id" string="Identification" />
+                    <field name="accounts_sequence_id" readonly="1"/>
                 </field>
             </field>
         </record>
@@ -30,7 +31,7 @@
             <field name="inherit_id" ref="analytic.view_account_analytic_account_list" />
             <field name="arch" type="xml">
                 <field name="name" position="before">
-                    <field name="id" string="Identification"/>
+                    <field name="order_number" string="Identification"/>
                 </field>
             </field>
         </record>
@@ -41,7 +42,7 @@
             <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
             <field name="arch" type="xml">
                 <field name="partner_id" position="before">
-                    <field name="id" string="Identification" />
+                    <field name="order_number" string="Identification" readonly="1"/>
                 </field>
             </field>
         </record>
