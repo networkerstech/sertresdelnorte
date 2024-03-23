@@ -104,3 +104,12 @@ class HrEmployee(models.Model):
                 self.env.ref(
                     "s_custom_employee.ir_cron_recompute_employee_names"
                 )._trigger()
+
+class HrEmployeePublic(models.Model):
+    _inherit = "hr.employee.public"
+
+    order_name = fields.Char(readonly=True, groups="base.group_user")
+    number_employee = fields.Char(readonly=True, groups="base.group_user")
+    firstname = fields.Char(readonly=True, groups="base.group_user")
+    lastname = fields.Char(readonly=True, groups="base.group_user")
+    second_lastname = fields.Char(readonly=True, groups="base.group_user")
