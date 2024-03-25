@@ -3,11 +3,36 @@
 from odoo import fields, models, api, Command, _
 from odoo.exceptions import UserError
 
+READONLY_FIELD_STATES = {state: [("readonly", True)] for state in {"posted", "cancel"}}
+
 
 class AccountMove(models.Model):
-    _inherit = 'account.move'
+    _inherit = "account.move"
 
-    @api.constrains('currency_id', 'invoice_line_ids')
+    foreign_currency = fields.Boolean(
+        compute="_compute_foreign_currency",
+        string="Foreign Currency",
+        help="Auxiliary field to handle the visualization of the elements of the view",
+    )
+    use_manual_rate = fields.Boolean(
+        "Set Exchange Rate", default=False, states=READONLY_FIELD_STATES
+    )
+    manual_rate = fields.Float(
+        "Exchange Rate",
+        default=0,
+        states=READONLY_FIELD_STATES,
+        digits="Manual exchange rate for sales",
+    )
+
+    @api.depends("company_id", "currency_id")
+    def _compute_foreign_currency(self):
+        """
+        Campo auxiliar para usar en los dominios en la vista si la divisa no es la de la compañía
+        """
+        for rec in self:
+            rec.foreign_currency = rec.company_id.currency_id.id != rec.currency_id.id
+
+    @api.constrains("currency_id", "invoice_line_ids")
     def _constrains_currency(self):
         """
         Realizar validaciones asociadas al tipo de cambio manual
@@ -29,68 +54,89 @@ class AccountMove(models.Model):
         for rec in self:
             orders = rec.line_ids.sale_line_ids.order_id
             mr_orders = orders.filtered(
-                lambda so: so.foreign_currency and so.use_manual_rate)
+                lambda so: so.foreign_currency and so.foreign_currency and so.use_manual_rate
+            )
 
             if len(mr_orders):
-                # Se valida que no se puedan asociar facturas a órdenes de venta con y sin tipo de cambio manual
+                # Se valida que no se puedan crear facturas que incluyan al mismo tiempo
+                # - órdenes de venta CON tipo de cambio manual y
+                # - órdenes de venta SIN tipo de cambio manual
                 if len(orders) != len(mr_orders):
                     raise UserError(
-                        _('Can not invoice multiple sales orders with manual exchange rate and automatic exchange rate together.'))
+                        _(
+                            "Can not invoice multiple sales orders with manual exchange rate and automatic exchange rate together."
+                        )
+                    )
 
                 # Se valida que no se pueda cambiar la moneda de la facturas asociadas a órdenes de venta con tipo de cambio manual
                 for so in mr_orders:
                     if so.manual_currency_id.id != rec.currency_id.id:
                         raise UserError(
-                            _('Can not invoice orders with manual exchange rate in a different currency.'))
+                            _(
+                                "Can not invoice orders with manual exchange rate in a different currency."
+                            )
+                        )
 
-                # Se valida que no se puedan asociar facturas a múltiples órdenes de venta
-                # con diferente divisa manual o de la misma divisa manual con distintas tasas de cambio
+                # Se valida que no se puedan asociar facturas a múltiples órdenes de venta con tasa de cambio manual con:
+                # - diferente divisa manual o
+                # - de la misma divisa manual con distintas tasas de cambio
                 if len(mr_orders) > 1:
-                    if len(mr_orders.manual_currency_id) == 1:
-                        if len(set(mr_orders.mapped('manual_rate'))) > 1:
-                            raise UserError(
-                                _('Can not invoice orders with different manual exchange rate.'))
-                    else:
+                    if len(mr_orders.manual_currency_id) > 1:
                         raise UserError(
-                            _('Can not invoice orders with different manual currency.'))
+                            _("Can not invoice orders with different manual currency.")
+                        )
+                    if len(set(mr_orders.mapped("manual_rate"))) > 1:
+                        raise UserError(
+                            _(
+                                "Can not invoice orders with different manual exchange rate."
+                            )
+                        )
+
+    @api.constrains(
+        "foreign_currency", "currency_id", "use_manual_rate", "manual_rate"
+    )
+    def _constrains_manual_currency_rate(self):
+        """
+        Garantizar la consistencia de los datos
+        """
+        for rec in self:
+            if rec.foreign_currency and rec.use_manual_rate and rec.manual_rate <= 0:
+                # Si la moneda es diferente a la moneda de la compañía y está indicado que
+                # se va a utilizar tipo de cambio manual, validar que este se mayor que cero
+                raise UserError(_("You must specify exchange rate."))
+
 
 
 class AccountMoveLine(models.Model):
-    _inherit = 'account.move.line'
-
-    inverse_currency_rate = fields.Float(
-        compute='_compute_inverse_currency_rate', string='Exchange Rate')
-
-    @api.depends('currency_rate')
-    def _compute_inverse_currency_rate(self):
-        for line in self:
-            if not line.currency_rate:
-                line.inverse_currency_rate = 1.0
-            else:
-                line.inverse_currency_rate = 1.0 / line.currency_rate
+    _inherit = "account.move.line"
 
     def _compute_currency_rate(self):
         """
-        Si la(s) orden(es) de venta usa tipo de cambio manual, usarlo para las líneas de la factura
+        Si la(s) factura(s) usa tipo de cambio manual, usarlo para las líneas
         """
         res = super()._compute_currency_rate()
 
-        # En el caso de las facturas
-        mr_orders = self.sale_line_ids.order_id.filtered(
-            lambda so: so.foreign_currency and so.use_manual_rate)
-        if mr_orders:
-            currency_rate = 1.0/mr_orders[0].manual_rate
-            for line in self:
-                line.currency_rate = currency_rate
-        else:
-            for line in self:
-                # En el caso de asientos de base de efectivo
-                if line.move_id.tax_cash_basis_origin_move_id:
-                    mr_orders = line.move_id.tax_cash_basis_origin_move_id.line_ids.sale_line_ids.order_id.filtered(
-                        lambda so: so.foreign_currency and so.use_manual_rate)
-                    if mr_orders:
-                        currency_rate = 1.0/mr_orders[0].manual_rate
-                        line.currency_rate = currency_rate
+        rates = {}
+        for line in self:
+            manual_rate_inv = False
+            # En el caso de las facturas
+            if line.move_id.foreign_currency and line.move_id.use_manual_rate and line.move_id.manual_rate:
+                manual_rate_inv = line.move_id
+
+            # En el caso de asientos de base de efectivo
+            if (
+                line.move_id.tax_cash_basis_origin_move_id
+                and line.move_id.tax_cash_basis_origin_move_id.foreign_currency
+                and line.move_id.tax_cash_basis_origin_move_id.use_manual_rate
+                and line.move_id.tax_cash_basis_origin_move_id.manual_rate
+            ):
+                manual_rate_inv = line.move_id.tax_cash_basis_origin_move_id
+
+            if manual_rate_inv:
+                if line.move_id.id not in rates:
+                    # Por si existen líneas de facturas distintas
+                    rates[manual_rate_inv.id] = 1.0 / manual_rate_inv.manual_rate
+                line.currency_rate = rates[manual_rate_inv.id]
         return res
 
     # TODO:Mantener por si fuese necesario, actualmente no se usa las
