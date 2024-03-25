@@ -13,6 +13,7 @@
         'data/decimal_precision.xml',
         'views/inherit_sale_order.xml',
         'views/inherit_account_move.xml',
+        'views/inherit_account_payment.xml',
     ],
     'installable': True,
     'auto_install': False
