@@ -21,11 +21,12 @@ class AccountMove(models.Model):
         string='Pepsico payment request',
         help='Pepsico payment request id',
         copy=False)
-
-class AccountMoveLine(models.Model):
-    _inherit = 'account.move.line'
-
     reception_id = fields.Char(
         string='Reception id',
         help='Reception id',
         copy=False)
+
+class AccountMoveLine(models.Model):
+    _inherit = 'account.move.line'
+
+

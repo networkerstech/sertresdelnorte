@@ -9,7 +9,7 @@
                 <Proveedor t-att-idProveedor="record.company_id.supplier_id"/>
                 <Recepciones>
                     <t t-foreach="record.invoice_line_ids.filtered(lambda inv: inv.display_type == 'product')" t-as="line">
-                        <Recepcion t-att-idRecepcion="line.reception_id">
+                        <Recepcion t-att-idRecepcion="record.reception_id">
                             <Concepto t-att-importe="round(line.price_unit * line.quantity, 6)" t-att-valorUnitario="line.price_unit" t-att-cantidad="line.quantity" t-att-descripcion="line.name" t-att-unidad="line.product_uom_id.name"/>
                         </Recepcion>
                     </t>
